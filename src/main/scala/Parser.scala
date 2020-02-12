@@ -1,8 +1,34 @@
 package sdl.Parser
 import scala.util.parsing.combinator._
 import sdl.Ast._
-
+/*
 object DlParser extends RegexParsers {
+  def astStmts: Parser[
+    (
+        List[AstDeclSchema],
+        List[AstDeclInput],
+        List[AstRule],
+        List[AstDeclOutput]
+    )
+  ] = {
+    rep(astStmt) ^^ { stmts =>
+      (
+        stmts
+          .filter(_.isInstanceOf[AstDeclSchema])
+          .asInstanceOf[List[AstDeclSchema]],
+        stmts
+          .filter(_.isInstanceOf[AstDeclInput])
+          .asInstanceOf[List[AstDeclInput]],
+        stmts
+          .filter(_.isInstanceOf[AstRule])
+          .asInstanceOf[List[AstRule]],
+        stmts
+          .filter(_.isInstanceOf[AstDeclOutput])
+          .asInstanceOf[List[AstDeclOutput]]
+      )
+    }
+  }
+
   def astStmt: Parser[AstStmt] = {
     astDeclSchema | astDeclInput | astRule | astDeclOutput
   }
@@ -71,3 +97,4 @@ object DlParser extends RegexParsers {
     }
   }
 }
+*/
