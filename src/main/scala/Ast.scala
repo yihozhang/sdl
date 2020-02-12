@@ -16,20 +16,20 @@ package object Ast {
   type Id = String
   type RelId = String
   type Field = String
-
+  type Indices = List[(Field, Expr)]
   sealed abstract class Op
   sealed abstract class NestedOp extends Op {
     val child: Op
   }
   sealed trait IndexedOp extends Op {
-    val indexedField: Field
-    val expr: Expr
+    val indices: Indices
   }
   sealed abstract class AbstractScan extends NestedOp {
     val v: Id
     val rel: RelId
   }
-  case class IndexScan(v: Id, rel: RelId, indexedField: Field, expr: Expr, child: Op) extends AbstractScan with IndexedOp
+  case class IndexScan(v: Id, rel: RelId, indices: Indices, child: Op)
+    extends AbstractScan with IndexedOp
   case class Scan(v: Id, rel: RelId, child: Op) extends AbstractScan
 
   sealed abstract class AbstractChoice extends NestedOp {
@@ -37,7 +37,8 @@ package object Ast {
     val rel: RelId
     val cond: Cond
   }
-  case class IndexChoice(v: Id, rel: RelId, cond: Cond, indexedField: Field, expr: Expr, child: Op) extends AbstractChoice with IndexedOp
+  case class IndexChoice(v: Id, rel: RelId, cond: Cond, indices: Indices, child: Op)
+    extends AbstractChoice with IndexedOp
   case class Choice(v: Id, rel: RelId, cond: Cond, child:Op) extends AbstractChoice
 
   case class Filter(cond: Cond, child:Op) extends NestedOp
