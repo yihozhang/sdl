@@ -5,8 +5,9 @@ import scala.util.parsing.combinator._
 
 class ParserSuite extends FunSuite {
   import sdl.Parser._
-  def parserTestHelper[T](prog: String, target: DlParser.Parser[T]) {
+  def parserTestHelper[T](prog: String, target: DlParser.Parser[T]): T = {
     val result = DlParser.parseAll(target, prog).get
+    result
   }
   test("parse identifier") {
     parserTestHelper("person", DlParser.id)

@@ -22,6 +22,8 @@ libraryDependencies += "org.scala-lang.virtualized" % "scala-reflect" % "2.11.2"
 
 libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.2"
 
+libraryDependencies += "com.lihaoyi" %% "pprint" % "0.4.1"
+
 scalacOptions += "-Yvirtualize"
 
 scalacOptions += "-deprecation"

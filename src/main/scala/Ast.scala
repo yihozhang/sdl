@@ -9,7 +9,6 @@ package object Ast {
 
   case class Decl(rel: RelId, schema: Map[String, Type])
 
-
   sealed abstract class Stmt
   case class Load(rel: RelId, filename: String) extends Stmt
   case class Store(rel: RelId, filename: String) extends Stmt
@@ -19,10 +18,17 @@ package object Ast {
   case class Loop(op: List[Stmt]) extends Stmt
   case class Exit(cond: Cond) extends Stmt
 
-
-  sealed abstract class Op
+  sealed abstract class Op {
+    def accept(visitor: Op => Unit) {
+      visitor(this)
+    }
+  }
   sealed abstract class NestedOp extends Op {
     val child: Op
+    override def accept(visitor: Op => Unit) {
+      visitor(this)
+      child.accept(visitor)
+    }
   }
   sealed trait IndexedOp extends Op {
     val indices: Indices
