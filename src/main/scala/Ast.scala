@@ -5,17 +5,28 @@ package object Ast {
   type Id = String
   type RelId = String
   type Field = String
-  type Indices = List[(Field, Expr)]
+  type Indices = Map[Field, Expr]
+  case class IndexSchema(rel: RelId, fields: List[Field])
 
   case class Decl(rel: RelId, schema: Map[String, Type])
 
-  sealed abstract class Stmt
+  sealed abstract class Stmt {
+    def acceptOp(visitor: Op => Unit) = ()
+  }
   case class Load(rel: RelId, filename: String) extends Stmt
   case class Store(rel: RelId, filename: String) extends Stmt
   case class Clear(rel: RelId) extends Stmt
   case class Swap(relA: RelId, relB: RelId) extends Stmt
-  case class Query(op: Op) extends Stmt
-  case class Loop(op: List[Stmt]) extends Stmt
+  case class Query(op: Op) extends Stmt {
+    override def acceptOp(visitor: Op => Unit) {
+      this.op.accept(visitor)
+    }
+  }
+  case class Loop(stmt: List[Stmt]) extends Stmt {
+    override def acceptOp(visitor: Op => Unit) {
+      this.stmt.foreach(_.acceptOp(visitor))
+    }
+  }
   case class Exit(cond: Cond) extends Stmt
 
   sealed abstract class Op {
@@ -32,6 +43,7 @@ package object Ast {
   }
   sealed trait IndexedOp extends Op {
     val indices: Indices
+    val indexedOn: RelId
   }
   sealed abstract class AbstractScan extends NestedOp {
     val v: Id
@@ -39,7 +51,9 @@ package object Ast {
   }
   case class IndexScan(v: Id, rel: RelId, indices: Indices, child: Op)
       extends AbstractScan
-      with IndexedOp
+      with IndexedOp {
+    override val indexedOn = rel
+  }
   case class Scan(v: Id, rel: RelId, child: Op) extends AbstractScan
 
   sealed abstract class AbstractChoice extends NestedOp {
@@ -54,7 +68,9 @@ package object Ast {
       indices: Indices,
       child: Op
   ) extends AbstractChoice
-      with IndexedOp
+      with IndexedOp {
+    override val indexedOn: RelId = rel
+  }
   case class Choice(v: Id, rel: RelId, cond: Cond, child: Op)
       extends AbstractChoice
 

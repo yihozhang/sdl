@@ -1,14 +1,10 @@
 package sdl.test
-import scala.io.Source
+import sdl.test.util._
 import org.scalatest.FunSuite
 import scala.util.parsing.combinator._
 
 class ParserSuite extends FunSuite {
   import sdl.Parser._
-  def parserTestHelper[T](prog: String, target: DlParser.Parser[T]): T = {
-    val result = DlParser.parseAll(target, prog).get
-    result
-  }
   test("parse identifier") {
     parserTestHelper("person", DlParser.id)
     parserTestHelper("name", DlParser.id)
@@ -42,8 +38,7 @@ class ParserSuite extends FunSuite {
   }
 
   test("parse prog") {
-    val source = scala.io.Source.fromFile("test/parser/prog1.txt")
-    val prog = try source.getLines mkString "\n" finally source.close()
+    val prog = readFile("test/parser/prog1.txt")
     parserTestHelper(
       prog,
       DlParser.program

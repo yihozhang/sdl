@@ -72,7 +72,9 @@ object DlParser extends RegexParsers {
   def abstractIndexOp: Parser[Indices] = {
     "ON" ~ "INDEX" ~> rep1sep(relId ~ "." ~> field ~ "=" ~ expr ^^ {
       case field ~ _ ~ expr => field -> expr
-    }, "AND")
+    }, "AND") ^^ {
+      _.toMap
+    }
   }
 
   def cond: Parser[Cond] = {
