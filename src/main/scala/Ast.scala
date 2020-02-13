@@ -1,22 +1,25 @@
 package sdl
 
-// Stmt
-//     Load
-//     Store
-//     Clear
-//     Swap
-//     Query
-//     Seq
-//     Loop
-//     Exit
-
-//
 package object Ast {
 
   type Id = String
   type RelId = String
   type Field = String
   type Indices = List[(Field, Expr)]
+
+  case class Decl(rel: RelId, schema: Map[String, Type])
+
+
+  sealed abstract class Stmt
+  case class Load(rel: RelId, filename: String) extends Stmt
+  case class Store(rel: RelId, filename: String) extends Stmt
+  case class Clear(rel: RelId) extends Stmt
+  case class Swap(relA: RelId, relB: RelId) extends Stmt
+  case class Query(op: Op) extends Stmt
+  case class Loop(op: List[Stmt]) extends Stmt
+  case class Exit(cond: Cond) extends Stmt
+
+
   sealed abstract class Op
   sealed abstract class NestedOp extends Op {
     val child: Op
@@ -58,7 +61,7 @@ package object Ast {
   case class Conjunction(lhs: Cond, rhs: Cond) extends Cond
   case class Negation(child: Cond) extends Cond
   case class Constraint(lhs: Expr, op: CstraintOp, rhs: Expr) extends Cond
-  // case class DoesExist(exprs: List[Expr], rel: RelId) extends Cond
+  case class DoesExist(exprs: List[Expr], rel: RelId) extends Cond
   case class IsEmpty(rel: RelId) extends Cond
 
   sealed abstract class Expr
@@ -81,5 +84,10 @@ package object Ast {
   type AggOp = AggOp.Value
   object AggOp extends Enumeration {
     val Max, Min, Count, Sum = Value
+  }
+
+  type Type = Type.Value
+  object Type extends Enumeration {
+    val NUM, STR = Value
   }
 }

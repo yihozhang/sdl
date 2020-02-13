@@ -1,6 +1,7 @@
 package sdl.Parser
 import scala.util.parsing.combinator._
 import sdl.Ast._
+import sdl.program.Program
 
 object DlParser extends RegexParsers {
   def id: Parser[Id] = {
@@ -20,7 +21,7 @@ object DlParser extends RegexParsers {
   }
 
   def str: Parser[String] = {
-    "\"[^\"]\"".r ^^ { s =>
+    "\"[^\"]*\"".r ^^ { s =>
       s.slice(1, s.length - 1)
     }
   }
@@ -75,7 +76,7 @@ object DlParser extends RegexParsers {
   }
 
   def cond: Parser[Cond] = {
-    conjunction | negation | constraint | isEmpty
+    conjunction | negation | constraint | isEmpty | doesExist
   }
 
   // def _true: Parser[True.type] = ???
@@ -98,7 +99,11 @@ object DlParser extends RegexParsers {
       case lhs ~ op ~ rhs => Constraint(lhs, op, rhs)
     }
   }
-  // def doesExist: Parser[DoesExist] = ???
+  def doesExist: Parser[DoesExist] = {
+    "(" ~> rep1sep(expr, ",") ~ ")" ~ "∈" ~ relId ^^ {
+      case exprs ~ _ ~ _ ~ rel => DoesExist(exprs, rel)
+    }
+  }
 
   def isEmpty: Parser[IsEmpty] = {
     "(" ~> relId <~ "=" ~ "∅" ~ ")" ^^ { rel =>
@@ -116,7 +121,7 @@ object DlParser extends RegexParsers {
     }
   }
   def const: Parser[Const] = {
-    num ^^ {
+    "number" ~ "(" ~> num <~ ")" ^^ {
       case num => Const(IntElement(num))
     } | str ^^ {
       case str => Const(StringElement(str))
@@ -142,5 +147,84 @@ object DlParser extends RegexParsers {
       "-" ^^^ ExprOp.SUB |
       "*" ^^^ ExprOp.MUL |
       "/" ^^^ ExprOp.DIV
+  }
+  def stmts: Parser[List[Stmt]] = {
+    rep(stmt)
+  }
+  def stmt: Parser[Stmt] = {
+    loadStmt | storeStmt | clearStmt | swapStmt | queryStmt | loopStmt | exitStmt
+  }
+  def loadStmt: Parser[Load] = {
+    "LOAD" ~ "DATA" ~ "FOR" ~> relId ~ "FROM" ~ str ^^ {
+      case id ~ _ ~ filename => Load(id, filename)
+    }
+  }
+  def storeStmt: Parser[Store] = {
+    "STORE" ~ "DATA" ~ "FOR" ~> relId ~ "TO" ~ str ^^ {
+      case id ~ _ ~ filename => Store(id, filename)
+    }
+  }
+  def clearStmt: Parser[Clear] = {
+    "CLEAR" ~> relId ^^ {
+      case id => Clear(id)
+    }
+  }
+  def swapStmt: Parser[Swap] = {
+    "SWAP" ~ "(" ~> relId ~ "," ~ relId <~ ")" ^^ {
+      case relA ~ _ ~ relB => {
+        Swap(relA, relB)
+      }
+    }
+  }
+  // def seqStmt: Parser[Seq] = {
+  //   rep(stmt) ^^ { seq =>
+  //     Seq(seq)
+  //   }
+  // }
+  def queryStmt: Parser[Query] = {
+    "QUERY" ~> op ^^ { op =>
+      Query(op)
+    }
+  }
+  def loopStmt: Parser[Loop] = {
+    "LOOP" ~> rep(stmt) <~ "END" ~ "LOOP" ^^ { stmt =>
+      Loop(stmt)
+    }
+  }
+  def exitStmt: Parser[Exit] = {
+    "EXIT" ~> cond ^^ { cond =>
+      Exit(cond)
+    }
+  }
+
+  def decl: Parser[Decl] = {
+    relId ~ "(" ~ rep1sep(fieldAndType, ",") <~ ")" ^^ {
+      case rel ~ _ ~ ls => Decl(rel, ls.toMap)
+    }
+  }
+
+  def decls: Parser[List[Decl]] = {
+    rep(decl)
+  }
+
+  def fieldAndType: Parser[(Field, Type)] = {
+    field ~ ":" ~ ("string" ^^^ Type.STR | "number" ^^^ Type.NUM) ^^ {
+      case field ~ _ ~ typ => (field, typ)
+    }
+  }
+
+  def program: Parser[Program] = {
+    "PROGRAM" ~> {
+      "DECLARATION" ~>
+        decls <~ "END" ~ "DECLARATION"
+    } ~ {
+      "BEGIN" ~ "MAIN" ~>
+        stmts <~ "END" ~ "MAIN"
+    } <~
+      "END" ~ "PROGRAM" ^^ {
+      case decls ~ stmts =>
+        Program(decls.map(decl => decl.rel -> decl).toMap, stmts)
+    }
+
   }
 }

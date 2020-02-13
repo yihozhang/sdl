@@ -1,0 +1,121 @@
+
+  LOAD DATA FOR female FROM "./DATA/female.facts"
+  LOAD DATA FOR parent_child FROM "./DATA/parent_child.facts"
+   QUERY
+    IF (NOT (parent_child = ∅))
+     FOR t0 IN parent_child
+      PROJECT (t0.0, t0.1) INTO ancestor_child
+  QUERY
+   FOR t0 IN ancestor_child
+    PROJECT (t0.0, t0.1) INTO @delta_ancestor_child
+  LOOP
+     QUERY
+      IF ((NOT (parent_child = ∅)) AND (NOT (@delta_ancestor_child = ∅)))
+       FOR t0 IN parent_child
+        FOR t1 IN @delta_ancestor_child ON INDEX t1.x = t0.1
+         IF (NOT (t0.0,t1.1) ∈ ancestor_child)
+          PROJECT (t0.0, t1.1) INTO @new_ancestor_child
+   EXIT (@new_ancestor_child = ∅)
+   QUERY
+    FOR t0 IN @new_ancestor_child
+     PROJECT (t0.0, t0.1) INTO ancestor_child
+   SWAP (@delta_ancestor_child, @new_ancestor_child)
+   CLEAR @new_ancestor_child
+  END LOOP
+  CLEAR @delta_ancestor_child
+  CLEAR @new_ancestor_child
+  LOAD DATA FOR person_living FROM "./DATA/person_living.facts"
+   QUERY
+    IF (((NOT (person_living = ∅)) AND (NOT (parent_child = ∅))) AND (NOT (female = ∅)))
+     FOR t0 IN person_living
+      FOR t1 IN parent_child ON INDEX t1.p2 = t0.0
+       IF (t1.0) ∈ female
+        PROJECT (t0.0, t1.0) INTO MA
+  QUERY
+   FOR t0 IN MA
+    PROJECT (t0.0, t0.1) INTO @delta_MA
+  LOOP
+     QUERY
+      IF (((NOT (parent_child = ∅)) AND (NOT (female = ∅))) AND (NOT (@delta_MA = ∅)))
+       FOR t0 IN parent_child
+        IF (t0.0) ∈ female
+         FOR t1 IN @delta_MA ON INDEX t1.y = t0.1
+          IF (NOT (t1.0,t0.0) ∈ MA)
+           PROJECT (t1.0, t0.0) INTO @new_MA
+   EXIT (@new_MA = ∅)
+   QUERY
+    FOR t0 IN @new_MA
+     PROJECT (t0.0, t0.1) INTO MA
+   SWAP (@delta_MA, @new_MA)
+   CLEAR @new_MA
+  END LOOP
+  CLEAR @delta_MA
+  CLEAR @new_MA
+  CLEAR female
+  LOAD DATA FOR person FROM "./DATA/person.facts"
+   QUERY
+    IF ((NOT (person = ∅)) AND (NOT (person_living = ∅)))
+     FOR t0 IN person
+      CHOICE t1 IN person_living WHERE (NOT (t1.0,t0.0) ∈ MA)
+       IF (NOT (t1.0,t0.0) ∈ MA)
+        PROJECT (t0.0) INTO NotMCA
+  CLEAR person_living
+  CLEAR MA
+   QUERY
+    IF (NOT (person = ∅))
+     FOR t0 IN person
+      IF (NOT (t0.0) ∈ NotMCA)
+       PROJECT (t0.0) INTO p4
+  STORE DATA FOR p4 TO "./hw4-4.ans"
+  CLEAR NotMCA
+   QUERY
+    IF ((NOT (ancestor_child = ∅)) AND (NOT (p4 = ∅)))
+     FOR t0 IN p4
+      CHOICE t1 IN p4 WHERE (t0.0,t1.0) ∈ ancestor_child
+       IF (t0.0,t1.0) ∈ ancestor_child
+        PROJECT (t0.0) INTO NotP5
+  CLEAR ancestor_child
+   QUERY
+    IF (NOT (p4 = ∅))
+     FOR t0 IN p4
+      IF (NOT (t0.0) ∈ NotP5)
+       PROJECT (t0.0) INTO p5
+  STORE DATA FOR p5 TO "./hw4-5.ans"
+  CLEAR p4
+  CLEAR NotP5
+   QUERY
+    IF ((NOT (parent_child = ∅)) AND (NOT (person = ∅)))
+     FOR t0 IN parent_child ON INDEX t0.p1 = number(0)
+      FOR t1 IN person ON INDEX t1.name = t0.1
+       PROJECT (t0.1, t1.1) INTO p0
+       
+  STORE DATA FOR p0 TO "./hw4-0.ans"
+   QUERY
+    IF (NOT (p0 = ∅))
+     FOR t0 IN p0
+      PROJECT (t0.0, t0.1) INTO p1
+  QUERY
+   FOR t0 IN p1
+    PROJECT (t0.0, t0.1) INTO @delta_p1
+  LOOP
+     QUERY
+      IF (((NOT (@delta_p1 = ∅)) AND (NOT (parent_child = ∅))) AND (NOT (person = ∅)))
+       FOR t0 IN @delta_p1
+        FOR t1 IN parent_child ON INDEX t1.p1 = t0.0
+         FOR t2 IN person ON INDEX t2.name = t1.1
+          IF (NOT (t1.1,t2.1) ∈ p1)
+           PROJECT (t1.1, t2.1) INTO @new_p1
+   EXIT (@new_p1 = ∅)
+   QUERY
+    FOR t0 IN @new_p1
+     PROJECT (t0.0, t0.1) INTO p1
+   SWAP (@delta_p1, @new_p1)
+   CLEAR @new_p1
+  END LOOP
+  CLEAR @delta_p1
+  CLEAR @new_p1
+  STORE DATA FOR p1 TO "./hw4-1.ans"
+  CLEAR p0
+  CLEAR parent_child
+  CLEAR person
+  CLEAR p1
