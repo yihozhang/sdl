@@ -1,0 +1,20 @@
+PROGRAM
+ DECLARATION
+  p0(x:string,d:string)
+  parent_child(p1:string,p2:string)
+  person(name:string,description:string)
+ END DECLARATION
+ BEGIN MAIN
+  LOAD DATA FOR parent_child FROM "test/DATA/parent_child.facts"
+  LOAD DATA FOR person FROM "test/DATA/person.facts"
+   QUERY
+    IF ((NOT (parent_child = ∅)) AND (NOT (person = ∅)))
+     FOR t0 IN parent_child
+        FOR t1 IN person
+         IF (t1.0 = t0.1)
+            PROJECT (t0.1, t1.1) INTO p0
+  STORE DATA FOR p0 TO "./hw4-0.ans"
+  CLEAR parent_child
+  CLEAR person
+ END MAIN
+END PROGRAM

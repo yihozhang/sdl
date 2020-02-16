@@ -17,4 +17,10 @@ class InterpreterSuite extends FunSuite {
     val prog = parseProgram(text)
     new Interpreter(prog).run
   }
+
+  test("simple test 2") {
+    val text = readFile("test/parser/simple_prog2.txt")
+    val prog = parseProgram(text)
+    new Interpreter(prog).run
+  }
 }

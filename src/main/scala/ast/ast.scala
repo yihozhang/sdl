@@ -92,7 +92,7 @@ package object ast {
   case class IsEmpty(rel: RelId) extends Cond
 
   sealed abstract class Expr
-  case class TupleElement(rel: RelId, elem: Int) extends Expr
+  case class TupleElement(id: Id, elem: Int) extends Expr
   case class Const(value: Element) extends Expr
   case class BinaryExpr(lhs: Expr, op: ExprOp, rhs: Expr) extends Expr
 

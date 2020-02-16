@@ -40,10 +40,10 @@ case class Table(schema: Schema) {
   val tupleSize = schema.length
   var tab = SArray[Element]
   var length = 0
-  def push(tuple: Array[Element]) {
-    for (i <- 0 until tupleSize) {
-      tab.push(tuple(i))
-    }
+  def get(i: Int) = Tuple(tab, i * tupleSize, tupleSize)
+  def push(tuple: Element*) {
+    tuple.foreach(tab.push(_))
+    length += 1
   }
   def loadFrom(filename: String) {
     val s = new Scanner(filename)
@@ -74,6 +74,24 @@ case class Table(schema: Schema) {
       }
     }
     p.close
+  }
+
+
+  def foreach(f: Tuple => Unit) {
+    for (i <- 0 until length) {
+      f(get(i))
+    }
+  }
+
+  def stopableForeach(f: Tuple => Boolean) {
+    var i = 0
+    var flag = true
+    while (flag && i < length) {
+      if (!f(get(i))) {
+        flag = false
+      }
+      i += 1
+    }
   }
 
   def print() {
@@ -110,7 +128,8 @@ object Table {
     val tmpLen = a.length
     a.length = b.length
     b.length = tmpLen
-  } 
+  }
+
 }
 
 class TableManager(env: Map[RelId, Decl]) {
@@ -124,4 +143,8 @@ class TableManager(env: Map[RelId, Decl]) {
   }
 
   def apply(relId: RelId): Table = tables(relIdToTabId(relId))
+}
+
+case class Tuple(arr: SArray[Element], offset: Int, tupleSize: Int) {
+  def apply(i: Int) = arr(offset + i)
 }
