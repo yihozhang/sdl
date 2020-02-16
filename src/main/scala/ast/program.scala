@@ -1,7 +1,6 @@
-package sdl.program
+package sdl.ast
 
-import sdl.Ast._
-import sdl.Parser.DlParser
+import sdl.parser.DlParser
 import scala.collection.mutable
 
 case class Program(env: Map[RelId, Decl], stmts: List[Stmt]) {

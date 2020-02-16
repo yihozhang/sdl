@@ -4,7 +4,7 @@ import org.scalatest.FunSuite
 import scala.util.parsing.combinator._
 
 class ParserSuite extends FunSuite {
-  import sdl.Parser._
+  import sdl.parser._
   test("parse identifier") {
     parserTestHelper("person", DlParser.id)
     parserTestHelper("name", DlParser.id)

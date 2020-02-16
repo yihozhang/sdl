@@ -27,3 +27,5 @@ libraryDependencies += "com.lihaoyi" %% "pprint" % "0.4.1"
 scalacOptions += "-Yvirtualize"
 
 scalacOptions += "-deprecation"
+
+scalacOptions += "-feature"

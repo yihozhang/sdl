@@ -1,11 +1,11 @@
 package sdl.test
-import sdl.Parser.DlParser
-import sdl.program._
+import sdl.parser.DlParser
+import sdl.ast.Program
 import scala.io.Source
 
 object util {
     def readFile(filename: String): String = {
-        val source = scala.io.Source.fromFile("test/parser/prog1.txt")
+        val source = scala.io.Source.fromFile(filename)
         try source.getLines mkString "\n" finally source.close()
     }
     

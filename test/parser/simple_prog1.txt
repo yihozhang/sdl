@@ -1,0 +1,12 @@
+PROGRAM
+ DECLARATION
+  parent_child(p: string, c: string)
+  parent_child2(p: string, c: string)
+ END DECLARATION
+ BEGIN MAIN
+  LOAD DATA FOR parent_child FROM "test/parser/data1.txt"
+  SWAP (parent_child, parent_child2)
+  STORE DATA FOR parent_child TO "parent_child.txt"
+  STORE DATA FOR parent_child2 TO "parent_child2.txt"
+ END MAIN
+END PROGRAM

@@ -1,7 +1,6 @@
-package sdl.Parser
+package sdl.parser
 import scala.util.parsing.combinator._
-import sdl.Ast._
-import sdl.program.Program
+import sdl.ast._
 
 object DlParser extends RegexParsers {
   def id: Parser[Id] = {
@@ -201,7 +200,7 @@ object DlParser extends RegexParsers {
 
   def decl: Parser[Decl] = {
     relId ~ "(" ~ rep1sep(fieldAndType, ",") <~ ")" ^^ {
-      case rel ~ _ ~ ls => Decl(rel, ls.toMap)
+      case rel ~ _ ~ ls => Decl(rel, ls)
     }
   }
 

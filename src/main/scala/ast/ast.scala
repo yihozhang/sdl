@@ -1,14 +1,19 @@
 package sdl
 
-package object Ast {
+package object ast {
 
   type Id = String
   type RelId = String
   type Field = String
   type Indices = Map[Field, Expr]
   case class IndexSchema(rel: RelId, fields: List[Field])
+  type Type = Type.Value
+  object Type extends Enumeration {
+    val NUM, STR = Value
+  }
+  type Schema = List[(Field, Type)]
 
-  case class Decl(rel: RelId, schema: Map[String, Type])
+  case class Decl(rel: RelId, schema: Schema)
 
   sealed abstract class Stmt {
     def acceptOp(visitor: Op => Unit) = ()
@@ -22,9 +27,9 @@ package object Ast {
       this.op.accept(visitor)
     }
   }
-  case class Loop(stmt: List[Stmt]) extends Stmt {
+  case class Loop(stmts: List[Stmt]) extends Stmt {
     override def acceptOp(visitor: Op => Unit) {
-      this.stmt.foreach(_.acceptOp(visitor))
+      this.stmts.foreach(_.acceptOp(visitor))
     }
   }
   case class Exit(cond: Cond) extends Stmt
@@ -100,16 +105,16 @@ package object Ast {
     val ADD, SUB, MUL, DIV = Value
   }
   sealed abstract class Element
-  case class IntElement(value: Int) extends Element
-  case class StringElement(value: String) extends Element
+  case class IntElement(value: Int) extends Element {
+    override def toString: String = value.toString()
+  }
+  case class StringElement(value: String) extends Element {
+    override def toString: String = value
+  }
 
   type AggOp = AggOp.Value
   object AggOp extends Enumeration {
     val Max, Min, Count, Sum = Value
   }
 
-  type Type = Type.Value
-  object Type extends Enumeration {
-    val NUM, STR = Value
-  }
 }
