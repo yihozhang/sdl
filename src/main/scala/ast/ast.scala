@@ -1,6 +1,7 @@
-package sdl
-
-package object ast {
+package sdl.ast
+import scala.lms.api.Dsl
+import sdl.util._
+trait AstUtil extends Dsl {
 
   type Id = String
   type RelId = String
@@ -103,13 +104,6 @@ package object ast {
   type ExprOp = ExprOp.Value
   object ExprOp extends Enumeration {
     val ADD, SUB, MUL, DIV = Value
-  }
-  sealed abstract class Element
-  case class IntElement(value: Int) extends Element {
-    override def toString: String = value.toString()
-  }
-  case class StringElement(value: String) extends Element {
-    override def toString: String = value
   }
 
   type AggOp = AggOp.Value

@@ -82,6 +82,10 @@ trait Dsl
       implicit pos: scala.reflect.SourceContext
   ): Rep[Boolean] =
     __ifThenElse(lhs, rhs, unit(false))
+  def unary_!(v: Rep[Boolean])(
+      implicit pos: scala.reflect.SourceContext
+  ): Rep[Boolean] =
+    __ifThenElse(v, unit(false), unit(true))
   override def infix_||(lhs: Rep[Boolean], rhs: => Rep[Boolean])(
       implicit pos: scala.reflect.SourceContext
   ): Rep[Boolean] =

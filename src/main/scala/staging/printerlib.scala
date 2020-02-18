@@ -1,4 +1,4 @@
-package sdl.staging
+package sdl.util
 
 import java.io.BufferedWriter
 import java.io.FileWriter
