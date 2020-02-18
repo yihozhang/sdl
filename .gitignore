@@ -1,3 +1,4 @@
 .idea
 target
 .metals
+.DS_Store
