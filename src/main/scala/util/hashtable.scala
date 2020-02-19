@@ -22,6 +22,7 @@ trait HashTableUtil
     def resize(x: Rep[Int]): Rep[Unit]
     def append(v: Rep[Any]*): Rep[Int]
     def foreach(f: Tuple => Rep[Unit]): Rep[Unit]
+    def clear(): Rep[Unit]
     /*def sort(
         comp: Function2[Rep[T], Rep[T], Rep[Int]],
         len: Rep[Int]
@@ -71,11 +72,15 @@ trait HashTableUtil
       }
     }
 
+    def clear(): Rep[Unit] = {
+        size = 0
+    }
+
   }
-  
+
   class ColumnBuffer[T: Typ](cap0: Rep[Int]) {
     // val buf = var_new(NewArray[T](size))
-    implicit def arrayType: Typ[Array[T]]= typ
+    implicit def arrayType: Typ[Array[T]] = typ
     val cap = var_new(cap0)
     val buf = var_new(NewArray[T](cap0))
     var size = 0: Rep[Int]
@@ -93,6 +98,9 @@ trait HashTableUtil
     }
     def resize(x: Rep[Int]): Rep[Unit] = {
       buf = array_realloc(buf, x)
+    }
+    def clear(): Rep[Unit] = {
+        size = 0
     }
   }
 
@@ -117,8 +125,9 @@ trait HashTableUtil
     //     indexedBuffers(i) = new ColumnBuffer[Int](dataSize)
     // }
     val indexedBuffers =
-      ((0 until indices.length): Range).map(_ => new ColumnBuffer[Int](dataSize)
-      )
+      ((0 until indices.length): Range).map { _ =>
+        new ColumnBuffer[Int](dataSize)
+      }
     val bucketHashs =
       ((0 until indices.length): Range).map(_ => NewArray[Int](hashSize))
     // val bucketHashs = new Array[Rep[Array[Int]]](indices.length + 1)
@@ -208,6 +217,15 @@ trait HashTableUtil
       }
     }
 
+    def clear(): Rep[Unit] = {
+      data.clear()
+      indexedBuffers.foreach(_.clear)
+      bucketHashs.foreach(bucketHash => {
+        for (i <- 0 until hashSize) {
+          bucketHash(i) = -1
+        }
+      })
+    }
   }
 
 }

@@ -6,6 +6,7 @@ import scala.reflect.SourceContext
 import scala.lms.api.Dsl
 import scala.lms.internal._
 import scala.lms.util._
+import java.io.File
 
 trait UncheckedHelper extends Dsl with UncheckedOps {
 
@@ -31,11 +32,10 @@ trait UncheckedHelper extends Dsl with UncheckedOps {
       xs: Rep[Array[T]],
       size: Rep[Int]
   ): Rep[Array[T]] = {
-    ???
-    // if (typ[T] == typ[Int])
-    //   rawSrc"(int*)realloc($xs,$size * sizeof(int))".as[Array[T]]
-    // else if (typ[T] == typ[String])
-    //   rawSrc"(char**)realloc($xs,$size * sizeof(char*))".as[Array[T]]
+    if (typ[T] == typ[Int])
+      rawSrc"(int*)realloc($xs,$size * sizeof(int))".as[Array[T]]
+    else if (typ[T] == typ[String])
+      rawSrc"(char**)realloc($xs,$size * sizeof(char*))".as[Array[T]]
 
     //   else if (typ[T] == typ[Long])
     //     raw"(long*)realloc($xs,$size * sizeof(long))"
@@ -48,10 +48,10 @@ trait UncheckedHelper extends Dsl with UncheckedOps {
     //   else if (typ[T] == typ[Array[Int]])
     //     raw"(int**)realloc($xs,$size * sizeof(int*))".as[Array[T]]
     
-    // else {
-    //   printf(s"ERROR: realloc for type ${typ[Array[T]]} not implemented\n")
-    //   xs
-    // }
+    else {
+      printf(s"ERROR: realloc for type ${typ[Array[T]]} not implemented\n")
+      xs
+    }
   }
 
   def string_hash(x: Rep[String], l: Rep[Long]): Rep[Long] = {
@@ -61,6 +61,19 @@ trait UncheckedHelper extends Dsl with UncheckedOps {
   def double_to_long(x: Rep[Double]): Rep[Long] = {
     rawSrc"(long) $x".as[Long]
   }
+
+  def atoi(x: Rep[String]): Rep[Int] = {
+    rawSrc"atoi($x)".as[Int]
+  }
+
+  
+  def c_fopen(filename: Rep[String], mode: String): Rep[File] = {
+    implicit def fileType: Typ[File] = typ
+    rawSrc"fopen($filename,mode)".as[File]
+    ???
+  }
+  def c_fprintf(file: Rep[File], mod: Rep[String], value: Rep[Any]) = ???
+  def fclose(file: Rep[File]) = ??? 
 
 }
 

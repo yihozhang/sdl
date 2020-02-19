@@ -14,62 +14,59 @@ trait TableUtil
     with TupleBase
     with ElementBase
     with ScannerBase
-    with PrinterBase {
-  case class Table(schema: Schema) {
+    with UncheckedHelper
+    with HashTableUtil {
+  object Defaults {
+    val hashSize = 1 << 17
+    val bucketSize = 1 << 3
+  }
+  case class Table(schema: Schema, indices: List[List[Field]]) {
+    import Defaults._
     val tupleSize = schema.length
-    var tab: Rep[SArray] = newSArray()
-    var length = 0: Rep[Int]
-    def get(i: Rep[Int]) = ??? //newTuple(tab, i * tupleSize, tupleSize)
-    def push(tuple: Rep[Element]*) {
-      tuple.foreach(tab.push(_))
-      length += 1
+    val tab = new LegoLinkedHashMap(hashSize, bucketSize, schema, indices)
+    def push(tuple: Rep[Any]*) {
+      tab += (tuple: _*)
     }
+
+    def clear() {
+      tab.clear()
+    }
+
+    def foreach(f: Tuple => Rep[Unit]) = {
+      tab.foreach(f)
+    }
+
+    def isEmpty: Rep[Boolean] = ???
+
     def loadFrom(filename: String) {
       val s = newScanner(filename)
       while (s.hasNext) {
         val last = schema.last
-        schema.map { field =>
-          tab.push {
-            Table.toElement(s.next(if (field == last) '\n' else '\t'), field._2)
+        val tuple = schema.map { field =>
+          val str = s.next(if (field == last) '\n' else '\t')
+          if (field._2 == Type.NUM) {
+            atoi(str).asInstanceOf[Rep[Any]]
+          } else {
+            str.asInstanceOf[Rep[Any]]
           }
         }
-        length += 1
+        tab += (tuple: _*)
       }
     }
-    def clear() {
-      length = 0
-      tab.clear()
-    }
     def storeTo(filename: String) {
-      val p = newPrinter(filename)
-      for (i <- 0 until length) {
-        for (j <- 0 until tupleSize) {
-          p.write(tab(i * tupleSize + j).toString())
-          if (j != tupleSize - 1) {
-            p.write("\t")
-          } else {
-            p.write("\n")
-          }
+      val p = new Printer(filename)
+      tab.foreach { tuple =>
+        for (((field, ty), i) <- schema.zipWithIndex) {
+          val modifier = (if (ty == Type.NUM) "%d" else "%s") +
+            (if (i == tupleSize - 1) "\n" else "\t")
+          p.printf(modifier, tuple(i))
         }
       }
       p.close
     }
 
-    def foreach(f: Rep[Tuple] => Unit) {
-      for (i <- 0 until length) {
-        f(get(i))
-      }
-    }
-
-    def stopableForeach(f: Rep[Tuple] => Rep[Boolean]) {
-      var i = 0
-      var flag = true
-      while (flag && i < length) {
-        if (!f(get(i))) {
-          flag = false
-        }
-        i += 1
-      }
+    def stopableForeach(f: Tuple => Rep[Boolean]) {
+      ???
     }
     /*
     def print() {
@@ -92,32 +89,26 @@ trait TableUtil
   }
 
   object Table {
-    private def toElement(s: Rep[String], ty: Type): Rep[Element] = {
-      if (ty == Type.NUM) {
-        newIntElement(s.toInt)
-      } else {
-        newStringElement(s)
-      }
-    }
-
     def swap(a: Table, b: Table) {
-      val tmpTab = a.tab
-      a.tab = b.tab
-      b.tab = tmpTab
-      val tmpLen = a.length
-      a.length = b.length
-      b.length = tmpLen
+      // val tmpTab = a.tab
+      // a.tab = b.tab
+      // b.tab = tmpTab
     }
-
+  }
+  class Printer(filename: String) {
+    val file = c_fopen(filename, "w")
+    def printf(mod: Rep[String], v: Rep[Any]) = c_fprintf(file, mod, v)
+    def close = fclose(file)
   }
 
-  class TableManager(env: Map[RelId, Decl]) {
+  class TableManager(env: Map[RelId, Decl], indices: List[IndexSchema]) {
     val tables = new Array[Table](env.size)
 
     val relIdToTabId = mutable.Map[RelId, Int]()
 
     for (((tabName, decl), i) <- env.toList.zipWithIndex) {
-      tables(i) = new Table(decl.schema)
+      tables(i) =
+        new Table(decl.schema, indices.filter(_.rel == tabName).map(_.fields))
       relIdToTabId(tabName) = i
     }
 

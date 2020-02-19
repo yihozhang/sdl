@@ -10,12 +10,12 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
   class Interpreter(program: Program) {
     val DEBUG = false
     type Env = Map[RelId, Decl]
-    val initial = Map[Id, Rep[Tuple]]()
+    val initial = Map[Id, Tuple]()
     def run() {
       val env = program.env
-      val tableManager = new TableManager(env)
-
       val indices = program.collectIndices
+      val tableManager = new TableManager(env, indices)
+
       program.stmts.foreach(eval(_)(tableManager))
     }
     private def eval(stmt: Stmt)(implicit tableManager: TableManager) {
@@ -57,7 +57,7 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
     }
     private def eval(op: Op)(
         implicit tableManager: TableManager,
-        env: Map[Id, Rep[Tuple]]
+        env: Map[Id, Tuple]
     ) {
       if (DEBUG) println("running" + op.toString())
       op match {
@@ -71,10 +71,11 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
         case Choice(v, rel, cond, child) => {
           var i: Rep[Int] = 0
           val tab = tableManager(rel);
-          while (i < tab.length) {
-            eval(cond)(tableManager, env + (v -> tab.get(i)))
-            i += 1
-          }
+          // while (i < tab.length) {
+          //   eval(cond)(tableManager, env + (v -> tab.get(i)))
+          //   i += 1
+          // }
+          ???
         }
         case Filter(cond, child) => {
           if (eval(cond)) {
@@ -88,7 +89,7 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
     }
     private def eval(
         cond: Cond
-    )(implicit tableManager: TableManager, env: Map[Id, Rep[Tuple]]): Rep[Boolean] = {
+    )(implicit tableManager: TableManager, env: Map[Id, Tuple]): Rep[Boolean] = {
       if (DEBUG) println("running" + cond.toString())
       cond match {
         case Conjunction(lhs, rhs) => eval(lhs) && eval(rhs)
@@ -107,7 +108,7 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
           tableManager(rel).stopableForeach { tup =>
             {
               var flag = true
-              var i = 0
+              var i: Int = 0
               while (flag && i < length) {
                 if (tup(i) != values(i)) {
                   flag = false
@@ -123,13 +124,13 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
           result
         }
         case IsEmpty(rel) => {
-          tableManager(rel).length == 0
+          tableManager(rel).isEmpty
         }
       }
     }
     private def eval(
         expr: Expr
-    )(implicit tableManager: TableManager, env: Map[Id, Rep[Tuple]]): Rep[Element] = {
+    )(implicit tableManager: TableManager, env: Map[Id, Tuple]): Rep[Any] = {
       if (DEBUG) println("running" + expr.toString())
       expr match {
         case TupleElement(id, elem) => env(id)(elem)
