@@ -90,6 +90,8 @@ trait Dsl
       implicit pos: scala.reflect.SourceContext
   ): Rep[Boolean] =
     __ifThenElse(lhs, unit(true), rhs)
+  // def infix_&(lhs: Rep[Int], rhs: Rep[Int])(implicit pos: SourceContext) = int_binaryand(lhs, rhs)
+  // def int_binaryand(lhs: Rep[Int], rhs: Rep[Int])(implicit pos: SourceContext): Rep[Int]
   def generate_comment(l: String): Rep[Unit]
   def comment[A: Typ](l: String, verbose: Boolean = true)(b: => Rep[A]): Rep[A]
 }

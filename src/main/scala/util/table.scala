@@ -19,7 +19,7 @@ trait TableUtil
     val tupleSize = schema.length
     var tab: Rep[SArray] = newSArray()
     var length = 0: Rep[Int]
-    def get(i: Rep[Int]) = newTuple(tab, i * tupleSize, tupleSize)
+    def get(i: Rep[Int]) = ??? //newTuple(tab, i * tupleSize, tupleSize)
     def push(tuple: Rep[Element]*) {
       tuple.foreach(tab.push(_))
       length += 1
@@ -99,7 +99,7 @@ trait TableUtil
         newStringElement(s)
       }
     }
-    
+
     def swap(a: Table, b: Table) {
       val tmpTab = a.tab
       a.tab = b.tab

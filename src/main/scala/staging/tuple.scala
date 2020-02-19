@@ -4,13 +4,14 @@ import sdl.util._
 import scala.lms.common._
 import scala.reflect.SourceContext
 import scala.lms.api.Dsl
+import sdl.ast.AstUtil
 
-trait TupleBase extends Base { this: Dsl =>
+trait TupleBase extends Base with AstUtil { this: Dsl =>
   implicit def tupleTyp: Typ[Tuple]
   implicit class RepTupleOps(s: Rep[Tuple]) {
     def apply(i: Rep[Int])(implicit pos: SourceContext) = tupleApply(s, i)
   }
-  def newTuple(arr: Rep[SArray], offset: Rep[Int], tupleSize: Rep[Int])(
+  def newTuple(arr: Rep[SArray], offset: Rep[Int], schema: Schema)(
       implicit pos: SourceContext
   ): Rep[Tuple]
   def tupleApply(s: Rep[Tuple], i: Rep[Int])(
