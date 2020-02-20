@@ -1,12 +1,11 @@
 package sdl.staging
 
-import sdl.util.Element
 import scala.lms.common._
 import scala.reflect.SourceContext
 import scala.lms.api.Dsl
 import scala.lms.internal._
 import scala.lms.util._
-import java.io.File
+
 
 trait UncheckedHelper extends Dsl with UncheckedOps {
 
@@ -65,15 +64,6 @@ trait UncheckedHelper extends Dsl with UncheckedOps {
   def atoi(x: Rep[String]): Rep[Int] = {
     rawSrc"atoi($x)".as[Int]
   }
-
-  
-  def c_fopen(filename: Rep[String], mode: String): Rep[File] = {
-    implicit def fileType: Typ[File] = typ
-    rawSrc"fopen($filename,mode)".as[File]
-    ???
-  }
-  def c_fprintf(file: Rep[File], mod: Rep[String], value: Rep[Any]) = ???
-  def fclose(file: Rep[File]) = ??? 
 
 }
 

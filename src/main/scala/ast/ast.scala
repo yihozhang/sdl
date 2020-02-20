@@ -6,7 +6,7 @@ trait AstUtil extends Dsl {
   type Id = String
   type RelId = String
   type Field = String
-  type Indices = Map[Field, Expr]
+  type Indices = List[(Field, Expr)]
   case class IndexSchema(rel: RelId, fields: List[Field])
   type Type = Type.Value
   object Type extends Enumeration {
@@ -94,7 +94,7 @@ trait AstUtil extends Dsl {
 
   sealed abstract class Expr
   case class TupleElement(id: Id, elem: Int) extends Expr
-  case class Const(value: Element) extends Expr
+  case class Const(value: Any) extends Expr
   case class BinaryExpr(lhs: Expr, op: ExprOp, rhs: Expr) extends Expr
 
   type CstraintOp = CstraintOp.Value

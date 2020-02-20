@@ -2,10 +2,9 @@ package sdl.parser
 import scala.util.parsing.combinator._
 import sdl.ast._
 import scala.lms.api.Dsl
-import sdl.staging.ElementBase
 import sdl.util._
 
-trait ParserUtil extends Dsl with AstUtil with ProgramUtil with ElementBase {
+trait ParserUtil extends Dsl with AstUtil with ProgramUtil {
   object DlParser extends RegexParsers {
     def id: Parser[Id] = {
       "[@a-zA-Z_][a-zA-Z0-9_]*".r
@@ -76,7 +75,7 @@ trait ParserUtil extends Dsl with AstUtil with ProgramUtil with ElementBase {
       "ON" ~ "INDEX" ~> rep1sep(relId ~ "." ~> field ~ "=" ~ expr ^^ {
         case field ~ _ ~ expr => field -> expr
       }, "AND") ^^ {
-        _.toMap
+        _.sortBy(_._1)
       }
     }
 
@@ -127,9 +126,9 @@ trait ParserUtil extends Dsl with AstUtil with ProgramUtil with ElementBase {
     }
     def const: Parser[Const] = {
       "number" ~ "(" ~> num <~ ")" ^^ {
-        case num => Const(IntElement(num))
+        case num => Const(num)
       } | str ^^ {
-        case str => Const(StringElement(str))
+        case str => Const(str)
       }
     }
     def binaryExpr: Parser[BinaryExpr] = {

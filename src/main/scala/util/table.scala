@@ -10,20 +10,21 @@ import sdl.util._
 trait TableUtil
     extends Dsl
     with AstUtil
-    with SArrayBase
-    with TupleBase
-    with ElementBase
     with ScannerBase
     with UncheckedHelper
-    with HashTableUtil {
+    with HashTableUtil
+    with MemoryBase {
+
   object Defaults {
     val hashSize = 1 << 17
     val bucketSize = 1 << 3
   }
+
   case class Table(schema: Schema, indices: List[List[Field]]) {
     import Defaults._
     val tupleSize = schema.length
-    val tab = new LegoLinkedHashMap(hashSize, bucketSize, schema, indices)
+    var tab: LegoLinkedHashMap = new LegoLinkedHashMap(hashSize, bucketSize, schema, indices)
+
     def push(tuple: Rep[Any]*) {
       tab += (tuple: _*)
     }
@@ -36,7 +37,13 @@ trait TableUtil
       tab.foreach(f)
     }
 
-    def isEmpty: Rep[Boolean] = ???
+    def stopableForeach(f: Tuple => Rep[Boolean]) {
+      tab.stopableForeach(f)
+    }
+
+    def isEmpty: Rep[Boolean] = tab.isEmpty
+
+    def apply(ind: List[Field], values: Rep[Any]*) = tab.apply(ind, values:_*)
 
     def loadFrom(filename: String) {
       val s = newScanner(filename)
@@ -53,6 +60,7 @@ trait TableUtil
         tab += (tuple: _*)
       }
     }
+
     def storeTo(filename: String) {
       val p = new Printer(filename)
       tab.foreach { tuple =>
@@ -65,9 +73,6 @@ trait TableUtil
       p.close
     }
 
-    def stopableForeach(f: Tuple => Rep[Boolean]) {
-      ???
-    }
     /*
     def print() {
       for (field <- schema) {
@@ -90,15 +95,16 @@ trait TableUtil
 
   object Table {
     def swap(a: Table, b: Table) {
-      // val tmpTab = a.tab
-      // a.tab = b.tab
-      // b.tab = tmpTab
+      val tmpTab = a.tab
+      a.tab = b.tab
+      b.tab = tmpTab
     }
   }
+
   class Printer(filename: String) {
     val file = c_fopen(filename, "w")
     def printf(mod: Rep[String], v: Rep[Any]) = c_fprintf(file, mod, v)
-    def close = fclose(file)
+    def close = c_fclose(file)
   }
 
   class TableManager(env: Map[RelId, Decl], indices: List[IndexSchema]) {

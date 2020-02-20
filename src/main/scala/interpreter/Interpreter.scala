@@ -5,8 +5,11 @@ import java.io.File
 import java.util.Scanner
 import scala.collection.immutable.Nil
 import scala.lms.api.Dsl
-import sdl.staging.ElementBase
-trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBase {
+trait InterpreterUtil
+    extends Dsl
+    with TableUtil
+    with ProgramUtil {
+  implicit def anyTyp: Typ[Any] = typ
   class Interpreter(program: Program) {
     val DEBUG = false
     type Env = Map[RelId, Decl]
@@ -61,21 +64,29 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
     ) {
       if (DEBUG) println("running" + op.toString())
       op match {
-        case IndexScan(v, rel, indices, child) => ???
+        case IndexScan(v, rel, indices, child) => {
+          val fields = indices.toList.map(_._1)
+          val values = indices.toList.map(_._2).map(eval(_))
+          tableManager(rel)(fields, values:_*).foreach { tup =>
+            eval(child)(tableManager, env + (v -> tup))
+          }
+        }
         case Scan(v, rel, child) => {
           tableManager(rel).foreach { s =>
             eval(child)(tableManager, env + (v -> s))
           }
         }
-        case IndexChoice(v, rel, cond, indices, child) => ???
+        case IndexChoice(v, rel, cond, indices, child) => {
+          val fields = indices.toList.map(_._1)
+          val values = indices.toList.map(_._2).map(eval(_))
+          tableManager(rel)(fields, values:_*).stopableForeach { tup =>
+            eval(cond)(tableManager, env + (v -> tup))
+          }
+        }
         case Choice(v, rel, cond, child) => {
-          var i: Rep[Int] = 0
-          val tab = tableManager(rel);
-          // while (i < tab.length) {
-          //   eval(cond)(tableManager, env + (v -> tab.get(i)))
-          //   i += 1
-          // }
-          ???
+          tableManager(rel).stopableForeach { tup =>
+            eval(cond)(tableManager, env + (v -> tup))
+          }
         }
         case Filter(cond, child) => {
           if (eval(cond)) {
@@ -89,7 +100,10 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
     }
     private def eval(
         cond: Cond
-    )(implicit tableManager: TableManager, env: Map[Id, Tuple]): Rep[Boolean] = {
+    )(
+        implicit tableManager: TableManager,
+        env: Map[Id, Tuple]
+    ): Rep[Boolean] = {
       if (DEBUG) println("running" + cond.toString())
       cond match {
         case Conjunction(lhs, rhs) => eval(lhs) && eval(rhs)
@@ -100,7 +114,7 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
         }
         case DoesExist(exprs, rel) => {
           val length = exprs.length
-          val values = NewArray[Element](length)
+          val values = NewArray[Any](length)
           for ((expr, i) <- exprs.zipWithIndex) {
             values(i) = eval(expr)
           }
@@ -118,7 +132,7 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
               if (flag) {
                 result = true
               }
-              !flag // flag=true => not continue
+              flag // flag=false => not continue
             }
           }
           result
@@ -136,13 +150,13 @@ trait InterpreterUtil extends Dsl with TableUtil with ProgramUtil with ElementBa
         case TupleElement(id, elem) => env(id)(elem)
         case Const(value)           => unit(value)
         case BinaryExpr(lhs, op, rhs) => {
-          val lval = eval(lhs)
-          val rval = eval(rhs)
+          val lval = eval(lhs).asInstanceOf[Rep[Int]]
+          val rval = eval(rhs).asInstanceOf[Rep[Int]]
           op match {
-            case ExprOp.ADD => ???
-            case ExprOp.SUB => ???
-            case ExprOp.MUL => ???
-            case ExprOp.DIV => ???
+            case ExprOp.ADD => lval + rval
+            case ExprOp.SUB => lval - rval
+            case ExprOp.MUL => lval * rval
+            case ExprOp.DIV => lval / rval
           }
         }
       }

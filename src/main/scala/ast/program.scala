@@ -11,7 +11,7 @@ trait ProgramUtil extends Dsl with AstUtil {
           if (op.isInstanceOf[IndexedOp]) {
             val indexedOp = op.asInstanceOf[IndexedOp]
             val rel = indexedOp.indexedOn
-            val fields = indexedOp.indices.keys.toList
+            val fields = indexedOp.indices.map(_._1)
             list.append(IndexSchema(rel, fields))
           }
         })
