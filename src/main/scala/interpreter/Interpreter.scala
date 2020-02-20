@@ -24,19 +24,19 @@ trait InterpreterUtil
     private def eval(stmt: Stmt)(implicit tableManager: TableManager) {
       if (DEBUG) println("running" + stmt.toString())
       stmt match {
-        case Load(rel, filename)  => tableManager(rel).loadFrom(filename)
-        case Store(rel, filename) => tableManager(rel).storeTo(filename)
-        case Clear(rel)           => tableManager(rel).clear()
-        case Swap(relA, relB) =>
+        case LoadStmt(rel, filename)  => tableManager(rel).loadFrom(filename)
+        case StoreStmt(rel, filename) => tableManager(rel).storeTo(filename)
+        case ClearStmt(rel)           => tableManager(rel).clear()
+        case SwapStmt(relA, relB) =>
           Table.swap(tableManager(relA), tableManager(relB))
-        case Query(op) => eval(op)(tableManager, initial)
-        case Loop(stmts) => {
+        case QueryStmt(op) => eval(op)(tableManager, initial)
+        case LoopStmt(stmts) => {
           var flag = true
           def unroll(stmts: List[Stmt]) {
             stmts match {
               case head :: tl => {
                 head match {
-                  case Exit(cond) =>
+                  case ExitStmt(cond) =>
                     if (eval(cond)(tableManager, initial)) {
                       flag = false
                     } else {
@@ -148,7 +148,7 @@ trait InterpreterUtil
       if (DEBUG) println("running" + expr.toString())
       expr match {
         case TupleElement(id, elem) => env(id)(elem)
-        case Const(value)           => unit(value)
+        case ConstValue(value)           => unit(value)
         case BinaryExpr(lhs, op, rhs) => {
           val lval = eval(lhs).asInstanceOf[Rep[Int]]
           val rval = eval(rhs).asInstanceOf[Rep[Int]]

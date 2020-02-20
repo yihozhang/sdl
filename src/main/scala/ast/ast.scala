@@ -19,21 +19,21 @@ trait AstUtil extends Dsl {
   sealed abstract class Stmt {
     def acceptOp(visitor: Op => Unit) = ()
   }
-  case class Load(rel: RelId, filename: String) extends Stmt
-  case class Store(rel: RelId, filename: String) extends Stmt
-  case class Clear(rel: RelId) extends Stmt
-  case class Swap(relA: RelId, relB: RelId) extends Stmt
-  case class Query(op: Op) extends Stmt {
+  case class LoadStmt(rel: RelId, filename: String) extends Stmt
+  case class StoreStmt(rel: RelId, filename: String) extends Stmt
+  case class ClearStmt(rel: RelId) extends Stmt
+  case class SwapStmt(relA: RelId, relB: RelId) extends Stmt
+  case class QueryStmt(op: Op) extends Stmt {
     override def acceptOp(visitor: Op => Unit) {
       this.op.accept(visitor)
     }
   }
-  case class Loop(stmts: List[Stmt]) extends Stmt {
+  case class LoopStmt(stmts: List[Stmt]) extends Stmt {
     override def acceptOp(visitor: Op => Unit) {
       this.stmts.foreach(_.acceptOp(visitor))
     }
   }
-  case class Exit(cond: Cond) extends Stmt
+  case class ExitStmt(cond: Cond) extends Stmt
 
   sealed abstract class Op {
     def accept(visitor: Op => Unit) {
@@ -94,7 +94,7 @@ trait AstUtil extends Dsl {
 
   sealed abstract class Expr
   case class TupleElement(id: Id, elem: Int) extends Expr
-  case class Const(value: Any) extends Expr
+  case class ConstValue(value: Any) extends Expr
   case class BinaryExpr(lhs: Expr, op: ExprOp, rhs: Expr) extends Expr
 
   type CstraintOp = CstraintOp.Value

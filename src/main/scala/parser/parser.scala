@@ -124,11 +124,11 @@ trait ParserUtil extends Dsl with AstUtil with ProgramUtil {
         case rel ~ _ ~ num => TupleElement(rel, num)
       }
     }
-    def const: Parser[Const] = {
+    def const: Parser[ConstValue] = {
       "number" ~ "(" ~> num <~ ")" ^^ {
-        case num => Const(num)
+        case num => ConstValue(num)
       } | str ^^ {
-        case str => Const(str)
+        case str => ConstValue(str)
       }
     }
     def binaryExpr: Parser[BinaryExpr] = {
@@ -158,25 +158,25 @@ trait ParserUtil extends Dsl with AstUtil with ProgramUtil {
     def stmt: Parser[Stmt] = {
       loadStmt | storeStmt | clearStmt | swapStmt | queryStmt | loopStmt | exitStmt
     }
-    def loadStmt: Parser[Load] = {
+    def loadStmt: Parser[LoadStmt] = {
       "LOAD" ~ "DATA" ~ "FOR" ~> relId ~ "FROM" ~ str ^^ {
-        case id ~ _ ~ filename => Load(id, filename)
+        case id ~ _ ~ filename => LoadStmt(id, filename)
       }
     }
-    def storeStmt: Parser[Store] = {
+    def storeStmt: Parser[StoreStmt] = {
       "STORE" ~ "DATA" ~ "FOR" ~> relId ~ "TO" ~ str ^^ {
-        case id ~ _ ~ filename => Store(id, filename)
+        case id ~ _ ~ filename => StoreStmt(id, filename)
       }
     }
-    def clearStmt: Parser[Clear] = {
+    def clearStmt: Parser[ClearStmt] = {
       "CLEAR" ~> relId ^^ {
-        case id => Clear(id)
+        case id => ClearStmt(id)
       }
     }
-    def swapStmt: Parser[Swap] = {
+    def swapStmt: Parser[SwapStmt] = {
       "SWAP" ~ "(" ~> relId ~ "," ~ relId <~ ")" ^^ {
         case relA ~ _ ~ relB => {
-          Swap(relA, relB)
+          SwapStmt(relA, relB)
         }
       }
     }
@@ -185,19 +185,19 @@ trait ParserUtil extends Dsl with AstUtil with ProgramUtil {
     //     Seq(seq)
     //   }
     // }
-    def queryStmt: Parser[Query] = {
+    def queryStmt: Parser[QueryStmt] = {
       "QUERY" ~> op ^^ { op =>
-        Query(op)
+        QueryStmt(op)
       }
     }
-    def loopStmt: Parser[Loop] = {
+    def loopStmt: Parser[LoopStmt] = {
       "LOOP" ~> rep(stmt) <~ "END" ~ "LOOP" ^^ { stmt =>
-        Loop(stmt)
+        LoopStmt(stmt)
       }
     }
-    def exitStmt: Parser[Exit] = {
+    def exitStmt: Parser[ExitStmt] = {
       "EXIT" ~> cond ^^ { cond =>
-        Exit(cond)
+        ExitStmt(cond)
       }
     }
 

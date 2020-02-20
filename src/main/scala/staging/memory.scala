@@ -20,7 +20,7 @@ trait MemoryBase extends Base { this: Dsl =>
 }
 
 trait MemoryExp extends MemoryBase with UncheckedOps { this: DslExp =>
-  implicit def fileTyp: Typ[File]
+  implicit def fileTyp: Typ[File] = typ
 //   case class FOpen(filename: Exp[String], mode: String) extends Def[File]
 //   case class FPrintf(file: Exp[File], mod: Exp[String], value: Exp[Any])
 //       extends Def[Unit]
