@@ -2,6 +2,7 @@ package scala.lms.api
 
 import scala.lms.common._
 import scala.reflect.SourceContext
+import sdl.staging._
 
 // should this be added to LMS?
 trait UtilOps extends Base { this: Dsl =>
@@ -107,7 +108,10 @@ trait DslExp
     with StaticDataExp
     with VariablesExpOpt
     with ObjectOpsExpOpt
-    with UtilOpsExp {
+    with UtilOpsExp
+    with ScannerLowerExp
+    with MemoryExp
+    with UncheckedHelper {
   override def boolean_or(lhs: Exp[Boolean], rhs: Exp[Boolean])(
       implicit pos: SourceContext
   ): Exp[Boolean] = lhs match {
@@ -147,7 +151,7 @@ trait DslExp
 
   // TODO: should this be in LMS?
   override def isPrimitiveType[T](m: Typ[T]) =
-    (m == typ[String]) || super.isPrimitiveType(m)
+    (m == typ[String]) || (m == typ[Array[Int]]) || (m == typ[Array[String]]) || super.isPrimitiveType(m)
 }
 
 // TODO: currently part of this is specific to the query tests. generalize? move?
@@ -176,10 +180,13 @@ trait DslGenC
     "(" + memType + "*)malloc(" + count + " * sizeof(" + memType + "));"
   }
   override def remap[A](m: Typ[A]): String = m.toString match {
-    case "java.lang.String" => "char*"
-    case "Array[Char]"      => "char*"
-    case "Char"             => "char"
-    case _                  => super.remap(m)
+    case "Array[java.lang.String]" => "char**"
+    case "Array[Int]"              => "int32_t**"
+    case "java.lang.String"        => "char*"
+    case "Array[Char]"             => "char*"
+    case "Char"                    => "char"
+    case "java.io.File"            => "FILE"
+    case _                         => super.remap(m)
   }
   override def format(s: Exp[Any]): String = {
     remap(s.tp) match {
@@ -317,7 +324,7 @@ abstract class DslSnippet[A: Manifest, B: Manifest] extends Dsl {
 abstract class DslDriverC[A: Manifest, B: Manifest]
     extends DslSnippet[A, B]
     with DslExp { q =>
-  val codegen = new DslGenC {
+  val codegen = new DslGenC with CGenScannerLower {
     val IR: q.type = q
   }
   lazy val code: String = {

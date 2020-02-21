@@ -6,7 +6,7 @@ scalaVersion := "2.11.2"
 
 scalaOrganization := "org.scala-lang.virtualized"
 
-fork in Test := true;
+fork := true;
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 

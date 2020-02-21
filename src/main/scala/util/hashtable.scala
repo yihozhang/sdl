@@ -29,14 +29,15 @@ trait HashTableUtil
     ): Rep[Unit]*/
   }
 
-  class RecordBuffer(var cap: Rep[Int], schema: Schema) extends LegoBuffer {
+  class RecordBuffer(cap0: Rep[Int], schema: Schema) extends LegoBuffer {
+    val cap = var_new(cap0)
     val elems = schema map {
       case (k, Type.NUM) =>
         new ColumnBuffer[Int](cap).asInstanceOf[ColumnBuffer[_]]
       case (k, Type.STR) =>
         new ColumnBuffer[String](cap).asInstanceOf[ColumnBuffer[_]]
     }
-    var size = var_new(0)
+    val size = var_new(0)
     // def record_new[T : Manifest](fields: Seq[(String, Boolean, Rep[T] => Rep[_])]): Rep[T]
     def apply(x: Rep[Int]) = new Tuple(this, x)
     def update(x: Rep[Int], y: Rep[Any]*): Rep[Unit] =
@@ -93,10 +94,9 @@ trait HashTableUtil
   }
 
   class ColumnBuffer[T: Typ](cap0: Rep[Int]) {
-    implicit def arrayType: Typ[Array[T]] = typ
     val cap = var_new(cap0)
     val buf = var_new(NewArray[T](cap0))
-    var size = 0: Rep[Int]
+    val size = var_new(0)
     def apply(x: Rep[Int]) = buf(x)
     def update(x: Rep[Int], y: Rep[T]): Rep[Unit] = buf(x) = y
     def append(v: Rep[T]): Rep[Int] = {
@@ -156,7 +156,7 @@ trait HashTableUtil
       for (((index, indexedBuffer), bucketHash) <- indices
              .zip(indexedBuffers)
              .zip(bucketHashs)) {
-        var h = 1: Rep[Int]
+        val h = var_new(1)
         for (field <- index) {
           val ((_, typ), i) = schema.zipWithIndex.find(_._1._1 == field).get
           if (typ == Type.NUM) {
@@ -180,7 +180,7 @@ trait HashTableUtil
 
     def apply(ind: List[Field], values: Rep[Any]*): HashVisitor = {
       val (_, indPos) = indices.zipWithIndex.find(_._1 == ind).get
-      var h = 1: Rep[Int]
+      val h = var_new(1)
       for ((field, i) <- ind.zipWithIndex) {
         val (_, typ) = schema.find(_._1 == field).get
         if (typ == Type.NUM) {
@@ -193,7 +193,7 @@ trait HashTableUtil
       new HashVisitor {
 
         def foreach(f: Tuple => Rep[Unit]): Rep[Unit] = {
-          var dataPos = bucketHashs(indPos)(bucket)
+          val dataPos = var_new(bucketHashs(indPos)(bucket))
           while (dataPos != -1) {
             val bufElem = data(dataPos)
             dataPos = indexedBuffers(indPos)(dataPos)
@@ -205,7 +205,7 @@ trait HashTableUtil
 
         def stopableForeach(f: Tuple => Rep[Boolean]) {
           var dataPos = bucketHashs(indPos)(bucket)
-          val flag = true: Rep[Boolean]
+          val flag = var_new(true)
           while (flag && dataPos != -1) {
             val bufElem = data(dataPos)
             dataPos = indexedBuffers(indPos)(dataPos)

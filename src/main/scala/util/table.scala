@@ -10,7 +10,7 @@ import sdl.util._
 trait TableUtil
     extends Dsl
     with AstUtil
-    with ScannerBase
+    with ScannerLowerBase
     with UncheckedHelper
     with HashTableUtil
     with MemoryBase {
@@ -23,7 +23,8 @@ trait TableUtil
   case class Table(schema: Schema, indices: List[List[Field]]) {
     import Defaults._
     val tupleSize = schema.length
-    var tab: LegoLinkedHashMap = new LegoLinkedHashMap(hashSize, bucketSize, schema, indices)
+    var tab: LegoLinkedHashMap =
+      new LegoLinkedHashMap(hashSize, bucketSize, schema, indices)
 
     def push(tuple: Rep[Any]*) {
       tab += (tuple: _*)
@@ -43,10 +44,10 @@ trait TableUtil
 
     def isEmpty: Rep[Boolean] = tab.isEmpty
 
-    def apply(ind: List[Field], values: Rep[Any]*) = tab.apply(ind, values:_*)
+    def apply(ind: List[Field], values: Rep[Any]*) = tab.apply(ind, values: _*)
 
     def loadFrom(filename: String) {
-      val s = newScanner(filename)
+      val s = new Scanner(filename)
       while (s.hasNext) {
         val last = schema.last
         val tuple = schema.map { field =>
@@ -105,6 +106,35 @@ trait TableUtil
     val file = c_fopen(filename, "w")
     def printf(mod: Rep[String], v: Rep[Any]) = c_fprintf(file, mod, v)
     def close = c_fclose(file)
+  }
+
+  class Scanner(name: Rep[String]) {
+    val fd = open(name)
+    val fl = filelen(fd)
+    val data = mmap[Char](fd, fl)
+    var pos = 0: Rep[Int]
+
+    def next(d: Rep[Char]) = {
+      val start = pos // force read
+      while (data(pos) != d) pos += 1
+      val len = pos - start
+      pos += 1
+      stringFromCharArray(data, start, len)
+    }
+
+    def nextInt(d: Rep[Char]) = {
+      val start = pos: Rep[Int] // force read
+      var num = 0
+      while (data(pos) != d) {
+        num = num * 10 + (data(pos) - '0').toInt
+        pos += 1
+      }
+      pos += 1
+      num
+    }
+
+    def hasNext = pos < fl
+    def done = close(fd)
   }
 
   class TableManager(env: Map[RelId, Decl], indices: List[IndexSchema]) {

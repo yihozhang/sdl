@@ -19,7 +19,7 @@ trait UncheckedHelper extends Dsl with UncheckedOps {
         //reflect(c.s(args map (a => reify(a.eval())):_*))
         def merge(a: List[Any], b: List[Any]): List[Any] = a match {
           case Nil     => Nil
-          case x :: xs => x :: merge(b, a)
+          case x :: xs => x :: merge(b, xs)
         }
         unchecked[T](merge(c.parts.toList, args.toList.map(_.eval())): _*)
       }
