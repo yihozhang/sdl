@@ -151,10 +151,10 @@ trait DslExp
 
   // TODO: should this be in LMS?
   override def isPrimitiveType[T](m: Typ[T]) =
-    (m == typ[String]) || 
-    (m == typ[Array[Int]]) || 
-    (m == typ[Array[String]]) ||
-    super.isPrimitiveType(m)
+    (m == typ[String]) ||
+      (m == typ[Array[Int]]) ||
+      (m == typ[Array[String]]) ||
+      super.isPrimitiveType(m)
 }
 
 // TODO: currently part of this is specific to the query tests. generalize? move?
@@ -218,12 +218,12 @@ trait DslGenC
   // strings are always stack allocated and freed automatically at the scope exit
   override def isPrimitiveType(tpe: String): Boolean = {
     tpe match {
-      case "char*" => true
-      case "char"  => true
-      case "char**"  => true
+      case "char*"     => true
+      case "char"      => true
+      case "char**"    => true
       case "int32_t*"  => true
-      case "int32_t**"  => true
-      case _       => super.isPrimitiveType(tpe)
+      case "int32_t**" => true
+      case _           => super.isPrimitiveType(tpe)
     }
   }
 
@@ -236,6 +236,14 @@ trait DslGenC
     case _                                => super.quote(x)
   }
   override def emitNode(sym: Sym[Any], rhs: Def[Any]) = rhs match {
+    case Equal(a, b) =>
+      if (remap(b.tp) == "char*")
+        emitValDef(sym, "tpch_strcmp(" + quote(a) + "," + quote(b) + ") == 0;")
+      else emitValDef(sym, src"$a == $b")
+    case NotEqual(a, b) =>
+      if (remap(b.tp) == "char*")
+        emitValDef(sym, "tpch_strcmp(" + quote(a) + "," + quote(b) + ") != 0;")
+      else emitValDef(sym, src"$a != $b")
     case a @ ArrayNew(n) =>
       val arrType = remap(a.m)
       stream.println(
@@ -305,6 +313,17 @@ trait DslGenC
           hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 
         return hash;
+      }
+      size_t tpch_strlen(const char* str) {
+        const char* start = str;
+        while (*str != '\n' && (*str != '|') && (*str != '\0')) str++;
+        return str - start;
+      }
+      int tpch_strcmp(const char *s1, const char *s2) {
+        size_t l1 = tpch_strlen(s1);
+        size_t l2 = tpch_strlen(s2);
+        if (l1 > l2) l1 = l2;
+        return strncmp(s1,s2,l1);
       }
       void Snippet(char*);
       int main(int argc, char *argv[])
