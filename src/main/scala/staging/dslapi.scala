@@ -151,7 +151,10 @@ trait DslExp
 
   // TODO: should this be in LMS?
   override def isPrimitiveType[T](m: Typ[T]) =
-    (m == typ[String]) || (m == typ[Array[Int]]) || (m == typ[Array[String]]) || super.isPrimitiveType(m)
+    (m == typ[String]) || 
+    (m == typ[Array[Int]]) || 
+    (m == typ[Array[String]]) ||
+    super.isPrimitiveType(m)
 }
 
 // TODO: currently part of this is specific to the query tests. generalize? move?
@@ -181,7 +184,7 @@ trait DslGenC
   }
   override def remap[A](m: Typ[A]): String = m.toString match {
     case "Array[java.lang.String]" => "char**"
-    case "Array[Int]"              => "int32_t**"
+    case "Array[Int]"              => "int32_t*"
     case "java.lang.String"        => "char*"
     case "Array[Char]"             => "char*"
     case "Char"                    => "char"
@@ -192,7 +195,7 @@ trait DslGenC
     remap(s.tp) match {
       case "uint16_t"                                => "%c"
       case "bool" | "int8_t" | "int16_t" | "int32_t" => "%d"
-      case "int64_t"                                 => "%ld"
+      case "int64_t" | "long"                        => "%ld"
       case "float" | "double"                        => "%f"
       case "string"                                  => "%s"
       case "char*"                                   => "%s"
@@ -217,6 +220,9 @@ trait DslGenC
     tpe match {
       case "char*" => true
       case "char"  => true
+      case "char**"  => true
+      case "int32_t*"  => true
+      case "int32_t**"  => true
       case _       => super.isPrimitiveType(tpe)
     }
   }

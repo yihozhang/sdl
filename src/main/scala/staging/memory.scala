@@ -7,7 +7,7 @@ import java.io.File
 
 trait MemoryBase extends Base { this: Dsl =>
   implicit def fileTyp: Typ[File]
-  def c_fopen(filename: Rep[String], mode: String)(
+  def c_fopen(filename: Rep[String], mode: Rep[String])(
       implicit pos: SourceContext
   ): Rep[File]
 
@@ -16,7 +16,6 @@ trait MemoryBase extends Base { this: Dsl =>
   )
   def c_fclose(file: Rep[File])(implicit pos: SourceContext): Rep[Unit]
 
-  // rawSrc"fopen($filename,mode)".as[File]
 }
 
 trait MemoryExp extends MemoryBase with UncheckedOps { this: DslExp =>
@@ -43,7 +42,7 @@ trait MemoryExp extends MemoryBase with UncheckedOps { this: DslExp =>
 //     case _ => super.mirror(e,f)
 //   }).asInstanceOf[Exp[A]]
 
-  def c_fopen(filename: Rep[String], mode: String)(
+  def c_fopen(filename: Rep[String], mode: Rep[String])(
       implicit pos: SourceContext
   ): Rep[File] = uncheckedPure[File]("fopen(", filename, ",", mode, ")")
 

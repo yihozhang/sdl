@@ -52,7 +52,7 @@ trait HashTableUtil
         }
       }
     def resize(x: Rep[Int]): Rep[Unit] = {
-      printf("buffer.resize %ld\n", x)
+      printf("buffer.resize %d\\n", x)
       elems foreach { _.resize(x) }
     }
 

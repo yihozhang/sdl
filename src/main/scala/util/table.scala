@@ -67,7 +67,7 @@ trait TableUtil
       tab.foreach { tuple =>
         for (((field, ty), i) <- schema.zipWithIndex) {
           val modifier = (if (ty == Type.NUM) "%d" else "%s") +
-            (if (i == tupleSize - 1) "\n" else "\t")
+            (if (i == tupleSize - 1) "\\n" else "\\t")
           p.printf(modifier, tuple(i))
         }
       }
