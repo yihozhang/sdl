@@ -73,25 +73,6 @@ trait TableUtil
       }
       p.close
     }
-
-    /*
-    def print() {
-      for (field <- schema) {
-        printf("%s\t", field._1)
-      }
-      printf("\n")
-      for (i <- 0 until length) {
-        for (j <- 0 until tupleSize) {
-          if (schema(j)._2 == Type.NUM) {
-            printf("%d\t", tab(i * tupleSize + j))
-          } else {
-            printf("%s\t", tab(i * tupleSize + j))
-          }
-        }
-        println()
-      }
-    }
-   */
   }
 
   object Table {

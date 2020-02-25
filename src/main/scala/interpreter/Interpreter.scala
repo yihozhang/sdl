@@ -1,15 +1,17 @@
 package sdl.interpreter
 import sdl.ast._
 import sdl.util._
+import scala.lms.common._
+import scala.reflect.SourceContext
 import java.io.File
 import java.util.Scanner
 import scala.collection.immutable.Nil
-import scala.lms.api.Dsl
+import scala.lms.api._
 trait InterpreterUtil
-    extends Dsl
+    extends DslExp
     with TableUtil
     with ProgramUtil {
-  implicit def anyTyp: Typ[Any] = typ
+  implicit def anyTyp: Typ[Any] = manifestTyp
   class Interpreter(program: Program) {
     val DEBUG = false
     type Env = Map[RelId, Decl]

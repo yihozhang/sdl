@@ -21,12 +21,13 @@ object Main {
           DlParser.parseAll(DlParser.program, prog).get
 
         override def snippet(unused: Rep[String]) = {
-          val text = readFile("test/parser/simple_prog1.txt")
+          val text = readFile("test/parser/simple_prog2.txt")
           val prog = parseProgram(text)
           new Interpreter(prog).run()
         }
       }
 
-    println(snippet.code)
+    System.out.println(snippet.code)
+    // snippet.eval("1")
   }
 }

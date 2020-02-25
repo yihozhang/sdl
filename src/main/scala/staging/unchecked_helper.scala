@@ -34,19 +34,7 @@ trait UncheckedHelper extends Dsl with UncheckedOps {
     if (typ[T] == typ[Int])
       rawSrc"(int*)realloc($xs,$size * sizeof(int))".as[Array[T]]
     else if (typ[T] == typ[String])
-      rawSrc"(char**)realloc($xs,$size * sizeof(char*))".as[Array[T]]
-
-    //   else if (typ[T] == typ[Long])
-    //     raw"(long*)realloc($xs,$size * sizeof(long))"
-    //   else if (typ[T] == typ[Double])
-    //     raw"(double*)realloc($xs,$size * sizeof(double))"
-    //   else if (typ[T] == typ[Character])
-    //     raw"(char*)realloc($xs,$size * sizeof(char))".as[Array[T]]
-    //   else if (typ[T] == typ[Array[Byte]])
-    //     raw"(char**)realloc($xs,$size * sizeof(char*))".as[Array[T]]
-    //   else if (typ[T] == typ[Array[Int]])
-    //     raw"(int**)realloc($xs,$size * sizeof(int*))".as[Array[T]]
-    
+      rawSrc"(char**)realloc($xs,$size * sizeof(char*))".as[Array[T]]    
     else {
       printf(s"ERROR: realloc for type ${typ[Array[T]]} not implemented\n")
       xs
