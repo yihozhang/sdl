@@ -27,7 +27,9 @@ trait TableUtil
       new LegoLinkedHashMap(hashSize, bucketSize, schema, indices)
 
     def push(tuple: Rep[Any]*) {
-      tab += (tuple: _*)
+      if (!tab.contains(tuple:_*)) {
+        tab += (tuple: _*)
+      }
     }
 
     def clear() {

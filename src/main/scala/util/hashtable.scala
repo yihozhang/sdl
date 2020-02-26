@@ -7,12 +7,17 @@ import scala.lms.api.Dsl
 import sdl.staging._
 import sdl.util._
 
-trait HashTableUtil
-    extends Dsl
-    with AstUtil
-    with UncheckedHelper {
+trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
   class Tuple(records: RecordBuffer, pos: Rep[Int]) {
     def apply(i: Int): Rep[Any] = records.elems(i)(pos)
+    def runtimeEquals(tuple: Seq[Any]): Rep[Boolean] = {
+      for (i <- 0 until records.schema.length: Range) {
+        if (tuple(i) != records(i)) {
+          return false
+        }
+      }
+      true
+    }
   }
   abstract class LegoBuffer {
     def apply(x: Rep[Int]): Tuple
@@ -29,7 +34,7 @@ trait HashTableUtil
     ): Rep[Unit]*/
   }
 
-  class RecordBuffer(cap0: Rep[Int], schema: Schema) extends LegoBuffer {
+  class RecordBuffer(cap0: Rep[Int], val schema: Schema) extends LegoBuffer {
     val cap = var_new(cap0)
     val elems = schema map {
       case (k, Type.NUM) =>
@@ -141,12 +146,31 @@ trait HashTableUtil
       }
     val bucketHashs =
       ((0 until indices.length): Range).map(_ => NewArray[Int](hashSize))
+    
+    bucketHashs.foreach(bucketHash => {
+      for (i <- 0 until hashSize) {
+        bucketHash(i) = -1
+      }
+    })
 
     val hashMask = hashSize - 1
 
     def calcHashInt(x: Rep[Int]) = x
     def calcHashString(x: Rep[String]) = {
       string_hash(x, unit[Long](10L)).asInstanceOf[Rep[Int]]
+    }
+
+    def contains(tuple: Rep[Any]*): Rep[Boolean] = {
+      val flag = var_new(true)
+      this(indices(0), tuple: _*).stopableForeach { tup =>
+        {
+          if (tup.runtimeEquals(tuple)) {
+            flag = false
+          }
+          flag
+        }
+      }
+      !flag
     }
 
     def isEmpty: Rep[Boolean] = data.isEmpty
@@ -167,13 +191,23 @@ trait HashTableUtil
         }
         val bucket = h & hashMask
         val next = bucketHash(bucket)
+        printf("next:%d\\n", next);
         bucketHash(bucket) = dataPos
+        printf("dataPos:%d\\n", dataPos);
         indexedBuffer(dataPos) = next
+        var x = bucketHash(bucket): Rep[Int];
+        while (x != -1) {
+          printf("%d ", indexedBuffer(x));
+          x = indexedBuffer(x)
+        }
+          printf("\\n");
       }
     }
+
     def foreach(f: Tuple => Rep[Unit]): Rep[Unit] = {
       data.foreach(f)
     }
+    
     def stopableForeach(f: Tuple => Rep[Boolean]) = {
       data.stopableForeach(f)
     }
@@ -214,26 +248,6 @@ trait HashTableUtil
             flag = f(bufElem)
           }
         }
-        /*
-      def indexWhere(f: Rep[A] => Rep[Boolean]): Rep[Int] = {
-        val h: Rep[Int] = calcHashCode(k)
-        val bucket = h & hashMask
-
-        var dataPos = bucketHash(bucket)
-        var done = dataPos == -1
-        while (!done) {
-          val bufElem = data(dataPos)
-          // NOTE: we only know that hash codes match:
-          // client needs to check full keys.
-          if (f(bufElem)) {
-            done = true
-          } else {
-            dataPos = bucketNext(dataPos)
-            done = dataPos == -1
-          }
-        }
-        dataPos
-      }*/
       }
     }
 
