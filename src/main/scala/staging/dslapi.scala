@@ -297,9 +297,9 @@ trait DslGenC
         int res = fstat(fd,&stat);
         return stat.st_size;
       }
-      int printll(char* s) {
+      int printll(FILE* f, char* s) {
         while (*s != '\n' && *s != ',' && *s != '\t') {
-          putchar(*s++);
+          fputc(*s++, f);
         }
         return 0;
       }

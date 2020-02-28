@@ -68,9 +68,12 @@ trait TableUtil
       val p = new Printer(filename)
       tab.foreach { tuple =>
         for (((field, ty), i) <- schema.zipWithIndex) {
-          val modifier = (if (ty == Type.NUM) "%d" else "%s") +
-            (if (i == tupleSize - 1) "\\n" else "\\t")
-          p.printf(modifier, tuple(i))
+          if (ty == Type.NUM) {
+            p.printf("%d", tuple(i))
+          } else {
+            p.printll(tuple(i).asInstanceOf[Rep[String]])
+          }
+          p.prints((if (i == tupleSize - 1) "\\n" else "\\t"))
         }
       }
       p.close
@@ -88,6 +91,9 @@ trait TableUtil
   class Printer(filename: String) {
     val file = c_fopen(filename, "w")
     def printf(mod: Rep[String], v: Rep[Any]) = c_fprintf(file, mod, v)
+    def prints(s: String) = c_prints(file, unit(s))
+    // only used to print read-in string
+    def printll(s: Rep[String]) = c_printll(file,s)
     def close = c_fclose(file)
   }
 

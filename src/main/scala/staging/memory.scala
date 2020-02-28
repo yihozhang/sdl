@@ -15,6 +15,8 @@ trait MemoryBase extends Base { this: Dsl =>
       implicit pos: SourceContext
   )
   def c_fclose(file: Rep[File])(implicit pos: SourceContext): Rep[Unit]
+  def c_prints(f: Rep[File], s: Rep[String]): Rep[Int]
+  def c_printll(f: Rep[File], s: Rep[String]): Rep[Int]
 
 }
 
@@ -30,5 +32,6 @@ trait MemoryExp extends MemoryBase with UncheckedOps { this: DslExp =>
   ) = unchecked[Int]("fprintf(", file, ",", mod, ",", value, ")")
   def c_fclose(file: Rep[File])(implicit pos: SourceContext): Rep[Unit] =
     unchecked[Unit]("fclose(", file, ")")
-
+  def c_prints(f: Rep[File], s: Rep[String]): Rep[Int] = unchecked[Int]("fprintf(", f, ",", s, ")")
+  def c_printll(f: Rep[File], s: Rep[String]): Rep[Int] = unchecked[Int]("printll(",f,",",s,")")
 }

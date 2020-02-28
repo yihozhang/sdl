@@ -191,9 +191,9 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
         }
         val bucket = h & hashMask
         val next = bucketHash(bucket)
-        printf("next:%d\\n", next);
+        // printf("next:%d\\n", next);
         bucketHash(bucket) = dataPos
-        printf("dataPos:%d\\n", dataPos);
+        // printf("dataPos:%d\\n", dataPos);
         indexedBuffer(dataPos) = next
         var x = bucketHash(bucket): Rep[Int];
         while (x != -1) {
