@@ -26,13 +26,13 @@ trait TableUtil
     var tab: LegoLinkedHashMap =
       new LegoLinkedHashMap(hashSize, bucketSize, schema, indices)
 
-    def push(tuple: Rep[Any]*) {
+    def push(tuple: Rep[Any]*) = {
       if (!tab.contains(tuple:_*)) {
         tab += (tuple: _*)
       }
     }
 
-    def clear() {
+    def clear() = {
       tab.clear()
     }
 
@@ -48,7 +48,7 @@ trait TableUtil
 
     def apply(ind: List[Field], values: Rep[Any]*) = tab.apply(ind, values: _*)
 
-    def loadFrom(filename: String) {
+    def loadFrom(filename: String) = {
       val s = new Scanner(filename)
       while (s.hasNext) {
         val last = schema.last
@@ -64,7 +64,7 @@ trait TableUtil
       }
     }
 
-    def storeTo(filename: String) {
+    def storeTo(filename: String) = {
       val p = new Printer(filename)
       tab.foreach { tuple =>
         for (((field, ty), i) <- schema.zipWithIndex) {
@@ -104,7 +104,7 @@ trait TableUtil
     var pos = 0: Rep[Int]
 
     def next(d: Rep[Char]) = {
-      val start = pos // force read
+      val start = pos: Rep[Int] // force read
       while (data(pos) != d) pos += 1
       val len = pos - start
       pos += 1

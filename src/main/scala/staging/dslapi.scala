@@ -238,11 +238,11 @@ trait DslGenC
   override def emitNode(sym: Sym[Any], rhs: Def[Any]) = rhs match {
     case Equal(a, b) =>
       if (remap(b.tp) == "char*")
-        emitValDef(sym, "tpch_strcmp(" + quote(a) + "," + quote(b) + ") == 0;")
+        emitValDef(sym, "tpch_streq(" + quote(a) + "," + quote(b) + ")")
       else emitValDef(sym, src"$a == $b")
     case NotEqual(a, b) =>
       if (remap(b.tp) == "char*")
-        emitValDef(sym, "tpch_strcmp(" + quote(a) + "," + quote(b) + ") != 0;")
+        emitValDef(sym, "!tpch_streq(" + quote(a) + "," + quote(b) + ")")
       else emitValDef(sym, src"$a != $b")
     case a @ ArrayNew(n) =>
       val arrType = remap(a.m)
@@ -298,7 +298,7 @@ trait DslGenC
         return stat.st_size;
       }
       int printll(FILE* f, char* s) {
-        while (*s != '\n' && *s != ',' && *s != '\t') {
+        while (*s != '\n' && *s != '\0' && *s != '\t') {
           fputc(*s++, f);
         }
         return 0;
@@ -309,14 +309,14 @@ trait DslGenC
         unsigned long hash = 5381;
         int c;
 
-        while ((c = *str++) && len--)
+        while ((c = *str++) && c != '\t' && c != '\n' && len--)
           hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 
         return hash;
       }
       size_t tpch_strlen(const char* str) {
         const char* start = str;
-        while (*str != '\n' && (*str != '|') && (*str != '\0')) str++;
+        while (*str != '\n' && (*str != '\t') && (*str != '\0')) str++;
         return str - start;
       }
       int tpch_strcmp(const char *s1, const char *s2) {
@@ -324,6 +324,14 @@ trait DslGenC
         size_t l2 = tpch_strlen(s2);
         if (l1 > l2) l1 = l2;
         return strncmp(s1,s2,l1);
+      }
+      int tpch_streq(const char *s1, const char *s2) {
+        if (s1 == s2) return 1;
+        while (*s1 != '\n' && *s1 != '\t' && *s1 != '\0') {
+          if (*s1 != *s2) return 0;
+          s1++; s2++;
+        }
+        return *s2 == '\n' || *s2 == '\t' || *s2 == '\0';
       }
       void Snippet(char*);
       int main(int argc, char *argv[])

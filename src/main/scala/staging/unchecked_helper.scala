@@ -7,7 +7,7 @@ import scala.lms.internal._
 import scala.lms.util._
 
 
-trait UncheckedHelper extends Dsl with UncheckedOps {
+trait UncheckedHelper extends Dsl with UncheckedOpsExp with UncheckedOps with EffectExp  {
 
   import scala.language.implicitConversions
   import scala.language.reflectiveCalls
@@ -23,6 +23,14 @@ trait UncheckedHelper extends Dsl with UncheckedOps {
         }
         unchecked[T](merge(c.parts.toList, args.toList.map(_.eval())): _*)
       }
+      def asMutable[T: Typ]: Rep[T] = {
+        //reflect(c.s(args map (a => reify(a.eval())):_*))
+        def merge(a: List[Any], b: List[Any]): List[Any] = a match {
+          case Nil     => Nil
+          case x :: xs => x :: merge(b, xs)
+        }
+        reflectMutable[T](Unchecked(merge(c.parts.toList, args.toList.map(_.eval()))))
+      }
     }
     def rawSrc(args: Thunk[Rep[Any]]*) = new QuoteOps(args: _*)
   }
@@ -32,9 +40,9 @@ trait UncheckedHelper extends Dsl with UncheckedOps {
       size: Rep[Int]
   ): Rep[Array[T]] = {
     if (typ[T] == typ[Int])
-      rawSrc"(int*)realloc($xs,$size * sizeof(int))".as[Array[T]]
+      rawSrc"(int*)realloc($xs,$size * sizeof(int))".asMutable[Array[T]]
     else if (typ[T] == typ[String])
-      rawSrc"(char**)realloc($xs,$size * sizeof(char*))".as[Array[T]]    
+      rawSrc"(char**)realloc($xs,$size * sizeof(char*))".asMutable[Array[T]]    
     else {
       printf(s"ERROR: realloc for type ${typ[Array[T]]} not implemented\n")
       xs

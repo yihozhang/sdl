@@ -10,13 +10,22 @@ import sdl.util._
 trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
   class Tuple(records: RecordBuffer, pos: Rep[Int]) {
     def apply(i: Int): Rep[Any] = records.elems(i)(pos)
-    def runtimeEquals(tuple: Seq[Any]): Rep[Boolean] = {
-      for (i <- 0 until records.schema.length: Range) {
-        if (tuple(i) != records(i)) {
-          return false
+    def runtimeEquals(tuple: Seq[Rep[Any]]): Rep[Boolean] = {
+      var i: Int = 0
+      val flag = var_new(true)
+      while (i < records.schema.length) {
+        if (records.schema(i)._2 == Type.NUM) {
+          if (tuple(i).asInstanceOf[Rep[Int]] != this(i).asInstanceOf[Rep[Int]]) {
+            flag = false
+          }
+        } else {
+          if (tuple(i).asInstanceOf[Rep[String]] != this(i).asInstanceOf[Rep[String]]) {
+            flag = false
+          }
         }
+        i += 1
       }
-      true
+      flag
     }
   }
   abstract class LegoBuffer {
@@ -28,10 +37,6 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
     def stopableForeach(f: Tuple => Rep[Boolean]): Rep[Unit]
     def clear(): Rep[Unit]
     def isEmpty: Rep[Boolean]
-    /*def sort(
-        comp: Function2[Rep[T], Rep[T], Rep[Int]],
-        len: Rep[Int]
-    ): Rep[Unit]*/
   }
 
   class RecordBuffer(cap0: Rep[Int], val schema: Schema) extends LegoBuffer {
@@ -48,11 +53,11 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
     def update(x: Rep[Int], y: Rep[Any]*): Rep[Unit] =
       schema.zipWithIndex foreach {
         case ((f, Type.NUM), i) => {
-          elems(i).asInstanceOf[ColumnBuffer[Int]](x) =
+          (elems(i).asInstanceOf[ColumnBuffer[Int]])(x) =
             y(i).asInstanceOf[Rep[Int]] // need to check at generation time
         }
         case ((f, Type.STR), i) => {
-          elems(i).asInstanceOf[ColumnBuffer[String]](x) =
+          (elems(i).asInstanceOf[ColumnBuffer[String]])(x) =
             y(i).asInstanceOf[Rep[String]]
         }
       }
@@ -69,7 +74,7 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
         resize(cap)
       }
       this.update(size, v: _*)
-      val ret = size
+      val ret = size: Rep[Int]
       size += 1
       ret
     }
@@ -100,10 +105,13 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
 
   class ColumnBuffer[T: Typ](cap0: Rep[Int]) {
     val cap = var_new(cap0)
-    val buf = var_new(NewArray[T](cap0))
+    // val buf = var_new(NewArray[T](cap0))
+    val buf = NewArray[T](cap0)
     val size = var_new(0)
     def apply(x: Rep[Int]) = buf(x)
-    def update(x: Rep[Int], y: Rep[T]): Rep[Unit] = buf(x) = y
+    def update(x: Rep[Int], y: Rep[T]): Rep[Unit] = {
+      buf(x) = y
+    }
     def append(v: Rep[T]): Rep[Int] = {
       if (size == cap) {
         cap *= 4
@@ -115,7 +123,7 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
       ret
     }
     def resize(x: Rep[Int]): Rep[Unit] = {
-      buf = array_realloc(buf, x)
+      // buf = array_realloc(buf, x)
     }
     def clear(): Rep[Unit] = {
       size = 0
@@ -127,7 +135,7 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
 
   trait HashVisitor {
     def foreach(f: Tuple => Rep[Unit]): Rep[Unit]
-    def stopableForeach(f: Tuple => Rep[Boolean])
+    def stopableForeach(f: Tuple => Rep[Boolean]): Rep[Unit]
   }
   class LegoLinkedHashMap(
       val hashSize: Rep[Int],
@@ -176,7 +184,7 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
     def isEmpty: Rep[Boolean] = data.isEmpty
 
     def +=(tuple: Rep[Any]*) = {
-      val dataPos = data.append(tuple: _*)
+      val dataPos = data.append(tuple: _*): Rep[Int]
       for (((index, indexedBuffer), bucketHash) <- indices
              .zip(indexedBuffers)
              .zip(bucketHashs)) {
@@ -190,17 +198,17 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
           }
         }
         val bucket = h & hashMask
-        val next = bucketHash(bucket)
+        var next = bucketHash(bucket): Rep[Int]
         // printf("next:%d\\n", next);
         bucketHash(bucket) = dataPos
         // printf("dataPos:%d\\n", dataPos);
         indexedBuffer(dataPos) = next
-        var x = bucketHash(bucket): Rep[Int];
-        while (x != -1) {
-          printf("%d ", indexedBuffer(x));
-          x = indexedBuffer(x)
-        }
-          printf("\\n");
+        // val x = var_new(bucketHash(bucket))
+        // while (x != -1) {
+          // printf("%d ", indexedBuffer(x));
+          // x = indexedBuffer(x)
+        // }
+        // printf("\\n");
       }
     }
 
@@ -237,7 +245,7 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
           }
         }
 
-        def stopableForeach(f: Tuple => Rep[Boolean]) {
+        def stopableForeach(f: Tuple => Rep[Boolean]) = {
           var dataPos = bucketHashs(indPos)(bucket)
           val flag = var_new(true)
           while (flag && dataPos != -1) {
