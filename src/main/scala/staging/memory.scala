@@ -17,10 +17,12 @@ trait MemoryBase extends Base { this: Dsl =>
   def c_fclose(file: Rep[File])(implicit pos: SourceContext): Rep[Unit]
   def c_prints(f: Rep[File], s: Rep[String]): Rep[Int]
   def c_printll(f: Rep[File], s: Rep[String]): Rep[Int]
-
+  def c_swap(a: Var[Any], b: Var[Any]): Rep[Unit]
+  def c_swapArray(a: Rep[Any], b: Rep[Any]): Rep[Unit]
+  // def c_swapInt(a: Rep[Int], b: Rep[Int]): Rep[Unit]
 }
 
-trait MemoryExp extends MemoryBase with UncheckedOps { this: DslExp =>
+trait MemoryExp extends MemoryBase with UncheckedOpsExp { this: DslExp =>
   implicit def fileTyp: Typ[File] = manifestTyp
 
   def c_fopen(filename: Rep[String], mode: Rep[String])(
@@ -34,4 +36,8 @@ trait MemoryExp extends MemoryBase with UncheckedOps { this: DslExp =>
     unchecked[Unit]("fclose(", file, ")")
   def c_prints(f: Rep[File], s: Rep[String]): Rep[Int] = unchecked[Int]("fprintf(", f, ",", s, ")")
   def c_printll(f: Rep[File], s: Rep[String]): Rep[Int] = unchecked[Int]("printll(",f,",",s,")")
+  def c_swapArray(a: Rep[Any], b: Rep[Any]): Rep[Unit] = unchecked[Unit]("SWAP(",a,",",b,")")
+  def c_swap(a: Var[Any], b: Var[Any]): Rep[Unit] = reflectWrite[Unit](a.e, b.e)(CSwap(a,b))
+  case class CSwap(a: Var[Any], b: Var[Any]) extends Def[Unit]
+  // def c_swapInt(a: Rep[Int], b: Rep[Int]): Rep[Unit] = c_swap(a, b)
 }

@@ -236,6 +236,8 @@ trait DslGenC
     case _                                => super.quote(x)
   }
   override def emitNode(sym: Sym[Any], rhs: Def[Any]) = rhs match {
+    case CSwap(Variable(a), Variable(b)) =>
+      stream.println("SWAP(" + quote(a) + "," + quote(b) + ");")
     case Equal(a, b) =>
       if (remap(b.tp) == "char*")
         emitValDef(sym, "tpch_streq(" + quote(a) + "," + quote(b) + ")")
@@ -281,6 +283,7 @@ trait DslGenC
   ) = {
     withStream(out) {
       stream.println("""
+      #include <string.h>
       #include <fcntl.h>
       #include <errno.h>
       #include <err.h>
@@ -314,6 +317,17 @@ trait DslGenC
 
         return hash;
       }
+      // void swap(void **a, void **b) {
+      //   void *t = *a;
+      //   *a = *b
+      //   *b = t;
+      // }
+      // void swap_int(int32_t *a, int32_t *b) {
+      //   int32_t t = *a;
+      //   *a = *b
+      //   *b = t;
+      // }
+      #define SWAP(x, y) do { typeof(x) SWAP = x; x = y; y = SWAP; } while (0)
       size_t tpch_strlen(const char* str) {
         const char* start = str;
         while (*str != '\n' && (*str != '\t') && (*str != '\0')) str++;

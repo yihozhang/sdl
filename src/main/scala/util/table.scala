@@ -16,8 +16,8 @@ trait TableUtil
     with MemoryBase {
 
   object Defaults {
-    val hashSize = 1 << 17
-    val bucketSize = 1 << 3
+    val hashSize = 1 << 16
+    val bucketSize = 1 << 2
   }
 
   case class Table(schema: Schema, indices: List[List[Field]]) {
@@ -26,6 +26,9 @@ trait TableUtil
     var tab: LegoLinkedHashMap =
       new LegoLinkedHashMap(hashSize, bucketSize, schema, indices)
 
+    def contains(tuple: Rep[Any]*) = {
+      tab.contains(tuple:_*)
+    }
     def push(tuple: Rep[Any]*) = {
       if (!tab.contains(tuple:_*)) {
         tab += (tuple: _*)
@@ -82,9 +85,7 @@ trait TableUtil
 
   object Table {
     def swap(a: Table, b: Table) {
-      val tmpTab = a.tab
-      a.tab = b.tab
-      b.tab = tmpTab
+      a.tab.swap(b.tab)
     }
   }
 

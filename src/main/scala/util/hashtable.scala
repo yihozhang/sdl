@@ -7,25 +7,52 @@ import scala.lms.api.Dsl
 import sdl.staging._
 import sdl.util._
 
-trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
+trait HashTableUtil
+    extends Dsl
+    with AstUtil
+    with UncheckedHelper
+    with MemoryBase {
   class Tuple(records: RecordBuffer, pos: Rep[Int]) {
     def apply(i: Int): Rep[Any] = records.elems(i)(pos)
     def runtimeEquals(tuple: Seq[Rep[Any]]): Rep[Boolean] = {
       var i: Int = 0
+      // make it short-circuit
       val flag = var_new(true)
       while (i < records.schema.length) {
-        if (records.schema(i)._2 == Type.NUM) {
-          if (tuple(i).asInstanceOf[Rep[Int]] != this(i).asInstanceOf[Rep[Int]]) {
-            flag = false
-          }
-        } else {
-          if (tuple(i).asInstanceOf[Rep[String]] != this(i).asInstanceOf[Rep[String]]) {
-            flag = false
-          }
-        }
+        elementEquals(tuple(i), this(i), records.schema(i)._2)((), {
+          flag = false
+        })
+        // if (records.schema(i)._2 == Type.NUM) {
+        //   if (tuple(i).asInstanceOf[Rep[Int]] != this(i).asInstanceOf[Rep[Int]]) {
+        //     flag = false
+        //   }
+        // } else {
+        //   if (tuple(i).asInstanceOf[Rep[String]] != this(i).asInstanceOf[Rep[String]]) {
+        //     flag = false
+        //   }
+        // }
         i += 1
       }
       flag
+    }
+  }
+  // I know it really shouldn't be put here but hey...
+  def elementEquals(a: Rep[Any], b: Rep[Any], ty: Type)(
+      success: => Rep[Unit],
+      failure: => Rep[Unit]
+  ) = {
+    if (ty == Type.NUM) {
+      if (a.asInstanceOf[Rep[Int]] == b.asInstanceOf[Rep[Int]]) {
+        success
+      } else {
+        failure
+      }
+    } else {
+      if (a.asInstanceOf[Rep[String]] == b.asInstanceOf[Rep[String]]) {
+        success
+      } else {
+        failure
+      }
     }
   }
   abstract class LegoBuffer {
@@ -37,6 +64,7 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
     def stopableForeach(f: Tuple => Rep[Boolean]): Rep[Unit]
     def clear(): Rep[Unit]
     def isEmpty: Rep[Boolean]
+    def swap(o: LegoBuffer): Rep[Unit]
   }
 
   class RecordBuffer(cap0: Rep[Int], val schema: Schema) extends LegoBuffer {
@@ -49,6 +77,14 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
     }
     val size = var_new(0)
     // def record_new[T : Manifest](fields: Seq[(String, Boolean, Rep[T] => Rep[_])]): Rep[T]
+    def swap(o: LegoBuffer) = {
+      val oo = o.asInstanceOf[RecordBuffer]
+      c_swap(size, oo.size)
+      c_swap(cap, oo.cap)
+      elems.zip(oo.elems).foreach {
+        case (a, b) => a.swap(b)
+      }
+    }
     def apply(x: Rep[Int]) = new Tuple(this, x)
     def update(x: Rep[Int], y: Rep[Any]*): Rep[Unit] =
       schema.zipWithIndex foreach {
@@ -66,7 +102,10 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
       elems foreach { _.resize(x) }
     }
 
-    def isEmpty: Rep[Boolean] = size == 0
+    def isEmpty: Rep[Boolean] = {
+      // printf("%d\n", size);
+      size == 0
+    }
 
     def append(v: Rep[Any]*): Rep[Int] = {
       if (size == cap) {
@@ -88,16 +127,18 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
     }
 
     def stopableForeach(f: Tuple => Rep[Boolean]): Rep[Unit] = {
-      val i = 0: Rep[Int]
-      val flag = true: Rep[Boolean]
+      val i = var_new(0)
+      val flag = var_new(true)
       while (flag && i < size) {
         // NOTE: we only know that hash codes match:
         // client needs to check full keys.
         flag = f(this(i))
+        i += 1
       }
     }
 
     def clear(): Rep[Unit] = {
+      // printf("%d\n", size);
       size = 0
     }
 
@@ -108,6 +149,11 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
     // val buf = var_new(NewArray[T](cap0))
     val buf = NewArray[T](cap0)
     val size = var_new(0)
+    def swap(o: ColumnBuffer[_]) = {
+      c_swap(size, o.size)
+      c_swap(cap, o.cap)
+      c_swapArray(buf, o.buf)
+    }
     def apply(x: Rep[Int]) = buf(x)
     def update(x: Rep[Int], y: Rep[T]): Rep[Unit] = {
       buf(x) = y
@@ -118,7 +164,7 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
         resize(cap)
       }
       buf(size) = v
-      val ret = size
+      val ret = size: Rep[Int]
       size += 1
       ret
     }
@@ -148,13 +194,14 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
 
     val data = LegoBuffer(dataSize, schema)
 
+    // TODO: could be indices.map blah blah
     val indexedBuffers =
       ((0 until indices.length): Range).map { _ =>
         new ColumnBuffer[Int](dataSize)
       }
     val bucketHashs =
       ((0 until indices.length): Range).map(_ => NewArray[Int](hashSize))
-    
+
     bucketHashs.foreach(bucketHash => {
       for (i <- 0 until hashSize) {
         bucketHash(i) = -1
@@ -162,6 +209,26 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
     })
 
     val hashMask = hashSize - 1
+
+    // here we should assume hashSize, bucketSize, schema, and indices will
+    // be the same across hashmaps
+    def swap(o: LegoLinkedHashMap) = {
+      if (indices != o.indices) {
+        printerr(indices)
+        printerr(o.indices)
+      }
+      if (schema != o.schema) {
+        printerr(schema)
+        printerr(o.schema)
+      }
+      data.swap(o.data)
+      indexedBuffers.zip(o.indexedBuffers).foreach {
+        case (a, b) => a.swap(b)
+      }
+      bucketHashs.zip(o.bucketHashs).foreach {
+        case (a, b) => c_swapArray(a, b)
+      }
+    }
 
     def calcHashInt(x: Rep[Int]) = x
     def calcHashString(x: Rep[String]) = {
@@ -205,8 +272,8 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
         indexedBuffer(dataPos) = next
         // val x = var_new(bucketHash(bucket))
         // while (x != -1) {
-          // printf("%d ", indexedBuffer(x));
-          // x = indexedBuffer(x)
+        // printf("%d ", indexedBuffer(x));
+        // x = indexedBuffer(x)
         // }
         // printf("\\n");
       }
@@ -215,7 +282,7 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
     def foreach(f: Tuple => Rep[Unit]): Rep[Unit] = {
       data.foreach(f)
     }
-    
+
     def stopableForeach(f: Tuple => Rep[Boolean]) = {
       data.stopableForeach(f)
     }
@@ -233,6 +300,20 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
       }
       val bucket = h & hashMask
       new HashVisitor {
+        def checkEqual(tup: Tuple): Rep[Boolean] = {
+          var flag = true: Rep[Boolean]
+          // TODO: make it short-circuit
+          var i: Int = 0
+          while (i < ind.length) {
+            val field = ind(i)
+            val ((_, ty), j) = schema.zipWithIndex.find(_._1._1 == field).get
+            elementEquals(values(i), tup(j), ty)({}, {
+              flag = false
+            })
+            i += 1
+          }
+          flag
+        }
 
         def foreach(f: Tuple => Rep[Unit]): Rep[Unit] = {
           val dataPos = var_new(bucketHashs(indPos)(bucket))
@@ -241,19 +322,19 @@ trait HashTableUtil extends Dsl with AstUtil with UncheckedHelper {
             dataPos = indexedBuffers(indPos)(dataPos)
             // NOTE: we only know that hash codes match:
             // client needs to check full keys.
-            f(bufElem)
+            if (checkEqual(bufElem)) f(bufElem)
           }
         }
 
         def stopableForeach(f: Tuple => Rep[Boolean]) = {
-          var dataPos = bucketHashs(indPos)(bucket)
+          val dataPos = var_new(bucketHashs(indPos)(bucket))
           val flag = var_new(true)
           while (flag && dataPos != -1) {
             val bufElem = data(dataPos)
             dataPos = indexedBuffers(indPos)(dataPos)
             // NOTE: we only know that hash codes match:
             // client needs to check full keys.
-            flag = f(bufElem)
+            if (checkEqual(bufElem)) flag = f(bufElem)
           }
         }
       }

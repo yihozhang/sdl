@@ -1,6 +1,7 @@
 package sdl.ast
 import scala.lms.api.Dsl
 import sdl.util._
+
 trait AstUtil extends Dsl {
 
   type Id = String
@@ -18,6 +19,7 @@ trait AstUtil extends Dsl {
 
   sealed abstract class Stmt {
     def acceptOp(visitor: Op => Unit) = ()
+    // def eval = 
   }
   case class LoadStmt(rel: RelId, filename: String) extends Stmt
   case class StoreStmt(rel: RelId, filename: String) extends Stmt

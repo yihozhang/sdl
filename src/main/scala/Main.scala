@@ -12,8 +12,8 @@ object Main {
     
     def snippet =
       new DslDriverC[String, Unit] with InterpreterUtil with ParserUtil {
-        verbosity = 100
-        sourceinfo = 100
+        // verbosity = 100
+        // sourceinfo = 100
         def readFile(filename: String): String = {
           val source = scala.io.Source.fromFile(filename)
           try source.getLines mkString "\n"
@@ -24,13 +24,15 @@ object Main {
           DlParser.parseAll(DlParser.program, prog).get
 
         override def snippet(unused: Rep[String]) = {
-          val text = readFile("test/parser/simple_prog2.txt")
+          val text = readFile("test/parser/prog1.txt")
           val prog = parseProgram(text)
           new Interpreter(prog).run()
         }
       }
-
-    System.out.println(snippet.code)
+    val out = new java.io.PrintWriter("./test.c")
+    out.println(snippet.code)
+    out.close
+    // System.out.println(snippet.code)
     // snippet.eval("1")
   }
 }
