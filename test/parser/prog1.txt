@@ -20,8 +20,8 @@ PROGRAM
   person_living(p:string) 
  END DECLARATION
  BEGIN MAIN
-  LOAD DATA FOR female FROM "./DATA/female.facts"
-  LOAD DATA FOR parent_child FROM "./DATA/parent_child.facts"
+  LOAD DATA FOR female FROM "DATA/female.facts"
+  LOAD DATA FOR parent_child FROM "DATA/parent_child.facts"
    QUERY
     IF (NOT (parent_child = ∅))
      FOR t0 IN parent_child
@@ -106,7 +106,7 @@ PROGRAM
   CLEAR NotP5
    QUERY
     IF ((NOT (parent_child = ∅)) AND (NOT (person = ∅)))
-     FOR t0 IN parent_child ON INDEX t0.p1 = number(0)
+     FOR t0 IN parent_child ON INDEX t0.p1 = "Priscilla"
       FOR t1 IN person ON INDEX t1.name = t0.1
        PROJECT (t0.1, t1.1) INTO p0
        

@@ -1,0 +1,52 @@
+PROGRAM
+ DECLARATION
+  @delta_p1(x:string,d:string) 
+  @new_p1(x:string,d:string) 
+  p0(x:string,d:string) 
+  p1(x:string,d:string) 
+  parent_child(p1:string,p2:string) 
+  person(name:string,description:string) 
+ END DECLARATION
+ BEGIN MAIN
+  LOAD DATA FOR parent_child FROM "DATA/parent_child.facts"
+  LOAD DATA FOR person FROM "DATA/person.facts"
+  QUERY
+   IF ((NOT (parent_child = ∅)) AND (NOT (person = ∅)))
+    FOR t0 IN parent_child ON INDEX t0.p1 = "Priscilla"
+     FOR t1 IN person ON INDEX t1.name = t0.1
+      PROJECT (t0.1, t1.1) INTO p0
+  STORE DATA FOR p0 TO "./hw4-0.ans"
+  QUERY
+   IF (NOT (p0 = ∅))
+    FOR t0 IN p0
+     PROJECT (t0.0, t0.1) INTO p1
+     
+  QUERY
+   FOR t0 IN p1
+    PROJECT (t0.0, t0.1) INTO @delta_p1
+  LOOP
+   QUERY
+    IF (((NOT (@delta_p1 = ∅)) AND (NOT (parent_child = ∅))) AND (NOT (person = ∅)))
+     FOR t0 IN @delta_p1
+      FOR t1 IN parent_child ON INDEX t1.p1 = t0.0
+      IF (t1.0 = t0.0)
+       FOR t2 IN person ON INDEX t2.name = t1.1
+       IF (t2.0 = t1.1)
+        IF (NOT (t1.1,t2.1) ∈ p1)
+         PROJECT (t1.1, t2.1) INTO @new_p1
+   EXIT (@new_p1 = ∅)
+   QUERY
+    FOR t0 IN @new_p1
+     PROJECT (t0.0, t0.1) INTO p1
+   SWAP (@delta_p1, @new_p1)
+   CLEAR @new_p1
+  END LOOP
+  CLEAR @delta_p1
+  CLEAR @new_p1
+  STORE DATA FOR p1 TO "./hw4-1.ans"
+  CLEAR p0
+  CLEAR parent_child
+  CLEAR person
+  CLEAR p1
+ END MAIN
+END PROGRAM
