@@ -104,7 +104,7 @@ trait ParserUtil extends Dsl with AstUtil with ProgramUtil {
       }
     }
     def doesExist: Parser[DoesExist] = {
-      "(" ~> rep1sep(expr, ",") ~ ")" ~ "∈" ~ relId ^^ {
+      "(" ~> rep1sep(expr | ("⊥" ^^^ Bot), ",") ~ ")" ~ "∈" ~ relId ^^ {
         case exprs ~ _ ~ _ ~ rel => DoesExist(exprs, rel)
       }
     }

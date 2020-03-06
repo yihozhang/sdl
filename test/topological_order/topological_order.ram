@@ -1,0 +1,130 @@
+PROGRAM
+ DECLARATION
+  @delta_indices(v:number,i:number) 
+  @delta_is_after(v1:number,v2:number) 
+  @delta_is_before(v1:number,v2:number) 
+  @new_indices(v:number,i:number) 
+  @new_is_after(v1:number,v2:number) 
+  @new_is_before(v1:number,v2:number) 
+  edge(v1:number,v2:number) 
+  index(v:number,i:number) 
+  indices(v:number,i:number) 
+  is_after(v1:number,v2:number) 
+  is_before(v1:number,v2:number) 
+  vertex(v:number) 
+ END DECLARATION
+ BEGIN MAIN
+  LOAD DATA FOR edge FROM "./edge.facts"
+   QUERY
+    IF (NOT (edge = ∅))
+     FOR t0 IN edge
+      PROJECT (t0.1, t0.0) INTO is_after
+  QUERY
+   FOR t0 IN is_after
+    PROJECT (t0.0, t0.1) INTO @delta_is_after
+  LOOP
+     QUERY
+      IF ((NOT (@delta_is_after = ∅)) AND (NOT (is_after = ∅)))
+       FOR t0 IN @delta_is_after
+        FOR t1 IN is_after ON INDEX t1.v2 = t0.0
+         IF ((NOT (t1.0,t0.0) ∈ @delta_is_after) AND (NOT (t0.1,t1.0) ∈ is_after))
+          PROJECT (t0.1, t1.0) INTO @new_is_after
+     QUERY
+      IF ((NOT (is_after = ∅)) AND (NOT (@delta_is_after = ∅)))
+       FOR t0 IN is_after
+        FOR t1 IN @delta_is_after ON INDEX t1.v2 = t0.0
+         IF (NOT (t0.1,t1.0) ∈ is_after)
+          PROJECT (t0.1, t1.0) INTO @new_is_after
+   EXIT (@new_is_after = ∅)
+   QUERY
+    FOR t0 IN @new_is_after
+     PROJECT (t0.0, t0.1) INTO is_after
+   SWAP (@delta_is_after, @new_is_after)
+   CLEAR @new_is_after
+  END LOOP
+  CLEAR @delta_is_after
+  CLEAR @new_is_after
+  STORE DATA FOR is_after TO "is_after.out"
+  
+   QUERY
+    IF (NOT (edge = ∅))
+     FOR t0 IN edge
+      PROJECT (t0.0, t0.1) INTO is_before
+  QUERY
+   FOR t0 IN is_before
+    PROJECT (t0.0, t0.1) INTO @delta_is_before
+  LOOP
+     QUERY
+      IF ((NOT (@delta_is_before = ∅)) AND (NOT (is_before = ∅)))
+       FOR t0 IN @delta_is_before
+        FOR t1 IN is_before ON INDEX t1.v1 = t0.1
+         IF ((NOT (t0.1,t1.1) ∈ @delta_is_before) AND (NOT (t0.0,t1.1) ∈ is_before))
+          PROJECT (t0.0, t1.1) INTO @new_is_before
+     QUERY
+      IF ((NOT (is_before = ∅)) AND (NOT (@delta_is_before = ∅)))
+       FOR t0 IN is_before
+        FOR t1 IN @delta_is_before ON INDEX t1.v1 = t0.1
+         IF (NOT (t0.0,t1.1) ∈ is_before)
+          PROJECT (t0.0, t1.1) INTO @new_is_before
+   EXIT (@new_is_before = ∅)
+   QUERY
+    FOR t0 IN @new_is_before
+     PROJECT (t0.0, t0.1) INTO is_before
+   SWAP (@delta_is_before, @new_is_before)
+   CLEAR @new_is_before
+  END LOOP
+  CLEAR @delta_is_before
+  CLEAR @new_is_before
+  STORE DATA FOR is_before TO "is_after.out"
+   QUERY
+    IF (NOT (edge = ∅))
+     FOR t0 IN edge
+      PROJECT (t0.0) INTO vertex
+   QUERY
+    IF (NOT (edge = ∅))
+     FOR t0 IN edge
+      PROJECT (t0.1) INTO vertex
+   QUERY
+    IF (NOT (vertex = ∅))
+     FOR t0 IN vertex
+      IF ((NOT (t0.0,⊥) ∈ edge) AND (NOT (⊥,t0.0) ∈ edge))
+       PROJECT (t0.0, number(0)) INTO indices
+   QUERY
+    IF ((NOT (vertex = ∅)) AND (NOT (edge = ∅)))
+     FOR t0 IN vertex
+      IF ((t0.0,⊥) ∈ edge AND (NOT (⊥,t0.0) ∈ edge))
+       PROJECT (t0.0, number(1)) INTO indices
+  QUERY
+   FOR t0 IN indices
+    PROJECT (t0.0, t0.1) INTO @delta_indices
+  LOOP
+     QUERY
+      IF (((NOT (is_before = ∅)) AND (NOT (is_after = ∅))) AND (NOT (@delta_indices = ∅)))
+       FOR t0 IN is_before
+        IF ((t0.1,t0.0) ∈ is_after AND (NOT (t0.1,t0.0) ∈ is_before))
+         FOR t1 IN @delta_indices ON INDEX t1.v = t0.0
+          IF (NOT (t0.1,(t1.1+number(1))) ∈ indices)
+           PROJECT (t0.1, (t1.1+number(1))) INTO @new_indices
+   EXIT (@new_indices = ∅)
+   QUERY
+    FOR t0 IN @new_indices
+     PROJECT (t0.0, t0.1) INTO indices
+   SWAP (@delta_indices, @new_indices)
+   CLEAR @new_indices
+  END LOOP
+  CLEAR @delta_indices
+  CLEAR @new_indices
+  STORE DATA FOR indices TO "indices.out"
+  CLEAR edge
+  CLEAR is_after
+  CLEAR is_before
+  CLEAR vertex
+   QUERY
+    IF (NOT (indices = ∅))
+     FOR t0 IN indices
+      IF (NOT (t0.0,(t0.1+number(1))) ∈ indices)
+       PROJECT (t0.0, t0.1) INTO index
+  STORE DATA FOR index TO "index.out"
+  CLEAR indices
+ END MAIN
+END PROGRAM

@@ -24,7 +24,7 @@ object Main {
           DlParser.parseAll(DlParser.program, prog).get
 
         override def snippet(unused: Rep[String]) = {
-          val text = readFile("test/parser/prog1.txt")
+          val text = readFile("test/topological_order/topological_order.ram")
           val prog = parseProgram(text)
           new Interpreter(prog).run()
         }

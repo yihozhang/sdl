@@ -7,10 +7,7 @@ import java.io.File
 import java.util.Scanner
 import scala.collection.immutable.Nil
 import scala.lms.api._
-trait InterpreterUtil
-    extends DslExp
-    with TableUtil
-    with ProgramUtil {
+trait InterpreterUtil extends DslExp with TableUtil with ProgramUtil {
   implicit def anyTyp: Typ[Any] = manifestTyp
   class Interpreter(program: Program) {
     val DEBUG = false
@@ -23,12 +20,14 @@ trait InterpreterUtil
 
       program.stmts.foreach(evalStmt(_)(tableManager))
     }
-    private def evalStmt(stmt: Stmt)(implicit tableManager: TableManager): Rep[Unit] = {
+    private def evalStmt(
+        stmt: Stmt
+    )(implicit tableManager: TableManager): Rep[Unit] = {
       if (DEBUG) println("running" + stmt.toString())
       stmt match {
         case LoadStmt(rel, filename)  => tableManager(rel).loadFrom(filename)
         case StoreStmt(rel, filename) => tableManager(rel).storeTo(filename)
-        case ClearStmt(rel)           => {
+        case ClearStmt(rel) => {
           // printf("start cleaning %s", rel)
           tableManager(rel).clear()
           // printf("end cleaning %s", rel)
@@ -76,7 +75,7 @@ trait InterpreterUtil
         case IndexScan(v, rel, indices, child) => {
           val fields = indices.toList.map(_._1)
           val values = indices.toList.map(_._2).map(evalExpr(_))
-          tableManager(rel)(fields, values:_*).foreach { tup =>
+          tableManager(rel)(fields, values: _*).foreach { tup =>
             evalOp(child)(tableManager, env + (v -> tup))
           }
         }
@@ -88,9 +87,10 @@ trait InterpreterUtil
         case IndexChoice(v, rel, cond, indices, child) => {
           val fields = indices.toList.map(_._1)
           val values = indices.toList.map(_._2).map(evalExpr(_))
-          tableManager(rel)(fields, values:_*).stopableForeach { tup =>
+          tableManager(rel)(fields, values: _*).stopableForeach { tup =>
             {
-              val isSuccess = evalCond(cond)(tableManager, env + (v -> tup)): Rep[Boolean]
+              val isSuccess =
+                evalCond(cond)(tableManager, env + (v -> tup)): Rep[Boolean]
               if (isSuccess) {
                 evalOp(child)(tableManager, env + (v -> tup))
               }
@@ -101,7 +101,8 @@ trait InterpreterUtil
         case Choice(v, rel, cond, child) => {
           tableManager(rel).stopableForeach { tup =>
             {
-              val isSuccess = evalCond(cond)(tableManager, env + (v -> tup)): Rep[Boolean]
+              val isSuccess =
+                evalCond(cond)(tableManager, env + (v -> tup)): Rep[Boolean]
               if (isSuccess) {
                 evalOp(child)(tableManager, env + (v -> tup))
               }
@@ -134,9 +135,18 @@ trait InterpreterUtil
           evalExpr(lhs) == evalExpr(rhs)
         }
         case DoesExist(exprs, rel) => {
-          val length = exprs.length
-          val values = exprs.map((evalExpr(_)))
-          tableManager(rel).contains(values:_*)
+          val fields = exprs.zipWithIndex.filter(_._1 != Bot).map {
+            case (expr, idx) => {
+              tableManager(rel).schema(idx)._1 // field
+            }
+          }
+          val values = exprs.filter(_ != Bot).map((evalExpr(_)))
+          val result = var_new(false)
+          tableManager(rel)(fields, values:_*).stopableForeach(_ => {
+            result = true
+            false
+          })
+          result
         }
         case IsEmpty(rel) => {
           tableManager(rel).isEmpty
@@ -149,7 +159,7 @@ trait InterpreterUtil
       if (DEBUG) println("running" + expr.toString())
       expr match {
         case TupleElement(id, elem) => env(id)(elem)
-        case ConstValue(value)           => unit(value)
+        case ConstValue(value)      => unit(value)
         case BinaryExpr(lhs, op, rhs) => {
           val lval = evalExpr(lhs).asInstanceOf[Rep[Int]]
           val rval = evalExpr(rhs).asInstanceOf[Rep[Int]]
@@ -160,6 +170,7 @@ trait InterpreterUtil
             case ExprOp.DIV => lval / rval
           }
         }
+        case Bot => throw new IllegalStateException("should not be reached")
       }
     }
   }

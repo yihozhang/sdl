@@ -16,11 +16,11 @@ trait TableUtil
     with MemoryBase {
 
   object Defaults {
-    val hashSize = 1 << 16
-    val bucketSize = 1 << 2
+    val hashSize = 1 << 22
+    val bucketSize = 1
   }
 
-  case class Table(schema: Schema, indices: List[List[Field]]) {
+  case class Table(val schema: Schema, val indices: List[List[Field]]) {
     import Defaults._
     val tupleSize = schema.length
     var tab: LegoLinkedHashMap =

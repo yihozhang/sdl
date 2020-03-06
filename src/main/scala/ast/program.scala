@@ -16,6 +16,25 @@ trait ProgramUtil extends Dsl with AstUtil {
             list.append(IndexSchema(rel, fields))
           }
         })
+      stmts.foreach(_.acceptOp(_.acceptCond { cond =>
+        {
+          if (cond.isInstanceOf[DoesExist]) {
+            val doesExist = cond.asInstanceOf[DoesExist]
+            if (doesExist.exprs.filter(_ == Bot).nonEmpty) {
+              val schema = env(doesExist.rel).schema
+              val fields = doesExist.exprs
+                .zip(schema)
+                .filter({
+                  case (expr, (field, typ)) => {
+                    expr == Bot
+                  }
+                })
+                .map(_._2._1)
+              list.append(IndexSchema(doesExist.rel, fields))
+            }
+          }
+        }
+      }))
       val distinctList = list.distinct
       // naive solution that only works for new/delta tables
       def merge(stmts: List[Stmt]) {
@@ -38,8 +57,11 @@ trait ProgramUtil extends Dsl with AstUtil {
           }
         }
       }
+
       merge(stmts)
-      distinctList.toList.distinct
+      val result = distinctList.toList.distinct
+      System.out.println(result)
+      result
     }
   }
 }
