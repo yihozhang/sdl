@@ -15,22 +15,34 @@ trait TableUtil
     with HashTableUtil
     with MemoryBase {
 
-  object Defaults {
+  object DefaultSize {
     val hashSize = 1 << 22
     val bucketSize = 1
   }
 
-  case class Table(val schema: Schema, val indices: List[List[Field]]) {
-    import Defaults._
+  object SmallTableSize {
+    val hashSize = 1 << 14
+    val bucketSize = 1 << 8
+  }
+
+  case class Table(val decl: Decl, val indices: List[List[Field]]) {
+    val rel = decl.rel
+    val schema = decl.schema
     val tupleSize = schema.length
+    val hashSize =
+      if (rel.startsWith("@")) SmallTableSize.hashSize
+      else DefaultSize.hashSize
+    val bucketSize =
+      if (rel.startsWith("@")) SmallTableSize.bucketSize
+      else DefaultSize.bucketSize
     var tab: LegoLinkedHashMap =
       new LegoLinkedHashMap(hashSize, bucketSize, schema, indices)
 
     def contains(tuple: Rep[Any]*) = {
-      tab.contains(tuple:_*)
+      tab.contains(tuple: _*)
     }
     def push(tuple: Rep[Any]*) = {
-      if (!tab.contains(tuple:_*)) {
+      if (!tab.contains(tuple: _*)) {
         tab += (tuple: _*)
       }
     }
@@ -94,7 +106,7 @@ trait TableUtil
     def printf(mod: Rep[String], v: Rep[Any]) = c_fprintf(file, mod, v)
     def prints(s: String) = c_prints(file, unit(s))
     // only used to print read-in string
-    def printll(s: Rep[String]) = c_printll(file,s)
+    def printll(s: Rep[String]) = c_printll(file, s)
     def close = c_fclose(file)
   }
 
@@ -134,7 +146,7 @@ trait TableUtil
 
     for (((tabName, decl), i) <- env.toList.zipWithIndex) {
       tables(i) =
-        new Table(decl.schema, indices.filter(_.rel == tabName).map(_.fields))
+        new Table(decl, indices.filter(_.rel == tabName).map(_.fields))
       relIdToTabId(tabName) = i
     }
 

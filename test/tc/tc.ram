@@ -1,0 +1,99 @@
+PROGRAM
+ DECLARATION
+  @delta_tc(node1:number,node2:number) 
+  @delta_tcl(node1:number,node2:number) 
+  @delta_tcr(node1:number,node2:number) 
+  @new_tc(node1:number,node2:number) 
+  @new_tcl(node1:number,node2:number) 
+  @new_tcr(node1:number,node2:number) 
+  base(node1:number,node2:number) 
+  tc(node1:number,node2:number) 
+  tcl(node1:number,node2:number) 
+  tcr(node1:number,node2:number) 
+ END DECLARATION
+ BEGIN MAIN
+  LOAD DATA FOR base FROM "base.facts"
+   QUERY
+    IF (NOT (base = ∅))
+     FOR t0 IN base
+      PROJECT (t0.0, t0.1) INTO tc
+  QUERY
+   FOR t0 IN tc
+    PROJECT (t0.0, t0.1) INTO @delta_tc
+  LOOP
+     QUERY
+      IF ((NOT (@delta_tc = ∅)) AND (NOT (tc = ∅)))
+       FOR t0 IN @delta_tc
+        FOR t1 IN tc ON INDEX t1.node1 = t0.1
+         IF ((NOT (t0.1,t1.1) ∈ @delta_tc) AND (NOT (t0.0,t1.1) ∈ tc))
+          PROJECT (t0.0, t1.1) INTO @new_tc
+     QUERY
+      IF ((NOT (tc = ∅)) AND (NOT (@delta_tc = ∅)))
+       FOR t0 IN tc
+        FOR t1 IN @delta_tc ON INDEX t1.node1 = t0.1
+         IF (NOT (t0.0,t1.1) ∈ tc)
+          PROJECT (t0.0, t1.1) INTO @new_tc
+   EXIT (@new_tc = ∅)
+   QUERY
+    FOR t0 IN @new_tc
+     PROJECT (t0.0, t0.1) INTO tc
+   SWAP (@delta_tc, @new_tc)
+   CLEAR @new_tc
+  END LOOP
+  CLEAR @delta_tc
+  CLEAR @new_tc
+  STORE DATA FOR tc TO "tc.out"
+  CLEAR tc
+   QUERY
+    IF (NOT (base = ∅))
+     FOR t0 IN base
+      PROJECT (t0.0, t0.1) INTO tcl
+  QUERY
+   FOR t0 IN tcl
+    PROJECT (t0.0, t0.1) INTO @delta_tcl
+  LOOP
+     QUERY
+      IF ((NOT (@delta_tcl = ∅)) AND (NOT (base = ∅)))
+       FOR t0 IN @delta_tcl
+        FOR t1 IN base ON INDEX t1.node1 = t0.1
+         IF (NOT (t0.0,t1.1) ∈ tcl)
+          PROJECT (t0.0, t1.1) INTO @new_tcl
+   EXIT (@new_tcl = ∅)
+   QUERY
+    FOR t0 IN @new_tcl
+     PROJECT (t0.0, t0.1) INTO tcl
+   SWAP (@delta_tcl, @new_tcl)
+   CLEAR @new_tcl
+  END LOOP
+  CLEAR @delta_tcl
+  CLEAR @new_tcl
+  STORE DATA FOR tcl TO "tcl.out"
+  CLEAR tcl
+   QUERY
+    IF (NOT (base = ∅))
+     FOR t0 IN base
+      PROJECT (t0.0, t0.1) INTO tcr
+  QUERY
+   FOR t0 IN tcr
+    PROJECT (t0.0, t0.1) INTO @delta_tcr
+  LOOP
+     QUERY
+      IF ((NOT (base = ∅)) AND (NOT (@delta_tcr = ∅)))
+       FOR t0 IN base
+        FOR t1 IN @delta_tcr ON INDEX t1.node1 = t0.1
+         IF (NOT (t0.0,t1.1) ∈ tcr)
+          PROJECT (t0.0, t1.1) INTO @new_tcr
+   EXIT (@new_tcr = ∅)
+   QUERY
+    FOR t0 IN @new_tcr
+     PROJECT (t0.0, t0.1) INTO tcr
+   SWAP (@delta_tcr, @new_tcr)
+   CLEAR @new_tcr
+  END LOOP
+  CLEAR @delta_tcr
+  CLEAR @new_tcr
+  STORE DATA FOR tcr TO "tcr.out"
+  CLEAR tcr
+  CLEAR base
+ END MAIN
+END PROGRAM

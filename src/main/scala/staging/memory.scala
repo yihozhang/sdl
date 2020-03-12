@@ -37,7 +37,7 @@ trait MemoryExp extends MemoryBase with UncheckedOpsExp { this: DslExp =>
   def c_prints(f: Rep[File], s: Rep[String]): Rep[Int] = unchecked[Int]("fprintf(", f, ",", s, ")")
   def c_printll(f: Rep[File], s: Rep[String]): Rep[Int] = unchecked[Int]("printll(",f,",",s,")")
   def c_swapArray(a: Rep[Any], b: Rep[Any]): Rep[Unit] = unchecked[Unit]("SWAP(",a,",",b,")")
-  def c_swap(a: Var[Any], b: Var[Any]): Rep[Unit] = reflectWrite[Unit](a.e, b.e)(CSwap(a,b))
+  def c_swap(a: Var[Any], b: Var[Any]): Rep[Unit] = reflectMutable[Unit](CSwap(a,b))
   case class CSwap(a: Var[Any], b: Var[Any]) extends Def[Unit]
   // def c_swapInt(a: Rep[Int], b: Rep[Int]): Rep[Unit] = c_swap(a, b)
 }

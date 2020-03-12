@@ -76,12 +76,20 @@ trait InterpreterUtil extends DslExp with TableUtil with ProgramUtil {
           val fields = indices.toList.map(_._1)
           val values = indices.toList.map(_._2).map(evalExpr(_))
           tableManager(rel)(fields, values: _*).foreach { tup =>
+            // printf(rel)
+            // printf(" INDEX SCAN FIND TUPLE")
+            // tup.foreach(ele => printf("%d ", ele))
+            // printf("\\n")
             evalOp(child)(tableManager, env + (v -> tup))
           }
         }
         case Scan(v, rel, child) => {
-          tableManager(rel).foreach { s =>
-            evalOp(child)(tableManager, env + (v -> s))
+          tableManager(rel).foreach { tup =>
+            // printf(rel)
+            // printf(" SCAN FIND TUPLE")
+            // tup.foreach(ele => printf("%d ", ele))
+            // printf("\\n")
+            evalOp(child)(tableManager, env + (v -> tup))
           }
         }
         case IndexChoice(v, rel, cond, indices, child) => {
@@ -111,8 +119,13 @@ trait InterpreterUtil extends DslExp with TableUtil with ProgramUtil {
           }
         }
         case Filter(cond, child) => {
+
+            val text = cond.toString
           if (evalCond(cond)) {
+            // printf("%s TRUE\\n", text)
             evalOp(child)
+          } else {
+            // printf("%s FALSE\\n", text)
           }
         }
         case Project(rel, exprs) => {
@@ -131,8 +144,25 @@ trait InterpreterUtil extends DslExp with TableUtil with ProgramUtil {
         case Conjunction(lhs, rhs) => evalCond(lhs) && evalCond(rhs)
         case Negation(child)       => !evalCond(child)
         case Constraint(lhs, op, rhs) => {
-          assert(op == CstraintOp.EQ)
-          evalExpr(lhs) == evalExpr(rhs)
+          op match {
+            case CstraintOp.EQ => evalExpr(lhs) == evalExpr(rhs)
+            // I know they are ugly, but...
+            case CstraintOp.LT =>
+              evalExpr(lhs).asInstanceOf[Rep[Int]] < evalExpr(rhs)
+                .asInstanceOf[Rep[Int]]
+            case CstraintOp.LE =>
+              evalExpr(lhs).asInstanceOf[Rep[Int]] <= evalExpr(rhs)
+                .asInstanceOf[Rep[Int]]
+            case CstraintOp.GT =>
+              evalExpr(lhs).asInstanceOf[Rep[Int]] > evalExpr(rhs)
+                .asInstanceOf[Rep[Int]]
+            case CstraintOp.GE =>
+              evalExpr(lhs).asInstanceOf[Rep[Int]] >= evalExpr(rhs)
+                .asInstanceOf[Rep[Int]]
+            case _ => throw new IllegalStateException("shouldn't reached")
+          }
+          // assert(op == CstraintOp.EQ)
+          // evalExpr(lhs) == evalExpr(rhs)
         }
         case DoesExist(exprs, rel) => {
           val fields = exprs.zipWithIndex.filter(_._1 != Bot).map {
@@ -142,7 +172,7 @@ trait InterpreterUtil extends DslExp with TableUtil with ProgramUtil {
           }
           val values = exprs.filter(_ != Bot).map((evalExpr(_)))
           val result = var_new(false)
-          tableManager(rel)(fields, values:_*).stopableForeach(_ => {
+          tableManager(rel)(fields, values: _*).stopableForeach(_ => {
             result = true
             false
           })
@@ -159,7 +189,9 @@ trait InterpreterUtil extends DslExp with TableUtil with ProgramUtil {
       if (DEBUG) println("running" + expr.toString())
       expr match {
         case TupleElement(id, elem) => env(id)(elem)
-        case ConstValue(value)      => unit(value)
+        case ConstValue(value) =>
+          if (value.isInstanceOf[Int]) unit(value.asInstanceOf[Int])
+          else unit(value.asInstanceOf[String])
         case BinaryExpr(lhs, op, rhs) => {
           val lval = evalExpr(lhs).asInstanceOf[Rep[Int]]
           val rval = evalExpr(rhs).asInstanceOf[Rep[Int]]

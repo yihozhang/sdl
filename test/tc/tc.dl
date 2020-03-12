@@ -1,0 +1,20 @@
+.output tcl(filename="tcl.ans")
+.decl tcl  (node1:number, node2:number)
+.output tcr(filename="tcr.ans")
+.decl tcr  (node1:number, node2:number)
+.input base(filename="base.facts")
+.decl base (node1:number, node2:number)
+.output tc(filename="tc.ans")
+.decl tc (node1:number, node2:number)
+
+// Left-Recursive Transitive Closure
+tcl(X, Y) :- base(X,Y).
+tcl(X,Y) :- tcl(X,Z), base(Z,Y).
+
+// Right-recursive Transitive Closure
+tcr(X,Y) :- base(X,Y).
+tcr(X,Y) :- base(X, Z),tcr(Z,Y).
+
+// Double-recursive Transitive Closure
+tc(X,Y) :- base(X,Y).
+tc(X,Y) :- tc(X,Z),tc(Z,Y).

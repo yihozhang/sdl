@@ -140,10 +140,10 @@ trait ParserUtil extends Dsl with AstUtil with ProgramUtil {
     def cstraintOp: Parser[CstraintOp] = {
       "=" ^^^ CstraintOp.EQ |
         "!=" ^^^ CstraintOp.NE |
-        ">" ^^^ CstraintOp.GT |
         ">=" ^^^ CstraintOp.GE |
-        "<" ^^^ CstraintOp.LT |
-        "<=" ^^^ CstraintOp.LE
+        ">" ^^^ CstraintOp.GT |
+        "<=" ^^^ CstraintOp.LE |
+        "<" ^^^ CstraintOp.LT
     }
 
     def exprOp: Parser[ExprOp] = {

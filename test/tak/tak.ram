@@ -1,0 +1,121 @@
+PROGRAM
+ DECLARATION
+  @delta_natural(N:number) 
+  @delta_tak(X:number,Y:number,Z:number,V:number,Q:number) 
+  @new_natural(N:number) 
+  @new_tak(X:number,Y:number,Z:number,V:number,Q:number) 
+  high1(x:number) 
+  high2(x:number) 
+  low1(x:number) 
+  low2(x:number) 
+  natural(N:number) 
+  query(N:number,Q:number) 
+  tak(X:number,Y:number,Z:number,V:number,Q:number) 
+ END DECLARATION
+ BEGIN MAIN
+  LOAD DATA FOR high1 FROM "high1.facts"
+  LOAD DATA FOR high2 FROM "high2.facts"
+  LOAD DATA FOR low1 FROM "low1.facts"
+   QUERY
+    IF (NOT (low1 = ∅))
+     FOR t0 IN low1
+      PROJECT (t0.0) INTO natural
+  QUERY
+   FOR t0 IN natural
+    PROJECT (t0.0) INTO @delta_natural
+  LOOP
+     QUERY
+      IF ((NOT (@delta_natural = ∅)) AND (NOT (high1 = ∅)))
+       FOR t0 IN @delta_natural
+        IF (NOT ((t0.0+number(1))) ∈ natural)
+         CHOICE t1 IN high1 WHERE (t0.0 < t1.0)
+          IF (t0.0 < t1.0)
+           PROJECT ((t0.0+number(1))) INTO @new_natural
+   EXIT (@new_natural = ∅)
+   QUERY
+    FOR t0 IN @new_natural
+     PROJECT (t0.0) INTO natural
+   SWAP (@delta_natural, @new_natural)
+   CLEAR @new_natural
+  END LOOP
+  CLEAR @delta_natural
+  CLEAR @new_natural
+  CLEAR low1
+  CLEAR high1
+   QUERY
+    IF (NOT (natural = ∅))
+     FOR t0 IN natural
+      FOR t1 IN natural
+       IF (t1.0 >= t0.0)
+        FOR t2 IN natural
+         PROJECT (t0.0, t1.0, t2.0, t1.0, number(0)) INTO tak
+  QUERY
+   FOR t0 IN tak
+    PROJECT (t0.0, t0.1, t0.2, t0.3, t0.4) INTO @delta_tak
+  LOOP
+     QUERY
+      IF ((NOT (tak = ∅)) AND (NOT (@delta_tak = ∅)))
+       FOR t0 IN @delta_tak
+        FOR t1 IN tak ON INDEX t1.X = (t0.1-number(1)) AND t1.Y = t0.2
+         IF (((t0.0 = (t1.2-number(1))) AND (t0.1 < t1.2)) AND (NOT (t1.0,t0.2,t1.2,t1.3,t1.4) ∈ @delta_tak))
+          FOR t2 IN tak ON INDEX t2.X = (t0.2-number(1)) AND t2.Y = t1.2 AND t2.Z = t0.1
+           IF (NOT (t2.0,t1.2,t0.1,t2.3,t2.4) ∈ @delta_tak)
+            FOR t3 IN tak ON INDEX t3.X = t0.3 AND t3.Y = t1.3 AND t3.Z = t2.3
+             IF ((NOT (t0.3,t1.3,t2.3,t3.3,t3.4) ∈ @delta_tak) AND (NOT (t1.2,t0.1,t0.2,t3.3,((((t0.4+t1.4)+t2.4)+t3.4)+number(1))) ∈ tak))
+              PROJECT (t1.2, t0.1, t0.2, t3.3, ((((t0.4+t1.4)+t2.4)+t3.4)+number(1))) INTO @new_tak
+     QUERY
+      IF ((NOT (tak = ∅)) AND (NOT (@delta_tak = ∅)))
+       FOR t0 IN tak
+        FOR t1 IN @delta_tak ON INDEX t1.X = (t0.1-number(1)) AND t1.Y = t0.2
+         IF ((t0.1 < t1.2) AND (t0.0 = (t1.2-number(1))))
+          FOR t2 IN tak ON INDEX t2.X = (t0.2-number(1)) AND t2.Y = t1.2 AND t2.Z = t0.1
+           IF (NOT (t2.0,t1.2,t0.1,t2.3,t2.4) ∈ @delta_tak)
+            FOR t3 IN tak ON INDEX t3.X = t0.3 AND t3.Y = t1.3 AND t3.Z = t2.3
+             IF ((NOT (t0.3,t1.3,t2.3,t3.3,t3.4) ∈ @delta_tak) AND (NOT (t1.2,t0.1,t0.2,t3.3,((((t0.4+t1.4)+t2.4)+t3.4)+number(1))) ∈ tak))
+              PROJECT (t1.2, t0.1, t0.2, t3.3, ((((t0.4+t1.4)+t2.4)+t3.4)+number(1))) INTO @new_tak
+     QUERY
+      IF ((NOT (tak = ∅)) AND (NOT (@delta_tak = ∅)))
+       FOR t0 IN tak
+        FOR t1 IN tak ON INDEX t1.X = (t0.1-number(1)) AND t1.Y = t0.2
+         IF ((t0.1 < t1.2) AND (t0.0 = (t1.2-number(1))))
+          FOR t2 IN @delta_tak ON INDEX t2.X = (t0.2-number(1)) AND t2.Y = t1.2 AND t2.Z = t0.1
+           FOR t3 IN tak ON INDEX t3.X = t0.3 AND t3.Y = t1.3 AND t3.Z = t2.3
+            IF ((NOT (t0.3,t1.3,t2.3,t3.3,t3.4) ∈ @delta_tak) AND (NOT (t1.2,t0.1,t0.2,t3.3,((((t0.4+t1.4)+t2.4)+t3.4)+number(1))) ∈ tak))
+             PROJECT (t1.2, t0.1, t0.2, t3.3, ((((t0.4+t1.4)+t2.4)+t3.4)+number(1))) INTO @new_tak
+     QUERY
+      IF ((NOT (@delta_tak = ∅)) AND (NOT (tak = ∅)))
+       FOR t0 IN tak
+        FOR t1 IN tak ON INDEX t1.X = (t0.1-number(1)) AND t1.Y = t0.2
+         IF ((t0.1 < t1.2) AND (t0.0 = (t1.2-number(1))))
+          FOR t2 IN tak ON INDEX t2.X = (t0.2-number(1)) AND t2.Y = t1.2 AND t2.Z = t0.1
+           FOR t3 IN @delta_tak ON INDEX t3.X = t0.3 AND t3.Y = t1.3 AND t3.Z = t2.3
+            IF (NOT (t1.2,t0.1,t0.2,t3.3,((((t0.4+t1.4)+t2.4)+t3.4)+number(1))) ∈ tak)
+             PROJECT (t1.2, t0.1, t0.2, t3.3, ((((t0.4+t1.4)+t2.4)+t3.4)+number(1))) INTO @new_tak
+   EXIT (@new_tak = ∅)
+   QUERY
+    FOR t0 IN @new_tak
+     PROJECT (t0.0, t0.1, t0.2, t0.3, t0.4) INTO tak
+   SWAP (@delta_tak, @new_tak)
+   CLEAR @new_tak
+  END LOOP
+  CLEAR @delta_tak
+  CLEAR @new_tak
+  CLEAR natural 
+
+  STORE DATA FOR tak TO "tak.out"
+  LOAD DATA FOR low2 FROM "low2.facts"
+   QUERY
+    IF (((NOT (tak = ∅)) AND (NOT (low2 = ∅))) AND (NOT (high2 = ∅)))
+     FOR t0 IN tak ON INDEX t0.Y = number(0)
+      IF (t0.2 = (t0.0+number(1)))
+       CHOICE t1 IN low2 WHERE (t0.0 >= t1.0)
+        IF (t0.0 >= t1.0)
+         CHOICE t2 IN high2 WHERE (t0.0 < t2.0)
+          IF (t0.0 < t2.0)
+           PROJECT (t0.0, t0.4) INTO query
+  STORE DATA FOR query TO "query.out"
+  CLEAR tak
+  CLEAR low2
+  CLEAR high2
+ END MAIN
+END PROGRAM

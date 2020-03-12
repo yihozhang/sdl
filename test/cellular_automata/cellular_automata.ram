@@ -1,0 +1,234 @@
+PROGRAM
+ DECLARATION
+  @delta_cell(time:number,index:number,value:number) 
+  @delta_environment(time:number,index:number,prev:number,center:number,next:number) 
+  @delta_indices(index:number) 
+  @delta_next(time:number,index:number,value:number) 
+  @delta_prev(time:number,index:number,value:number) 
+  @new_cell(time:number,index:number,value:number) 
+  @new_environment(time:number,index:number,prev:number,center:number,next:number) 
+  @new_indices(index:number) 
+  @new_next(time:number,index:number,value:number) 
+  @new_prev(time:number,index:number,value:number) 
+  cell(time:number,index:number,value:number) 
+  default(null:number) 
+  element(index:number,value:number) 
+  environment(time:number,index:number,prev:number,center:number,next:number) 
+  indices(index:number) 
+  left(index:number,value:number) 
+  neighbourhood(index:number,left:number,current:number,right:number) 
+  next(time:number,index:number,value:number) 
+  parameters(length:number) 
+  prev(time:number,index:number,value:number) 
+  right(index:number,value:number) 
+  terminate(time:number) 
+  transition(prev:number,center:number,next:number,value:number) 
+  values(index:number,value:number) 
+ END DECLARATION
+ BEGIN MAIN
+   QUERY
+    PROJECT (number(0)) INTO default
+  LOAD DATA FOR parameters FROM "parameters.facts"
+   QUERY
+    PROJECT (number(0)) INTO indices
+  QUERY
+   FOR t0 IN indices
+    PROJECT (t0.0) INTO @delta_indices
+  LOOP
+     QUERY
+      IF ((NOT (@delta_indices = ∅)) AND (NOT (parameters = ∅)))
+       FOR t0 IN @delta_indices
+        IF ((t0.0 >= number(0)) AND (NOT ((t0.0+number(1))) ∈ indices))
+         CHOICE t1 IN parameters WHERE ((t0.0+number(1)) < t1.0)
+          IF ((t0.0+number(1)) < t1.0)
+           PROJECT ((t0.0+number(1))) INTO @new_indices
+   EXIT (@new_indices = ∅)
+   QUERY
+    FOR t0 IN @new_indices
+     PROJECT (t0.0) INTO indices
+   SWAP (@delta_indices, @new_indices)
+   CLEAR @new_indices
+  END LOOP
+  CLEAR @delta_indices
+  CLEAR @new_indices
+  STORE DATA FOR indices TO "indices.out"
+  CLEAR parameters
+  LOAD DATA FOR values FROM "values.facts"
+   QUERY
+    IF ((NOT (indices = ∅)) AND (NOT (default = ∅)))
+     FOR t0 IN indices
+      IF (NOT (t0.0,⊥) ∈ values)
+       FOR t1 IN default
+        PROJECT (t0.0, t1.0) INTO element
+   QUERY
+    IF ((NOT (indices = ∅)) AND (NOT (values = ∅)))
+     FOR t0 IN indices
+      FOR t1 IN values ON INDEX t1.index = t0.0
+       PROJECT (t0.0, t1.1) INTO element
+  STORE DATA FOR element TO "element.out"
+  CLEAR values
+  CLEAR indices
+   QUERY
+    IF ((NOT (element = ∅)) AND (NOT (default = ∅)))
+     FOR t0 IN element
+      IF (NOT ((t0.0-number(1)),⊥) ∈ element)
+       FOR t1 IN default
+        PROJECT (t0.0, t1.0) INTO left
+   QUERY
+    IF (NOT (element = ∅))
+     FOR t0 IN element
+      FOR t1 IN element
+       IF (t0.0 = (t1.0-number(1)))
+        PROJECT (t1.0, t0.1) INTO left
+   QUERY
+    IF ((NOT (element = ∅)) AND (NOT (default = ∅)))
+     FOR t0 IN element
+      IF (NOT ((t0.0+number(1)),⊥) ∈ element)
+       FOR t1 IN default
+        PROJECT (t0.0, t1.0) INTO right
+   QUERY
+    IF (NOT (element = ∅))
+     FOR t0 IN element
+      FOR t1 IN element
+       IF (t0.0 = (t1.0+number(1)))
+        PROJECT (t1.0, t0.1) INTO right
+   QUERY
+    IF (((NOT (left = ∅)) AND (NOT (element = ∅))) AND (NOT (right = ∅)))
+     FOR t0 IN left
+      FOR t1 IN element ON INDEX t1.index = t0.0
+       FOR t2 IN right ON INDEX t2.index = t0.0
+        PROJECT (t0.0, t0.1, t1.1, t2.1) INTO neighbourhood
+  STORE DATA FOR neighbourhood TO "neighbourhood.out"
+  CLEAR left
+  CLEAR right
+  LOAD DATA FOR terminate FROM "terminate.facts"
+   QUERY
+    PROJECT (number(0), number(0), number(0), number(0)) INTO transition
+   QUERY
+    PROJECT (number(0), number(0), number(1), number(0)) INTO transition
+   QUERY
+    PROJECT (number(0), number(1), number(0), number(0)) INTO transition
+   QUERY
+    PROJECT (number(0), number(1), number(1), number(1)) INTO transition
+   QUERY
+    PROJECT (number(1), number(0), number(0), number(0)) INTO transition
+   QUERY
+    PROJECT (number(1), number(0), number(1), number(1)) INTO transition
+   QUERY
+    PROJECT (number(1), number(1), number(0), number(1)) INTO transition
+   QUERY
+    PROJECT (number(1), number(1), number(1), number(0)) INTO transition
+  QUERY
+   FOR t0 IN prev
+    PROJECT (t0.0, t0.1, t0.2) INTO @delta_prev
+  QUERY
+   FOR t0 IN next
+    PROJECT (t0.0, t0.1, t0.2) INTO @delta_next
+   QUERY
+    IF (NOT (element = ∅))
+     FOR t0 IN element
+      PROJECT (number(0), t0.0, t0.1) INTO cell
+  QUERY
+   FOR t0 IN cell
+    PROJECT (t0.0, t0.1, t0.2) INTO @delta_cell
+  QUERY
+   FOR t0 IN environment
+    PROJECT (t0.0, t0.1, t0.2, t0.3, t0.4) INTO @delta_environment
+  LOOP
+     QUERY
+      IF ((NOT (@delta_cell = ∅)) AND (NOT (default = ∅)))
+       FOR t0 IN @delta_cell
+        IF (NOT ((t0.1-number(1)),⊥) ∈ element)
+         FOR t1 IN default
+          IF (NOT (t0.0,t0.1,t1.0) ∈ prev)
+           PROJECT (t0.0, t0.1, t1.0) INTO @new_prev
+     QUERY
+      IF ((NOT (@delta_cell = ∅)) AND (NOT (element = ∅)))
+       FOR t0 IN @delta_cell
+        FOR t1 IN element
+         IF ((t0.1 = (t1.0-number(1))) AND (NOT (t0.0,t1.0,t0.2) ∈ prev))
+          PROJECT (t0.0, t1.0, t0.2) INTO @new_prev
+     QUERY
+      IF ((NOT (@delta_cell = ∅)) AND (NOT (default = ∅)))
+       FOR t0 IN @delta_cell
+        IF (NOT ((t0.1+number(1)),⊥) ∈ element)
+         FOR t1 IN default
+          IF (NOT (t0.0,t0.1,t1.0) ∈ next)
+           PROJECT (t0.0, t0.1, t1.0) INTO @new_next
+     QUERY
+      IF ((NOT (@delta_cell = ∅)) AND (NOT (element = ∅)))
+       FOR t0 IN @delta_cell
+        FOR t1 IN element
+         IF ((t0.1 = (t1.0+number(1))) AND (NOT (t0.0,t1.0,t0.2) ∈ next))
+          PROJECT (t0.0, t1.0, t0.2) INTO @new_next
+     QUERY
+      IF ((NOT (@delta_environment = ∅)) AND (NOT (transition = ∅)))
+       FOR t0 IN @delta_environment
+        IF (NOT (t0.0) ∈ terminate)
+         FOR t1 IN transition ON INDEX t1.prev = t0.2 AND t1.center = t0.3 AND t1.next = t0.4
+          IF (NOT ((t0.0+number(1)),t0.1,t1.3) ∈ cell)
+           PROJECT ((t0.0+number(1)), t0.1, t1.3) INTO @new_cell
+     QUERY
+      IF (((NOT (@delta_prev = ∅)) AND (NOT (cell = ∅))) AND (NOT (next = ∅)))
+       FOR t0 IN @delta_prev
+        FOR t1 IN cell ON INDEX t1.time = t0.0 AND t1.index = t0.1
+         IF (NOT (t0.0,t0.1,t1.2) ∈ @delta_cell)
+          FOR t2 IN next ON INDEX t2.time = t0.0 AND t2.index = t0.1
+           IF ((NOT (t0.0,t0.1,t2.2) ∈ @delta_next) AND (NOT (t0.0,t0.1,t0.2,t1.2,t2.2) ∈ environment))
+            PROJECT (t0.0, t0.1, t0.2, t1.2, t2.2) INTO @new_environment
+     QUERY
+      IF (((NOT (prev = ∅)) AND (NOT (@delta_cell = ∅))) AND (NOT (next = ∅)))
+       FOR t0 IN prev
+        FOR t1 IN @delta_cell ON INDEX t1.time = t0.0 AND t1.index = t0.1
+         FOR t2 IN next ON INDEX t2.time = t0.0 AND t2.index = t0.1
+          IF ((NOT (t0.0,t0.1,t2.2) ∈ @delta_next) AND (NOT (t0.0,t0.1,t0.2,t1.2,t2.2) ∈ environment))
+           PROJECT (t0.0, t0.1, t0.2, t1.2, t2.2) INTO @new_environment
+     QUERY
+      IF (((NOT (prev = ∅)) AND (NOT (cell = ∅))) AND (NOT (@delta_next = ∅)))
+       FOR t0 IN prev
+        FOR t1 IN cell ON INDEX t1.time = t0.0 AND t1.index = t0.1
+         FOR t2 IN @delta_next ON INDEX t2.time = t0.0 AND t2.index = t0.1
+          IF (NOT (t0.0,t0.1,t0.2,t1.2,t2.2) ∈ environment)
+           PROJECT (t0.0, t0.1, t0.2, t1.2, t2.2) INTO @new_environment
+   EXIT ((((@new_prev = ∅) AND (@new_next = ∅)) AND (@new_cell = ∅)) AND (@new_environment = ∅))
+   QUERY
+    FOR t0 IN @new_prev
+     PROJECT (t0.0, t0.1, t0.2) INTO prev
+   SWAP (@delta_prev, @new_prev)
+   CLEAR @new_prev
+   QUERY
+    FOR t0 IN @new_next
+     PROJECT (t0.0, t0.1, t0.2) INTO next
+   SWAP (@delta_next, @new_next)
+   CLEAR @new_next
+   QUERY
+    FOR t0 IN @new_cell
+     PROJECT (t0.0, t0.1, t0.2) INTO cell
+   SWAP (@delta_cell, @new_cell)
+   CLEAR @new_cell
+   QUERY
+    FOR t0 IN @new_environment
+     PROJECT (t0.0, t0.1, t0.2, t0.3, t0.4) INTO environment
+   SWAP (@delta_environment, @new_environment)
+   CLEAR @new_environment
+  END LOOP
+  CLEAR @delta_prev
+  CLEAR @new_prev
+  CLEAR @delta_next
+  CLEAR @new_next
+  CLEAR @delta_cell
+  CLEAR @new_cell
+  CLEAR @delta_environment
+  CLEAR @new_environment
+  STORE DATA FOR cell TO "cell.out"
+  STORE DATA FOR environment TO "environment.out"
+  CLEAR default
+  CLEAR element
+  CLEAR terminate
+  CLEAR transition
+  CLEAR prev
+  CLEAR next
+  CLEAR cell
+  CLEAR environment
+ END MAIN
+END PROGRAM

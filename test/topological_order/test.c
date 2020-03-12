@@ -86,2769 +86,2698 @@ void Snippet(char*  x0) {
 int32_t x1 = 4194304;
 int32_t x2 = 4194304;
 int32_t* x3 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x4 = 0;
+int32_t* x4 = x3;
 int32_t x5 = 0;
-int32_t x6 = 4194304;
-int32_t* x7 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x8 = 0;
-int32_t* x9 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x11=0; x11 < 4194304; x11++) {
-x9[x11] = -1;
+int32_t x6 = 0;
+int32_t x7 = 4194304;
+int32_t* x8 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x9 = x8;
+int32_t x10 = 0;
+int32_t* x11 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x12 = x11;
+for(int x14=0; x14 < 4194304; x14++) {
+int32_t* x15 = x12;
+x15[x14] = -1;
 
 }
-int32_t x15 = 4194304;
-int32_t x16 = 4194304;
-int32_t* x17 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x18 = 0;
 int32_t x19 = 4194304;
-int32_t* x20 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x21 = 0;
-int32_t x22 = 0;
-int32_t x23 = 4194304;
-int32_t* x24 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x25 = 0;
-int32_t* x26 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x27=0; x27 < 4194304; x27++) {
-x26[x27] = -1;
-
-}
-int32_t x31 = 4194304;
-int32_t x32 = 4194304;
+int32_t x20 = 4194304;
+int32_t* x21 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x22 = x21;
+int32_t x23 = 0;
+int32_t x24 = 4194304;
+int32_t* x25 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x26 = x25;
+int32_t x27 = 0;
+int32_t x28 = 0;
+int32_t x29 = 4194304;
+int32_t* x30 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x31 = x30;
+int32_t x32 = 0;
 int32_t* x33 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x34 = 0;
-int32_t x35 = 4194304;
-int32_t* x36 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x37 = 0;
-int32_t x38 = 0;
-int32_t x39 = 4194304;
-int32_t* x40 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x41 = 0;
-int32_t x42 = 4194304;
-int32_t* x43 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x34 = x33;
+for(int x35=0; x35 < 4194304; x35++) {
+int32_t* x36 = x34;
+x36[x35] = -1;
+
+}
+int32_t x40 = 4194304;
+int32_t x41 = 4194304;
+int32_t* x42 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x43 = x42;
 int32_t x44 = 0;
-int32_t* x45 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t x45 = 4194304;
 int32_t* x46 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x47=0; x47 < 4194304; x47++) {
-x45[x47] = -1;
+int32_t* x47 = x46;
+int32_t x48 = 0;
+int32_t x49 = 0;
+int32_t x50 = 4194304;
+int32_t* x51 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x52 = x51;
+int32_t x53 = 0;
+int32_t x54 = 4194304;
+int32_t* x55 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x56 = x55;
+int32_t x57 = 0;
+int32_t* x58 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x59 = x58;
+int32_t* x60 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x61 = x60;
+for(int x63=0; x63 < 16384; x63++) {
+int32_t* x64 = x59;
+x64[x63] = -1;
 
 }
-for(int x51=0; x51 < 4194304; x51++) {
-x46[x51] = -1;
+for(int x68=0; x68 < 16384; x68++) {
+int32_t* x69 = x61;
+x69[x68] = -1;
 
 }
-int32_t x55 = 4194304;
-int32_t x56 = 4194304;
-int32_t* x57 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x58 = 0;
-int32_t x59 = 4194304;
-int32_t* x60 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x61 = 0;
-int32_t x62 = 0;
-int32_t x63 = 4194304;
-int32_t* x64 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x65 = 0;
-int32_t x66 = 4194304;
-int32_t* x67 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x68 = 0;
-int32_t* x69 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t* x70 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x71=0; x71 < 4194304; x71++) {
-x69[x71] = -1;
-
-}
-for(int x75=0; x75 < 4194304; x75++) {
-x70[x75] = -1;
-
-}
-int32_t x79 = 4194304;
-int32_t x80 = 4194304;
-int32_t* x81 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t x73 = 4194304;
+int32_t x74 = 4194304;
+int32_t* x75 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x76 = x75;
+int32_t x77 = 0;
+int32_t x78 = 4194304;
+int32_t* x79 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x80 = x79;
+int32_t x81 = 0;
 int32_t x82 = 0;
 int32_t x83 = 4194304;
 int32_t* x84 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x85 = 0;
+int32_t* x85 = x84;
 int32_t x86 = 0;
 int32_t x87 = 4194304;
 int32_t* x88 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x89 = 0;
-int32_t x90 = 4194304;
-int32_t* x91 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x92 = 0;
-int32_t* x93 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t* x94 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x95=0; x95 < 4194304; x95++) {
-x93[x95] = -1;
+int32_t* x89 = x88;
+int32_t x90 = 0;
+int32_t* x91 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x92 = x91;
+int32_t* x93 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x94 = x93;
+for(int x95=0; x95 < 16384; x95++) {
+int32_t* x96 = x92;
+x96[x95] = -1;
 
 }
-for(int x99=0; x99 < 4194304; x99++) {
-x94[x99] = -1;
+for(int x100=0; x100 < 16384; x100++) {
+int32_t* x101 = x94;
+x101[x100] = -1;
 
 }
-int32_t x103 = 4194304;
-int32_t x104 = 4194304;
-int32_t* x105 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x106 = 0;
-int32_t x107 = 4194304;
-int32_t* x108 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t x105 = 4194304;
+int32_t x106 = 4194304;
+int32_t* x107 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x108 = x107;
 int32_t x109 = 0;
-int32_t x110 = 0;
-int32_t x111 = 4194304;
-int32_t* x112 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t x110 = 4194304;
+int32_t* x111 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x112 = x111;
 int32_t x113 = 0;
-int32_t x114 = 4194304;
-int32_t* x115 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x116 = 0;
-int32_t* x117 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t* x118 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x119=0; x119 < 4194304; x119++) {
-x117[x119] = -1;
+int32_t x114 = 0;
+int32_t x115 = 4194304;
+int32_t* x116 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x117 = x116;
+int32_t x118 = 0;
+int32_t x119 = 4194304;
+int32_t* x120 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x121 = x120;
+int32_t x122 = 0;
+int32_t* x123 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x124 = x123;
+int32_t* x125 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x126 = x125;
+for(int x127=0; x127 < 4194304; x127++) {
+int32_t* x128 = x124;
+x128[x127] = -1;
 
 }
-for(int x123=0; x123 < 4194304; x123++) {
-x118[x123] = -1;
+for(int x132=0; x132 < 4194304; x132++) {
+int32_t* x133 = x126;
+x133[x132] = -1;
 
 }
-int32_t x127 = 4194304;
-int32_t x128 = 4194304;
-int32_t* x129 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x130 = 0;
-int32_t x131 = 4194304;
-int32_t* x132 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x133 = 0;
-int32_t x134 = 0;
-int32_t x135 = 4194304;
-int32_t* x136 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x137 = 0;
+int32_t x137 = 4194304;
 int32_t x138 = 4194304;
 int32_t* x139 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x140 = 0;
-int32_t* x141 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t* x142 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x143=0; x143 < 4194304; x143++) {
-x141[x143] = -1;
-
-}
-for(int x147=0; x147 < 4194304; x147++) {
-x142[x147] = -1;
-
-}
+int32_t* x140 = x139;
+int32_t x141 = 0;
+int32_t x142 = 4194304;
+int32_t* x143 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x144 = x143;
+int32_t x145 = 0;
+int32_t x146 = 0;
+int32_t x147 = 4194304;
+int32_t* x148 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x149 = x148;
+int32_t x150 = 0;
 int32_t x151 = 4194304;
-int32_t x152 = 4194304;
-int32_t* x153 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x152 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x153 = x152;
 int32_t x154 = 0;
-int32_t x155 = 4194304;
-int32_t* x156 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x157 = 0;
-int32_t x158 = 0;
-int32_t x159 = 4194304;
-int32_t* x160 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x161 = 0;
-int32_t x162 = 4194304;
-int32_t* x163 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x164 = 0;
-int32_t x165 = 4194304;
-int32_t* x166 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x167 = 0;
-int32_t* x168 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t* x169 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t* x170 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x171=0; x171 < 4194304; x171++) {
-x168[x171] = -1;
+int32_t* x155 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x156 = x155;
+int32_t* x157 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x158 = x157;
+for(int x159=0; x159 < 16384; x159++) {
+int32_t* x160 = x156;
+x160[x159] = -1;
 
 }
-for(int x175=0; x175 < 4194304; x175++) {
-x169[x175] = -1;
+for(int x164=0; x164 < 16384; x164++) {
+int32_t* x165 = x158;
+x165[x164] = -1;
 
 }
-for(int x179=0; x179 < 4194304; x179++) {
-x170[x179] = -1;
-
-}
+int32_t x169 = 4194304;
+int32_t x170 = 4194304;
+int32_t* x171 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x172 = x171;
+int32_t x173 = 0;
+int32_t x174 = 4194304;
+int32_t* x175 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x176 = x175;
+int32_t x177 = 0;
+int32_t x178 = 0;
+int32_t x179 = 4194304;
+int32_t* x180 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x181 = x180;
+int32_t x182 = 0;
 int32_t x183 = 4194304;
-int32_t x184 = 4194304;
-int32_t* x185 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x184 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x185 = x184;
 int32_t x186 = 0;
-int32_t x187 = 4194304;
-int32_t* x188 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x189 = 0;
-int32_t x190 = 0;
-int32_t x191 = 4194304;
-int32_t* x192 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x193 = 0;
-int32_t x194 = 4194304;
-int32_t* x195 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x196 = 0;
-int32_t* x197 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t* x198 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x199=0; x199 < 4194304; x199++) {
-x197[x199] = -1;
+int32_t* x187 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x188 = x187;
+int32_t* x189 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x190 = x189;
+for(int x191=0; x191 < 16384; x191++) {
+int32_t* x192 = x188;
+x192[x191] = -1;
 
 }
-for(int x203=0; x203 < 4194304; x203++) {
-x198[x203] = -1;
+for(int x196=0; x196 < 16384; x196++) {
+int32_t* x197 = x190;
+x197[x196] = -1;
 
 }
-int32_t x207 = 4194304;
-int32_t x208 = 4194304;
-int32_t* x209 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t x201 = 4194304;
+int32_t x202 = 4194304;
+int32_t* x203 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x204 = x203;
+int32_t x205 = 0;
+int32_t x206 = 4194304;
+int32_t* x207 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x208 = x207;
+int32_t x209 = 0;
 int32_t x210 = 0;
 int32_t x211 = 4194304;
 int32_t* x212 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x213 = 0;
+int32_t* x213 = x212;
 int32_t x214 = 0;
 int32_t x215 = 4194304;
 int32_t* x216 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x217 = 0;
-int32_t x218 = 4194304;
-int32_t* x219 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x220 = 0;
-int32_t* x221 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t* x222 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x223=0; x223 < 4194304; x223++) {
-x221[x223] = -1;
+int32_t* x217 = x216;
+int32_t x218 = 0;
+int32_t x219 = 4194304;
+int32_t* x220 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x221 = x220;
+int32_t x222 = 0;
+int32_t* x223 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x224 = x223;
+int32_t* x225 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x226 = x225;
+int32_t* x227 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x228 = x227;
+for(int x229=0; x229 < 4194304; x229++) {
+int32_t* x230 = x224;
+x230[x229] = -1;
 
 }
-for(int x227=0; x227 < 4194304; x227++) {
-x222[x227] = -1;
+for(int x234=0; x234 < 4194304; x234++) {
+int32_t* x235 = x226;
+x235[x234] = -1;
 
 }
-int32_t x231 = 4194304;
-int32_t x232 = 4194304;
-int32_t* x233 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x234 = 0;
-int32_t x235 = 4194304;
-int32_t* x236 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x237 = 0;
-int32_t x238 = 0;
-int32_t x239 = 4194304;
-int32_t* x240 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x241 = 0;
-int32_t x242 = 4194304;
-int32_t* x243 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x244 = 0;
-int32_t* x245 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+for(int x239=0; x239 < 4194304; x239++) {
+int32_t* x240 = x228;
+x240[x239] = -1;
+
+}
+int32_t x244 = 4194304;
+int32_t x245 = 4194304;
 int32_t* x246 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x247=0; x247 < 4194304; x247++) {
-x245[x247] = -1;
-
-}
-for(int x251=0; x251 < 4194304; x251++) {
-x246[x251] = -1;
-
-}
-int32_t x255 = 4194304;
-int32_t x256 = 4194304;
-int32_t* x257 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x258 = 0;
-int32_t x259 = 4194304;
-int32_t* x260 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x247 = x246;
+int32_t x248 = 0;
+int32_t x249 = 4194304;
+int32_t* x250 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x251 = x250;
+int32_t x252 = 0;
+int32_t x253 = 0;
+int32_t x254 = 4194304;
+int32_t* x255 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x256 = x255;
+int32_t x257 = 0;
+int32_t x258 = 4194304;
+int32_t* x259 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x260 = x259;
 int32_t x261 = 0;
-int32_t x262 = 0;
-int32_t x263 = 4194304;
-int32_t* x264 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-int32_t x265 = 0;
-int32_t* x266 = (int32_t*)malloc(4194304 * sizeof(int32_t));
-for(int x267=0; x267 < 4194304; x267++) {
-x266[x267] = -1;
+int32_t* x262 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x263 = x262;
+int32_t* x264 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x265 = x264;
+for(int x266=0; x266 < 16384; x266++) {
+int32_t* x267 = x263;
+x267[x266] = -1;
 
 }
-int32_t x274 = 0;
-int32_t x271 = open("./edge.facts",0);
-int32_t x272 = fsize(x271);
-char* x273 = mmap(0, x272, PROT_READ, MAP_FILE | MAP_SHARED, x271, 0);
+for(int x271=0; x271 < 16384; x271++) {
+int32_t* x272 = x265;
+x272[x271] = -1;
+
+}
+int32_t x276 = 4194304;
+int32_t x277 = 4194304;
+int32_t* x278 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x279 = x278;
+int32_t x280 = 0;
+int32_t x281 = 4194304;
+int32_t* x282 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x283 = x282;
+int32_t x284 = 0;
+int32_t x285 = 0;
+int32_t x286 = 4194304;
+int32_t* x287 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x288 = x287;
+int32_t x289 = 0;
+int32_t x290 = 4194304;
+int32_t* x291 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x292 = x291;
+int32_t x293 = 0;
+int32_t* x294 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x295 = x294;
+int32_t* x296 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x297 = x296;
+for(int x298=0; x298 < 4194304; x298++) {
+int32_t* x299 = x295;
+x299[x298] = -1;
+
+}
+for(int x303=0; x303 < 4194304; x303++) {
+int32_t* x304 = x297;
+x304[x303] = -1;
+
+}
+int32_t x308 = 4194304;
+int32_t x309 = 4194304;
+int32_t* x310 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x311 = x310;
+int32_t x312 = 0;
+int32_t x313 = 4194304;
+int32_t* x314 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x315 = x314;
+int32_t x316 = 0;
+int32_t x317 = 0;
+int32_t x318 = 4194304;
+int32_t* x319 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x320 = x319;
+int32_t x321 = 0;
+int32_t x322 = 4194304;
+int32_t* x323 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x324 = x323;
+int32_t x325 = 0;
+int32_t* x326 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x327 = x326;
+int32_t* x328 = (int32_t*)malloc(16384 * sizeof(int32_t));
+int32_t* x329 = x328;
+for(int x330=0; x330 < 16384; x330++) {
+int32_t* x331 = x327;
+x331[x330] = -1;
+
+}
+for(int x335=0; x335 < 16384; x335++) {
+int32_t* x336 = x329;
+x336[x335] = -1;
+
+}
+int32_t x340 = 4194304;
+int32_t x341 = 4194304;
+int32_t* x342 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x343 = x342;
+int32_t x344 = 0;
+int32_t x345 = 4194304;
+int32_t* x346 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x347 = x346;
+int32_t x348 = 0;
+int32_t x349 = 0;
+int32_t x350 = 4194304;
+int32_t* x351 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x352 = x351;
+int32_t x353 = 0;
+int32_t* x354 = (int32_t*)malloc(4194304 * sizeof(int32_t));
+int32_t* x355 = x354;
+for(int x356=0; x356 < 4194304; x356++) {
+int32_t* x357 = x355;
+x357[x356] = -1;
+
+}
+int32_t x364 = 0;
+int32_t x361 = open("./edge.facts",0);
+int32_t x362 = fsize(x361);
+char* x363 = mmap(0, x362, PROT_READ, MAP_FILE | MAP_SHARED, x361, 0);
 for (;;) {
-int32_t x275 = x274;
-bool x276 = x275 < x272;
-if (!x276) break;
-int32_t x278 = x274;
+int32_t x365 = x364;
+bool x366 = x365 < x362;
+if (!x366) break;
+int32_t x368 = x364;
 for (;;) {
-int32_t x279 = x274;
-char x280 = x273[x279];
-bool x281 = x280 != '\t';
-if (!x281) break;
-x274 += 1;
+int32_t x369 = x364;
+char x370 = x363[x369];
+bool x371 = x370 != '\t';
+if (!x371) break;
+x364 += 1;
 }
-int32_t x286 = x274;
-x274 += 1;
-char* x289 = x273+x278;
-int32_t x290 = atoi(x289);
-int32_t x291 = x274;
+int32_t x376 = x364;
+x364 += 1;
+char* x379 = x363+x368;
+int32_t x380 = atoi(x379);
+int32_t x381 = x364;
 for (;;) {
-int32_t x292 = x274;
-char x293 = x273[x292];
-bool x294 = x293 != '\n';
-if (!x294) break;
-x274 += 1;
+int32_t x382 = x364;
+char x383 = x363[x382];
+bool x384 = x383 != '\n';
+if (!x384) break;
+x364 += 1;
 }
-int32_t x299 = x274;
-x274 += 1;
-char* x302 = x273+x291;
-int32_t x303 = atoi(x302);
-int32_t x304 = x158;
-int32_t x305 = x151;
-bool x306 = x304 == x305;
-if (x306) {
-x151 *= 4;
-int32_t x308 = x151;
-printf("buffer.resize %d\n",x308);
-} else {
-}
-x153[x304] = x290;
-x156[x304] = x303;
-x158 += 1;
-int32_t x315 = 1;
-x315 *= x290;
-x315 *= x303;
-int32_t x318 = x315;
-int32_t x319 = x318 & 4194303;
-int32_t x320 = x168[x319];
-int32_t x321 = x320;
-x168[x319] = x304;
-x160[x304] = x320;
-int32_t x324 = 1;
-x324 *= x303;
-int32_t x326 = x324;
-int32_t x327 = x326 & 4194303;
-int32_t x328 = x169[x327];
-int32_t x329 = x328;
-x169[x327] = x304;
-x163[x304] = x328;
-int32_t x332 = 1;
-x332 *= x290;
-int32_t x334 = x332;
-int32_t x335 = x334 & 4194303;
-int32_t x336 = x170[x335];
-int32_t x337 = x336;
-x170[x335] = x304;
-x166[x304] = x336;
-}
-int32_t x342 = x158;
-bool x343 = x342 == 0;
-if (x343) {
-} else {
-for(int x346=0; x346 < x342; x346++) {
-bool x349 = true;
-int32_t x350 = 1;
-int32_t x347 = x156[x346];
-x350 *= x347;
-int32_t x348 = x153[x346];
-x350 *= x348;
-int32_t x353 = x350;
-int32_t x354 = x353 & 4194303;
-int32_t x355 = x221[x354];
-int32_t x356 = x355;
-bool x357 = true;
-for (;;) {
-bool x358 = x357;
-bool x362;
-if (x358) {
-int32_t x359 = x356;
-bool x360 = x359 != -1;
-x362 = x360;
-} else {
-x362 = false;
-}
-if (!x362) break;
-int32_t x364 = x356;
-int32_t x365 = x216[x364];
-x356 = x365;
-bool x367 = true;
-int32_t x368 = x209[x364];
-bool x369 = x347 == x368;
-if (x369) {
-} else {
-x367 = false;
-}
-int32_t x373 = x212[x364];
-bool x374 = x348 == x373;
-if (x374) {
-} else {
-x367 = false;
-}
-bool x378 = x367;
-if (x378) {
-bool x379 = true;
-if (x369) {
-} else {
-x379 = false;
-}
-if (x374) {
-} else {
-x379 = false;
-}
-bool x386 = x379;
-if (x386) {
-x349 = false;
-} else {
-}
-bool x390 = x349;
-x357 = x390;
-} else {
-}
-}
-bool x396 = x349;
+int32_t x389 = x364;
+x364 += 1;
+char* x392 = x363+x381;
+int32_t x393 = atoi(x392);
+int32_t x394 = x210;
+int32_t x395 = x201;
+bool x396 = x394 == x395;
 if (x396) {
-int32_t x399 = x214;
-int32_t x400 = x207;
-bool x401 = x399 == x400;
-if (x401) {
-x207 *= 4;
-int32_t x403 = x207;
-printf("buffer.resize %d\n",x403);
+x201 *= 4;
+int32_t x398 = x201;
+printf("buffer.resize %d\n",x398);
 } else {
 }
-x209[x399] = x347;
-x212[x399] = x348;
-x214 += 1;
-int32_t x410 = 1;
-x410 *= x347;
-x410 *= x348;
-int32_t x413 = x410;
-int32_t x414 = x413 & 4194303;
-int32_t x415 = x221[x414];
-int32_t x416 = x415;
-x221[x414] = x399;
-x216[x399] = x415;
-int32_t x419 = 1;
-x419 *= x348;
-int32_t x421 = x419;
-int32_t x422 = x421 & 4194303;
-int32_t x423 = x222[x422];
-int32_t x424 = x423;
-x222[x422] = x399;
-x219[x399] = x423;
+int32_t* x402 = x204;
+x402[x394] = x380;
+int32_t* x404 = x208;
+x404[x394] = x393;
+x210 += 1;
+int32_t x407 = x394;
+int32_t x408 = 0;
+int32_t x409 = x380 + 233;
+x408 = x409;
+int32_t x411 = x409 * 1009;
+int32_t x412 = x411 + x393;
+int32_t x413 = x412 + 233;
+x408 = x413;
+int32_t* x416 = x224;
+int32_t x415 = x413 & 4194303;
+int32_t x417 = x416[x415];
+int32_t x418 = x417;
+x416[x415] = x394;
+int32_t* x420 = x213;
+x420[x394] = x417;
+int32_t x422 = 0;
+int32_t x423 = x393 + 233;
+x422 = x423;
+int32_t* x426 = x226;
+int32_t x425 = x423 & 4194303;
+int32_t x427 = x426[x425];
+int32_t x428 = x427;
+x426[x425] = x394;
+int32_t* x430 = x217;
+x430[x394] = x427;
+int32_t x432 = 0;
+x432 = x409;
+int32_t* x435 = x228;
+int32_t x434 = x409 & 4194303;
+int32_t x436 = x435[x434];
+int32_t x437 = x436;
+x435[x434] = x394;
+int32_t* x439 = x221;
+x439[x394] = x436;
+}
+int32_t x443 = x210;
+bool x444 = x443 == 0;
+if (x444) {
 } else {
-}
-
-}
-}
-int32_t x433 = x214;
-for(int x435=0; x435 < x433; x435++) {
-bool x438 = true;
-int32_t x439 = 1;
-int32_t x436 = x209[x435];
-x439 *= x436;
-int32_t x437 = x212[x435];
-x439 *= x437;
-int32_t x442 = x439;
-int32_t x443 = x442 & 4194303;
-int32_t x444 = x245[x443];
-int32_t x445 = x444;
-bool x446 = true;
+for(int x447=0; x447 < x443; x447++) {
+int32_t* x448 = x208;
+int32_t* x450 = x204;
+bool x452 = true;
+int32_t x453 = 0;
+int32_t x449 = x448[x447];
+int32_t x454 = x449 + 233;
+x453 = x454;
+int32_t x451 = x450[x447];
+int32_t x456 = x454 * 1009;
+int32_t x457 = x456 + x451;
+int32_t x458 = x457 + 233;
+x453 = x458;
+int32_t* x461 = x295;
+int32_t x460 = x458 & 4194303;
+int32_t x462 = x461[x460];
+int32_t x463 = x462;
+bool x464 = true;
 for (;;) {
-bool x447 = x446;
-bool x451;
-if (x447) {
-int32_t x448 = x445;
-bool x449 = x448 != -1;
-x451 = x449;
+bool x465 = x464;
+bool x469;
+if (x465) {
+int32_t x466 = x463;
+bool x467 = x466 != -1;
+x469 = x467;
 } else {
-x451 = false;
+x469 = false;
 }
-if (!x451) break;
-int32_t x453 = x445;
-int32_t x454 = x240[x453];
-x445 = x454;
-bool x456 = true;
-int32_t x457 = x233[x453];
-bool x458 = x436 == x457;
-if (x458) {
-} else {
-x456 = false;
-}
-int32_t x462 = x236[x453];
-bool x463 = x437 == x462;
-if (x463) {
-} else {
-x456 = false;
-}
-bool x467 = x456;
-if (x467) {
-bool x468 = true;
-if (x458) {
-} else {
-x468 = false;
-}
-if (x463) {
-} else {
-x468 = false;
-}
-bool x475 = x468;
+if (!x469) break;
+int32_t x471 = x463;
+bool x472 = true;
+int32_t* x473 = x279;
+int32_t x474 = x473[x471];
+bool x475 = x449 == x474;
 if (x475) {
-x438 = false;
 } else {
+x472 = false;
 }
-bool x479 = x438;
-x446 = x479;
+int32_t* x479 = x283;
+int32_t x480 = x479[x471];
+bool x481 = x451 == x480;
+if (x481) {
 } else {
+x472 = false;
 }
-}
-bool x485 = x438;
+bool x485 = x472;
 if (x485) {
-int32_t x488 = x238;
-int32_t x489 = x231;
-bool x490 = x488 == x489;
-if (x490) {
-x231 *= 4;
-int32_t x492 = x231;
-printf("buffer.resize %d\n",x492);
+bool x486 = true;
+if (x475) {
+} else {
+x486 = false;
+}
+if (x481) {
+} else {
+x486 = false;
+}
+bool x493 = x486;
+if (x493) {
+x452 = false;
 } else {
 }
-x233[x488] = x436;
-x236[x488] = x437;
-x238 += 1;
-int32_t x499 = 1;
-x499 *= x436;
-x499 *= x437;
-int32_t x502 = x499;
-int32_t x503 = x502 & 4194303;
-int32_t x504 = x245[x503];
-int32_t x505 = x504;
-x245[x503] = x488;
-x240[x488] = x504;
-int32_t x508 = 1;
-x508 *= x437;
-int32_t x510 = x508;
-int32_t x511 = x510 & 4194303;
-int32_t x512 = x246[x511];
-int32_t x513 = x512;
-x246[x511] = x488;
-x243[x488] = x512;
+bool x497 = x452;
+x464 = x497;
+} else {
+}
+int32_t* x501 = x288;
+int32_t x502 = x501[x471];
+x463 = x502;
+}
+bool x506 = x452;
+if (x506) {
+int32_t x509 = x285;
+int32_t x510 = x276;
+bool x511 = x509 == x510;
+if (x511) {
+x276 *= 4;
+int32_t x513 = x276;
+printf("buffer.resize %d\n",x513);
+} else {
+}
+int32_t* x517 = x279;
+x517[x509] = x449;
+int32_t* x519 = x283;
+x519[x509] = x451;
+x285 += 1;
+int32_t x522 = x509;
+int32_t x523 = 0;
+x523 = x454;
+x523 = x458;
+int32_t x526 = x462;
+x461[x460] = x509;
+int32_t* x528 = x288;
+x528[x509] = x462;
+int32_t x530 = 0;
+int32_t x531 = x451 + 233;
+x530 = x531;
+int32_t* x534 = x297;
+int32_t x533 = x531 & 4194303;
+int32_t x535 = x534[x533];
+int32_t x536 = x535;
+x534[x533] = x509;
+int32_t* x538 = x292;
+x538[x509] = x535;
 } else {
 }
 
 }
-bool x520 = true;
+}
+int32_t x546 = x285;
+for(int x548=0; x548 < x546; x548++) {
+int32_t* x549 = x279;
+int32_t* x551 = x283;
+bool x553 = true;
+int32_t x554 = 0;
+int32_t x550 = x549[x548];
+int32_t x555 = x550 + 233;
+x554 = x555;
+int32_t x552 = x551[x548];
+int32_t x557 = x555 * 1009;
+int32_t x558 = x557 + x552;
+int32_t x559 = x558 + 233;
+x554 = x559;
+int32_t* x562 = x327;
+int32_t x561 = x559 & 16383;
+int32_t x563 = x562[x561];
+int32_t x564 = x563;
+bool x565 = true;
 for (;;) {
-bool x521 = x520;
-if (!x521) break;
-int32_t x523 = x238;
-bool x524 = x523 == 0;
-bool x530;
-if (x524) {
-x530 = false;
+bool x566 = x565;
+bool x570;
+if (x566) {
+int32_t x567 = x564;
+bool x568 = x567 != -1;
+x570 = x568;
 } else {
-int32_t x526 = x214;
-bool x527 = x526 == 0;
-bool x528 = !x527;
-x530 = x528;
+x570 = false;
 }
-if (x530) {
-for(int x532=0; x532 < x523; x532++) {
-int32_t x534 = 1;
-int32_t x533 = x233[x532];
-x534 *= x533;
-int32_t x536 = x534;
-int32_t x537 = x536 & 4194303;
-int32_t x538 = x222[x537];
-int32_t x539 = x538;
-int32_t x592 = x236[x532];
+if (!x570) break;
+int32_t x572 = x564;
+bool x573 = true;
+int32_t* x574 = x311;
+int32_t x575 = x574[x572];
+bool x576 = x550 == x575;
+if (x576) {
+} else {
+x573 = false;
+}
+int32_t* x580 = x315;
+int32_t x581 = x580[x572];
+bool x582 = x552 == x581;
+if (x582) {
+} else {
+x573 = false;
+}
+bool x586 = x573;
+if (x586) {
+bool x587 = true;
+if (x576) {
+} else {
+x587 = false;
+}
+if (x582) {
+} else {
+x587 = false;
+}
+bool x594 = x587;
+if (x594) {
+x553 = false;
+} else {
+}
+bool x598 = x553;
+x565 = x598;
+} else {
+}
+int32_t* x602 = x320;
+int32_t x603 = x602[x572];
+x564 = x603;
+}
+bool x607 = x553;
+if (x607) {
+int32_t x610 = x317;
+int32_t x611 = x308;
+bool x612 = x610 == x611;
+if (x612) {
+x308 *= 4;
+int32_t x614 = x308;
+printf("buffer.resize %d\n",x614);
+} else {
+}
+int32_t* x618 = x311;
+x618[x610] = x550;
+int32_t* x620 = x315;
+x620[x610] = x552;
+x317 += 1;
+int32_t x623 = x610;
+int32_t x624 = 0;
+x624 = x555;
+x624 = x559;
+int32_t x627 = x563;
+x562[x561] = x610;
+int32_t* x629 = x320;
+x629[x610] = x563;
+int32_t x631 = 0;
+int32_t x632 = x552 + 233;
+x631 = x632;
+int32_t* x635 = x329;
+int32_t x634 = x632 & 16383;
+int32_t x636 = x635[x634];
+int32_t x637 = x636;
+x635[x634] = x610;
+int32_t* x639 = x324;
+x639[x610] = x636;
+} else {
+}
+
+}
+bool x645 = true;
 for (;;) {
-int32_t x540 = x539;
-bool x541 = x540 != -1;
-if (!x541) break;
-int32_t x543 = x539;
-int32_t x544 = x219[x543];
-x539 = x544;
-bool x546 = true;
-int32_t x547 = x212[x543];
-bool x548 = x533 == x547;
-if (x548) {
-} else {
-x546 = false;
-}
-bool x552 = x546;
-if (x552) {
-bool x554 = false;
-int32_t x555 = 1;
-int32_t x553 = x209[x543];
-x555 *= x553;
-x555 *= x533;
-int32_t x558 = x555;
-int32_t x559 = x558 & 4194303;
-int32_t x560 = x245[x559];
-int32_t x561 = x560;
-bool x562 = true;
-for (;;) {
-bool x563 = x562;
-bool x567;
-if (x563) {
-int32_t x564 = x561;
-bool x565 = x564 != -1;
-x567 = x565;
-} else {
-x567 = false;
-}
-if (!x567) break;
-int32_t x569 = x561;
-int32_t x570 = x240[x569];
-x561 = x570;
-bool x572 = true;
-int32_t x573 = x233[x569];
-bool x574 = x553 == x573;
-if (x574) {
-} else {
-x572 = false;
-}
-int32_t x578 = x236[x569];
-bool x579 = x533 == x578;
-if (x579) {
-} else {
-x572 = false;
-}
-bool x583 = x572;
-if (x583) {
-x554 = true;
-x562 = false;
-} else {
-}
-}
-bool x590 = x554;
-bool x632;
-if (x590) {
-x632 = false;
-} else {
-bool x593 = false;
-int32_t x594 = 1;
-x594 *= x592;
-x594 *= x553;
-int32_t x597 = x594;
-int32_t x598 = x597 & 4194303;
-int32_t x599 = x221[x598];
-int32_t x600 = x599;
-bool x601 = true;
-for (;;) {
-bool x602 = x601;
-bool x606;
-if (x602) {
-int32_t x603 = x600;
-bool x604 = x603 != -1;
-x606 = x604;
-} else {
-x606 = false;
-}
-if (!x606) break;
-int32_t x608 = x600;
-int32_t x609 = x216[x608];
-x600 = x609;
-bool x611 = true;
-int32_t x612 = x209[x608];
-bool x613 = x592 == x612;
-if (x613) {
-} else {
-x611 = false;
-}
-int32_t x617 = x212[x608];
-bool x618 = x553 == x617;
-if (x618) {
-} else {
-x611 = false;
-}
-bool x622 = x611;
-if (x622) {
-x593 = true;
-x601 = false;
-} else {
-}
-}
-bool x629 = x593;
-bool x630 = !x629;
-x632 = x630;
-}
-if (x632) {
-bool x633 = true;
-int32_t x634 = 1;
-x634 *= x592;
-x634 *= x553;
-int32_t x637 = x634;
-int32_t x638 = x637 & 4194303;
-int32_t x639 = x117[x638];
-int32_t x640 = x639;
-bool x641 = true;
-for (;;) {
-bool x642 = x641;
-bool x646;
-if (x642) {
-int32_t x643 = x640;
-bool x644 = x643 != -1;
-x646 = x644;
-} else {
-x646 = false;
-}
+bool x646 = x645;
 if (!x646) break;
-int32_t x648 = x640;
-int32_t x649 = x112[x648];
-x640 = x649;
-bool x651 = true;
-int32_t x652 = x105[x648];
-bool x653 = x592 == x652;
-if (x653) {
+int32_t x648 = x317;
+bool x649 = x648 == 0;
+bool x655;
+if (x649) {
+x655 = false;
 } else {
-x651 = false;
+int32_t x651 = x285;
+bool x652 = x651 == 0;
+bool x653 = !x652;
+x655 = x653;
 }
-int32_t x657 = x108[x648];
-bool x658 = x553 == x657;
-if (x658) {
+if (x655) {
+for(int x657=0; x657 < x648; x657++) {
+int32_t* x658 = x311;
+int32_t x660 = 0;
+int32_t x659 = x658[x657];
+int32_t x661 = x659 + 233;
+x660 = x661;
+int32_t* x664 = x297;
+int32_t x663 = x661 & 4194303;
+int32_t x665 = x664[x663];
+int32_t x666 = x665;
+for (;;) {
+int32_t x667 = x666;
+bool x668 = x667 != -1;
+if (!x668) break;
+int32_t x670 = x666;
+bool x671 = true;
+int32_t* x672 = x283;
+int32_t x673 = x672[x670];
+bool x674 = x659 == x673;
+if (x674) {
 } else {
-x651 = false;
+x671 = false;
 }
-bool x662 = x651;
-if (x662) {
-bool x663 = true;
-if (x653) {
-} else {
-x663 = false;
-}
-if (x658) {
-} else {
-x663 = false;
-}
-bool x670 = x663;
-if (x670) {
-x633 = false;
-} else {
-}
-bool x674 = x633;
-x641 = x674;
-} else {
-}
-}
-bool x680 = x633;
-if (x680) {
-int32_t x683 = x110;
-int32_t x684 = x103;
-bool x685 = x683 == x684;
-if (x685) {
-x103 *= 4;
-int32_t x687 = x103;
-printf("buffer.resize %d\n",x687);
-} else {
-}
-x105[x683] = x592;
-x108[x683] = x553;
-x110 += 1;
-int32_t x694 = 1;
-x694 *= x592;
-x694 *= x553;
+bool x678 = x671;
+if (x678) {
+int32_t* x679 = x279;
+int32_t* x681 = x311;
+bool x683 = false;
+int32_t x684 = 0;
+int32_t x680 = x679[x670];
+int32_t x685 = x680 + 233;
+x684 = x685;
+int32_t x682 = x681[x657];
+int32_t x687 = x685 * 1009;
+int32_t x688 = x687 + x682;
+int32_t x689 = x688 + 233;
+x684 = x689;
+int32_t* x692 = x327;
+int32_t x691 = x689 & 16383;
+int32_t x693 = x692[x691];
+int32_t x694 = x693;
+bool x695 = true;
+for (;;) {
+bool x696 = x695;
+bool x700;
+if (x696) {
 int32_t x697 = x694;
-int32_t x698 = x697 & 4194303;
-int32_t x699 = x117[x698];
-int32_t x700 = x699;
-x117[x698] = x683;
-x112[x683] = x699;
-int32_t x703 = 1;
-x703 *= x553;
-int32_t x705 = x703;
-int32_t x706 = x705 & 4194303;
-int32_t x707 = x118[x706];
-int32_t x708 = x707;
-x118[x706] = x683;
-x115[x683] = x707;
+bool x698 = x697 != -1;
+x700 = x698;
+} else {
+x700 = false;
+}
+if (!x700) break;
+int32_t x702 = x694;
+bool x703 = true;
+int32_t* x704 = x311;
+int32_t x705 = x704[x702];
+bool x706 = x680 == x705;
+if (x706) {
+} else {
+x703 = false;
+}
+int32_t* x710 = x315;
+int32_t x711 = x710[x702];
+bool x712 = x682 == x711;
+if (x712) {
+} else {
+x703 = false;
+}
+bool x716 = x703;
+if (x716) {
+x683 = true;
+x695 = false;
 } else {
 }
-} else {
+int32_t* x721 = x320;
+int32_t x722 = x721[x702];
+x694 = x722;
 }
-} else {
-}
-}
-
-}
-} else {
-}
-int32_t x723 = x214;
-bool x724 = x723 == 0;
-bool x726;
-if (x724) {
-x726 = false;
-} else {
-bool x525 = !x524;
-x726 = x525;
-}
+bool x726 = x683;
+bool x776;
 if (x726) {
-for(int x728=0; x728 < x723; x728++) {
-int32_t x730 = 1;
-int32_t x729 = x209[x728];
-x730 *= x729;
-int32_t x732 = x730;
-int32_t x733 = x732 & 4194303;
-int32_t x734 = x246[x733];
-int32_t x735 = x734;
-int32_t x749 = x212[x728];
-for (;;) {
-int32_t x736 = x735;
-bool x737 = x736 != -1;
-if (!x737) break;
-int32_t x739 = x735;
-int32_t x740 = x243[x739];
-x735 = x740;
+x776 = false;
+} else {
+int32_t* x728 = x315;
+bool x730 = false;
+int32_t x731 = 0;
+int32_t x729 = x728[x657];
+int32_t x732 = x729 + 233;
+x731 = x732;
+int32_t x734 = x732 * 1009;
+int32_t x735 = x734 + x680;
+int32_t x736 = x735 + 233;
+x731 = x736;
+int32_t* x739 = x295;
+int32_t x738 = x736 & 4194303;
+int32_t x740 = x739[x738];
+int32_t x741 = x740;
 bool x742 = true;
-int32_t x743 = x236[x739];
-bool x744 = x729 == x743;
-if (x744) {
+for (;;) {
+bool x743 = x742;
+bool x747;
+if (x743) {
+int32_t x744 = x741;
+bool x745 = x744 != -1;
+x747 = x745;
 } else {
+x747 = false;
+}
+if (!x747) break;
+int32_t x749 = x741;
+bool x750 = true;
+int32_t* x751 = x279;
+int32_t x752 = x751[x749];
+bool x753 = x729 == x752;
+if (x753) {
+} else {
+x750 = false;
+}
+int32_t* x757 = x283;
+int32_t x758 = x757[x749];
+bool x759 = x680 == x758;
+if (x759) {
+} else {
+x750 = false;
+}
+bool x763 = x750;
+if (x763) {
+x730 = true;
 x742 = false;
-}
-bool x748 = x742;
-if (x748) {
-bool x751 = false;
-int32_t x752 = 1;
-x752 *= x749;
-int32_t x750 = x233[x739];
-x752 *= x750;
-int32_t x755 = x752;
-int32_t x756 = x755 & 4194303;
-int32_t x757 = x221[x756];
-int32_t x758 = x757;
-bool x759 = true;
-for (;;) {
-bool x760 = x759;
-bool x764;
-if (x760) {
-int32_t x761 = x758;
-bool x762 = x761 != -1;
-x764 = x762;
 } else {
-x764 = false;
 }
-if (!x764) break;
-int32_t x766 = x758;
-int32_t x767 = x216[x766];
-x758 = x767;
-bool x769 = true;
-int32_t x770 = x209[x766];
-bool x771 = x749 == x770;
-if (x771) {
-} else {
-x769 = false;
+int32_t* x768 = x288;
+int32_t x769 = x768[x749];
+x741 = x769;
 }
-int32_t x775 = x212[x766];
-bool x776 = x750 == x775;
+bool x773 = x730;
+bool x774 = !x773;
+x776 = x774;
+}
 if (x776) {
-} else {
-x769 = false;
-}
-bool x780 = x769;
-if (x780) {
-x751 = true;
-x759 = false;
-} else {
-}
-}
-bool x787 = x751;
-if (x787) {
-} else {
-bool x789 = true;
-int32_t x790 = 1;
-x790 *= x749;
-x790 *= x750;
-int32_t x793 = x790;
-int32_t x794 = x793 & 4194303;
-int32_t x795 = x117[x794];
-int32_t x796 = x795;
-bool x797 = true;
+int32_t* x777 = x315;
+bool x779 = true;
+int32_t x780 = 0;
+int32_t x778 = x777[x657];
+int32_t x781 = x778 + 233;
+x780 = x781;
+int32_t x783 = x781 * 1009;
+int32_t x784 = x783 + x680;
+int32_t x785 = x784 + 233;
+x780 = x785;
+int32_t* x788 = x156;
+int32_t x787 = x785 & 16383;
+int32_t x789 = x788[x787];
+int32_t x790 = x789;
+bool x791 = true;
 for (;;) {
-bool x798 = x797;
-bool x802;
-if (x798) {
-int32_t x799 = x796;
-bool x800 = x799 != -1;
-x802 = x800;
+bool x792 = x791;
+bool x796;
+if (x792) {
+int32_t x793 = x790;
+bool x794 = x793 != -1;
+x796 = x794;
 } else {
-x802 = false;
+x796 = false;
 }
-if (!x802) break;
-int32_t x804 = x796;
-int32_t x805 = x112[x804];
-x796 = x805;
-bool x807 = true;
-int32_t x808 = x105[x804];
-bool x809 = x749 == x808;
-if (x809) {
+if (!x796) break;
+int32_t x798 = x790;
+bool x799 = true;
+int32_t* x800 = x140;
+int32_t x801 = x800[x798];
+bool x802 = x778 == x801;
+if (x802) {
 } else {
-x807 = false;
+x799 = false;
 }
-int32_t x813 = x108[x804];
-bool x814 = x750 == x813;
-if (x814) {
+int32_t* x806 = x144;
+int32_t x807 = x806[x798];
+bool x808 = x680 == x807;
+if (x808) {
 } else {
-x807 = false;
+x799 = false;
 }
-bool x818 = x807;
-if (x818) {
-bool x819 = true;
-if (x809) {
+bool x812 = x799;
+if (x812) {
+bool x813 = true;
+if (x802) {
 } else {
-x819 = false;
+x813 = false;
 }
-if (x814) {
+if (x808) {
 } else {
-x819 = false;
+x813 = false;
 }
-bool x826 = x819;
-if (x826) {
-x789 = false;
-} else {
-}
-bool x830 = x789;
-x797 = x830;
+bool x820 = x813;
+if (x820) {
+x779 = false;
 } else {
 }
-}
-bool x836 = x789;
-if (x836) {
-int32_t x839 = x110;
-int32_t x840 = x103;
-bool x841 = x839 == x840;
-if (x841) {
-x103 *= 4;
-int32_t x843 = x103;
-printf("buffer.resize %d\n",x843);
+bool x824 = x779;
+x791 = x824;
 } else {
 }
-x105[x839] = x749;
-x108[x839] = x750;
-x110 += 1;
-int32_t x850 = 1;
-x850 *= x749;
-x850 *= x750;
-int32_t x853 = x850;
-int32_t x854 = x853 & 4194303;
-int32_t x855 = x117[x854];
-int32_t x856 = x855;
-x117[x854] = x839;
-x112[x839] = x855;
-int32_t x859 = 1;
-x859 *= x750;
-int32_t x861 = x859;
-int32_t x862 = x861 & 4194303;
-int32_t x863 = x118[x862];
-int32_t x864 = x863;
-x118[x862] = x839;
-x115[x839] = x863;
+int32_t* x828 = x149;
+int32_t x829 = x828[x798];
+x790 = x829;
+}
+bool x833 = x779;
+if (x833) {
+int32_t x836 = x146;
+int32_t x837 = x137;
+bool x838 = x836 == x837;
+if (x838) {
+x137 *= 4;
+int32_t x840 = x137;
+printf("buffer.resize %d\n",x840);
 } else {
 }
+int32_t* x844 = x140;
+x844[x836] = x778;
+int32_t* x846 = x144;
+x846[x836] = x680;
+x146 += 1;
+int32_t x849 = x836;
+int32_t x850 = 0;
+x850 = x781;
+x850 = x785;
+int32_t x853 = x789;
+x788[x787] = x836;
+int32_t* x855 = x149;
+x855[x836] = x789;
+int32_t x857 = 0;
+x857 = x685;
+int32_t* x860 = x158;
+int32_t x859 = x685 & 16383;
+int32_t x861 = x860[x859];
+int32_t x862 = x861;
+x860[x859] = x836;
+int32_t* x864 = x153;
+x864[x836] = x861;
+} else {
 }
 } else {
 }
+} else {
+}
+int32_t* x872 = x292;
+int32_t x873 = x872[x670];
+x666 = x873;
 }
 
 }
 } else {
 }
-int32_t x879 = x110;
-bool x880 = x879 == 0;
-if (x880) {
-x520 = false;
+int32_t x881 = x285;
+bool x882 = x881 == 0;
+bool x884;
+if (x882) {
+x884 = false;
 } else {
-for(int x884=0; x884 < x879; x884++) {
-bool x887 = true;
-int32_t x888 = 1;
-int32_t x885 = x105[x884];
-x888 *= x885;
-int32_t x886 = x108[x884];
-x888 *= x886;
-int32_t x891 = x888;
-int32_t x892 = x891 & 4194303;
-int32_t x893 = x221[x892];
-int32_t x894 = x893;
-bool x895 = true;
+bool x650 = !x649;
+x884 = x650;
+}
+if (x884) {
+for(int x886=0; x886 < x881; x886++) {
+int32_t* x887 = x279;
+int32_t x889 = 0;
+int32_t x888 = x887[x886];
+int32_t x890 = x888 + 233;
+x889 = x890;
+int32_t* x893 = x329;
+int32_t x892 = x890 & 16383;
+int32_t x894 = x893[x892];
+int32_t x895 = x894;
 for (;;) {
-bool x896 = x895;
-bool x900;
-if (x896) {
-int32_t x897 = x894;
-bool x898 = x897 != -1;
-x900 = x898;
+int32_t x896 = x895;
+bool x897 = x896 != -1;
+if (!x897) break;
+int32_t x899 = x895;
+bool x900 = true;
+int32_t* x901 = x315;
+int32_t x902 = x901[x899];
+bool x903 = x888 == x902;
+if (x903) {
 } else {
 x900 = false;
 }
-if (!x900) break;
-int32_t x902 = x894;
-int32_t x903 = x216[x902];
-x894 = x903;
-bool x905 = true;
-int32_t x906 = x209[x902];
-bool x907 = x885 == x906;
+bool x907 = x900;
 if (x907) {
-} else {
-x905 = false;
-}
-int32_t x911 = x212[x902];
-bool x912 = x886 == x911;
-if (x912) {
-} else {
-x905 = false;
-}
-bool x916 = x905;
-if (x916) {
-bool x917 = true;
-if (x907) {
-} else {
-x917 = false;
-}
-if (x912) {
-} else {
-x917 = false;
-}
-bool x924 = x917;
-if (x924) {
-x887 = false;
-} else {
-}
-bool x928 = x887;
-x895 = x928;
-} else {
-}
-}
-bool x934 = x887;
-if (x934) {
-int32_t x937 = x214;
-int32_t x938 = x207;
-bool x939 = x937 == x938;
-if (x939) {
-x207 *= 4;
-int32_t x941 = x207;
-printf("buffer.resize %d\n",x941);
-} else {
-}
-x209[x937] = x885;
-x212[x937] = x886;
-x214 += 1;
-int32_t x948 = 1;
-x948 *= x885;
-x948 *= x886;
-int32_t x951 = x948;
-int32_t x952 = x951 & 4194303;
-int32_t x953 = x221[x952];
-int32_t x954 = x953;
-x221[x952] = x937;
-x216[x937] = x953;
-int32_t x957 = 1;
-x957 *= x886;
-int32_t x959 = x957;
-int32_t x960 = x959 & 4194303;
-int32_t x961 = x222[x960];
-int32_t x962 = x961;
-x222[x960] = x937;
-x219[x937] = x961;
-} else {
-}
-
-}
-SWAP(x238,x110);
-SWAP(x231,x103);
-SWAP(x234,x106);
-SWAP(x232,x104);
-SWAP(x233,x105);
-SWAP(x237,x109);
-SWAP(x235,x107);
-SWAP(x236,x108);
-SWAP(x241,x113);
-SWAP(x239,x111);
-SWAP(x240,x112);
-SWAP(x244,x116);
-SWAP(x242,x114);
-SWAP(x243,x115);
-SWAP(x245,x117);
-SWAP(x246,x118);
-x110 = 0;
-x113 = 0;
-x116 = 0;
-for(int x988=0; x988 < 4194304; x988++) {
-x117[x988] = -1;
-
-}
-for(int x992=0; x992 < 4194304; x992++) {
-x118[x992] = -1;
-
-}
-}
-}
-for(int x1000=0; x1000 < 4194304; x1000++) {
-x245[x1000] = -1;
-
-}
-for(int x1004=0; x1004 < 4194304; x1004++) {
-x246[x1004] = -1;
-
-}
-for(int x1008=0; x1008 < 4194304; x1008++) {
-x117[x1008] = -1;
-
-}
-for(int x1012=0; x1012 < 4194304; x1012++) {
-x118[x1012] = -1;
-
-}
-int32_t x1017 = x214;
-FILE *x1016 = fopen("is_after.out","w");
-for(int x1019=0; x1019 < x1017; x1019++) {
-int32_t x1020 = x209[x1019];
-int32_t x1021 = fprintf(x1016,"%d",x1020);
-int32_t x1022 = fprintf(x1016,"\t");
-int32_t x1023 = x212[x1019];
-int32_t x1024 = fprintf(x1016,"%d",x1023);
-int32_t x1025 = fprintf(x1016,"\n");
-
-}
-fclose(x1016);
-if (x343) {
-} else {
-for(int x1029=0; x1029 < x342; x1029++) {
-bool x1032 = true;
-int32_t x1033 = 1;
-int32_t x1030 = x153[x1029];
-x1033 *= x1030;
-int32_t x1031 = x156[x1029];
-x1033 *= x1031;
-int32_t x1036 = x1033;
-int32_t x1037 = x1036 & 4194303;
-int32_t x1038 = x93[x1037];
-int32_t x1039 = x1038;
-bool x1040 = true;
+int32_t* x908 = x283;
+int32_t* x910 = x311;
+bool x912 = false;
+int32_t x913 = 0;
+int32_t x909 = x908[x886];
+int32_t x914 = x909 + 233;
+x913 = x914;
+int32_t x911 = x910[x899];
+int32_t x916 = x914 * 1009;
+int32_t x917 = x916 + x911;
+int32_t x918 = x917 + 233;
+x913 = x918;
+int32_t* x921 = x295;
+int32_t x920 = x918 & 4194303;
+int32_t x922 = x921[x920];
+int32_t x923 = x922;
+bool x924 = true;
 for (;;) {
-bool x1041 = x1040;
-bool x1045;
-if (x1041) {
-int32_t x1042 = x1039;
-bool x1043 = x1042 != -1;
-x1045 = x1043;
+bool x925 = x924;
+bool x929;
+if (x925) {
+int32_t x926 = x923;
+bool x927 = x926 != -1;
+x929 = x927;
 } else {
-x1045 = false;
+x929 = false;
 }
-if (!x1045) break;
-int32_t x1047 = x1039;
-int32_t x1048 = x88[x1047];
-x1039 = x1048;
-bool x1050 = true;
-int32_t x1051 = x81[x1047];
-bool x1052 = x1030 == x1051;
-if (x1052) {
+if (!x929) break;
+int32_t x931 = x923;
+bool x932 = true;
+int32_t* x933 = x279;
+int32_t x934 = x933[x931];
+bool x935 = x909 == x934;
+if (x935) {
 } else {
-x1050 = false;
+x932 = false;
 }
-int32_t x1056 = x84[x1047];
-bool x1057 = x1031 == x1056;
+int32_t* x939 = x283;
+int32_t x940 = x939[x931];
+bool x941 = x911 == x940;
+if (x941) {
+} else {
+x932 = false;
+}
+bool x945 = x932;
+if (x945) {
+x912 = true;
+x924 = false;
+} else {
+}
+int32_t* x950 = x288;
+int32_t x951 = x950[x931];
+x923 = x951;
+}
+bool x955 = x912;
+if (x955) {
+} else {
+bool x957 = true;
+int32_t x958 = 0;
+x958 = x914;
+x958 = x918;
+int32_t* x962 = x156;
+int32_t x961 = x918 & 16383;
+int32_t x963 = x962[x961];
+int32_t x964 = x963;
+bool x965 = true;
+for (;;) {
+bool x966 = x965;
+bool x970;
+if (x966) {
+int32_t x967 = x964;
+bool x968 = x967 != -1;
+x970 = x968;
+} else {
+x970 = false;
+}
+if (!x970) break;
+int32_t x972 = x964;
+bool x973 = true;
+int32_t* x974 = x140;
+int32_t x975 = x974[x972];
+bool x976 = x909 == x975;
+if (x976) {
+} else {
+x973 = false;
+}
+int32_t* x980 = x144;
+int32_t x981 = x980[x972];
+bool x982 = x911 == x981;
+if (x982) {
+} else {
+x973 = false;
+}
+bool x986 = x973;
+if (x986) {
+bool x987 = true;
+if (x976) {
+} else {
+x987 = false;
+}
+if (x982) {
+} else {
+x987 = false;
+}
+bool x994 = x987;
+if (x994) {
+x957 = false;
+} else {
+}
+bool x998 = x957;
+x965 = x998;
+} else {
+}
+int32_t* x1002 = x149;
+int32_t x1003 = x1002[x972];
+x964 = x1003;
+}
+bool x1007 = x957;
+if (x1007) {
+int32_t x1010 = x146;
+int32_t x1011 = x137;
+bool x1012 = x1010 == x1011;
+if (x1012) {
+x137 *= 4;
+int32_t x1014 = x137;
+printf("buffer.resize %d\n",x1014);
+} else {
+}
+int32_t* x1018 = x140;
+x1018[x1010] = x909;
+int32_t* x1020 = x144;
+x1020[x1010] = x911;
+x146 += 1;
+int32_t x1023 = x1010;
+int32_t x1024 = 0;
+x1024 = x914;
+x1024 = x918;
+int32_t x1027 = x963;
+x962[x961] = x1010;
+int32_t* x1029 = x149;
+x1029[x1010] = x963;
+int32_t x1031 = 0;
+int32_t x1032 = x911 + 233;
+x1031 = x1032;
+int32_t* x1035 = x158;
+int32_t x1034 = x1032 & 16383;
+int32_t x1036 = x1035[x1034];
+int32_t x1037 = x1036;
+x1035[x1034] = x1010;
+int32_t* x1039 = x153;
+x1039[x1010] = x1036;
+} else {
+}
+}
+} else {
+}
+int32_t* x1047 = x324;
+int32_t x1048 = x1047[x899];
+x895 = x1048;
+}
+
+}
+} else {
+}
+int32_t x1056 = x146;
+bool x1057 = x1056 == 0;
 if (x1057) {
+x645 = false;
 } else {
-x1050 = false;
-}
-bool x1061 = x1050;
-if (x1061) {
-bool x1062 = true;
-if (x1052) {
-} else {
-x1062 = false;
-}
-if (x1057) {
-} else {
-x1062 = false;
-}
-bool x1069 = x1062;
-if (x1069) {
-x1032 = false;
-} else {
-}
-bool x1073 = x1032;
-x1040 = x1073;
-} else {
-}
-}
-bool x1079 = x1032;
+for(int x1061=0; x1061 < x1056; x1061++) {
+int32_t* x1062 = x140;
+int32_t* x1064 = x144;
+bool x1066 = true;
+int32_t x1067 = 0;
+int32_t x1063 = x1062[x1061];
+int32_t x1068 = x1063 + 233;
+x1067 = x1068;
+int32_t x1065 = x1064[x1061];
+int32_t x1070 = x1068 * 1009;
+int32_t x1071 = x1070 + x1065;
+int32_t x1072 = x1071 + 233;
+x1067 = x1072;
+int32_t* x1075 = x295;
+int32_t x1074 = x1072 & 4194303;
+int32_t x1076 = x1075[x1074];
+int32_t x1077 = x1076;
+bool x1078 = true;
+for (;;) {
+bool x1079 = x1078;
+bool x1083;
 if (x1079) {
-int32_t x1082 = x86;
-int32_t x1083 = x79;
-bool x1084 = x1082 == x1083;
-if (x1084) {
-x79 *= 4;
-int32_t x1086 = x79;
-printf("buffer.resize %d\n",x1086);
+int32_t x1080 = x1077;
+bool x1081 = x1080 != -1;
+x1083 = x1081;
+} else {
+x1083 = false;
+}
+if (!x1083) break;
+int32_t x1085 = x1077;
+bool x1086 = true;
+int32_t* x1087 = x279;
+int32_t x1088 = x1087[x1085];
+bool x1089 = x1063 == x1088;
+if (x1089) {
+} else {
+x1086 = false;
+}
+int32_t* x1093 = x283;
+int32_t x1094 = x1093[x1085];
+bool x1095 = x1065 == x1094;
+if (x1095) {
+} else {
+x1086 = false;
+}
+bool x1099 = x1086;
+if (x1099) {
+bool x1100 = true;
+if (x1089) {
+} else {
+x1100 = false;
+}
+if (x1095) {
+} else {
+x1100 = false;
+}
+bool x1107 = x1100;
+if (x1107) {
+x1066 = false;
 } else {
 }
-x81[x1082] = x1030;
-x84[x1082] = x1031;
-x86 += 1;
-int32_t x1093 = 1;
-x1093 *= x1030;
-x1093 *= x1031;
-int32_t x1096 = x1093;
-int32_t x1097 = x1096 & 4194303;
-int32_t x1098 = x93[x1097];
-int32_t x1099 = x1098;
-x93[x1097] = x1082;
-x88[x1082] = x1098;
-int32_t x1102 = 1;
-x1102 *= x1030;
-int32_t x1104 = x1102;
-int32_t x1105 = x1104 & 4194303;
-int32_t x1106 = x94[x1105];
-int32_t x1107 = x1106;
-x94[x1105] = x1082;
-x91[x1082] = x1106;
+bool x1111 = x1066;
+x1078 = x1111;
 } else {
 }
-
+int32_t* x1115 = x288;
+int32_t x1116 = x1115[x1085];
+x1077 = x1116;
 }
-}
-int32_t x1116 = x86;
-for(int x1118=0; x1118 < x1116; x1118++) {
-bool x1121 = true;
-int32_t x1122 = 1;
-int32_t x1119 = x81[x1118];
-x1122 *= x1119;
-int32_t x1120 = x84[x1118];
-x1122 *= x1120;
-int32_t x1125 = x1122;
-int32_t x1126 = x1125 & 4194303;
-int32_t x1127 = x141[x1126];
-int32_t x1128 = x1127;
-bool x1129 = true;
-for (;;) {
-bool x1130 = x1129;
-bool x1134;
-if (x1130) {
-int32_t x1131 = x1128;
-bool x1132 = x1131 != -1;
-x1134 = x1132;
-} else {
-x1134 = false;
-}
-if (!x1134) break;
-int32_t x1136 = x1128;
-int32_t x1137 = x136[x1136];
-x1128 = x1137;
-bool x1139 = true;
-int32_t x1140 = x129[x1136];
-bool x1141 = x1119 == x1140;
-if (x1141) {
-} else {
-x1139 = false;
-}
-int32_t x1145 = x132[x1136];
-bool x1146 = x1120 == x1145;
-if (x1146) {
-} else {
-x1139 = false;
-}
-bool x1150 = x1139;
-if (x1150) {
-bool x1151 = true;
-if (x1141) {
-} else {
-x1151 = false;
-}
-if (x1146) {
-} else {
-x1151 = false;
-}
-bool x1158 = x1151;
-if (x1158) {
-x1121 = false;
+bool x1120 = x1066;
+if (x1120) {
+int32_t x1123 = x285;
+int32_t x1124 = x276;
+bool x1125 = x1123 == x1124;
+if (x1125) {
+x276 *= 4;
+int32_t x1127 = x276;
+printf("buffer.resize %d\n",x1127);
 } else {
 }
-bool x1162 = x1121;
-x1129 = x1162;
-} else {
-}
-}
-bool x1168 = x1121;
-if (x1168) {
-int32_t x1171 = x134;
-int32_t x1172 = x127;
-bool x1173 = x1171 == x1172;
-if (x1173) {
-x127 *= 4;
-int32_t x1175 = x127;
-printf("buffer.resize %d\n",x1175);
-} else {
-}
-x129[x1171] = x1119;
-x132[x1171] = x1120;
-x134 += 1;
-int32_t x1182 = 1;
-x1182 *= x1119;
-x1182 *= x1120;
-int32_t x1185 = x1182;
-int32_t x1186 = x1185 & 4194303;
-int32_t x1187 = x141[x1186];
-int32_t x1188 = x1187;
-x141[x1186] = x1171;
-x136[x1171] = x1187;
-int32_t x1191 = 1;
-x1191 *= x1119;
-int32_t x1193 = x1191;
-int32_t x1194 = x1193 & 4194303;
-int32_t x1195 = x142[x1194];
-int32_t x1196 = x1195;
-x142[x1194] = x1171;
-x139[x1171] = x1195;
+int32_t* x1131 = x279;
+x1131[x1123] = x1063;
+int32_t* x1133 = x283;
+x1133[x1123] = x1065;
+x285 += 1;
+int32_t x1136 = x1123;
+int32_t x1137 = 0;
+x1137 = x1068;
+x1137 = x1072;
+int32_t x1140 = x1076;
+x1075[x1074] = x1123;
+int32_t* x1142 = x288;
+x1142[x1123] = x1076;
+int32_t x1144 = 0;
+int32_t x1145 = x1065 + 233;
+x1144 = x1145;
+int32_t* x1148 = x297;
+int32_t x1147 = x1145 & 4194303;
+int32_t x1149 = x1148[x1147];
+int32_t x1150 = x1149;
+x1148[x1147] = x1123;
+int32_t* x1152 = x292;
+x1152[x1123] = x1149;
 } else {
 }
 
 }
-bool x1203 = true;
+SWAP(x317,x146);
+SWAP(x308,x137);
+SWAP(x312,x141);
+SWAP(x309,x138);
+SWAP(x311,x140);
+SWAP(x316,x145);
+SWAP(x313,x142);
+SWAP(x315,x144);
+SWAP(x321,x150);
+SWAP(x318,x147);
+SWAP(x320,x149);
+SWAP(x325,x154);
+SWAP(x322,x151);
+SWAP(x324,x153);
+SWAP(x327,x156);
+SWAP(x329,x158);
+x146 = 0;
+x150 = 0;
+x154 = 0;
+for(int x1177=0; x1177 < 16384; x1177++) {
+int32_t* x1178 = x156;
+x1178[x1177] = -1;
+
+}
+for(int x1182=0; x1182 < 16384; x1182++) {
+int32_t* x1183 = x158;
+x1183[x1182] = -1;
+
+}
+}
+}
+for(int x1191=0; x1191 < 16384; x1191++) {
+int32_t* x1192 = x327;
+x1192[x1191] = -1;
+
+}
+for(int x1196=0; x1196 < 16384; x1196++) {
+int32_t* x1197 = x329;
+x1197[x1196] = -1;
+
+}
+for(int x1201=0; x1201 < 16384; x1201++) {
+int32_t* x1202 = x156;
+x1202[x1201] = -1;
+
+}
+for(int x1206=0; x1206 < 16384; x1206++) {
+int32_t* x1207 = x158;
+x1207[x1206] = -1;
+
+}
+int32_t x1212 = x285;
+FILE *x1211 = fopen("is_after.out","w");
+for(int x1214=0; x1214 < x1212; x1214++) {
+int32_t* x1215 = x279;
+int32_t x1216 = x1215[x1214];
+int32_t x1217 = fprintf(x1211,"%d",x1216);
+int32_t x1218 = fprintf(x1211,"\t");
+int32_t* x1219 = x283;
+int32_t x1220 = x1219[x1214];
+int32_t x1221 = fprintf(x1211,"%d",x1220);
+int32_t x1222 = fprintf(x1211,"\n");
+
+}
+fclose(x1211);
+if (x444) {
+} else {
+for(int x1226=0; x1226 < x443; x1226++) {
+int32_t* x1227 = x204;
+int32_t* x1229 = x208;
+bool x1231 = true;
+int32_t x1232 = 0;
+int32_t x1228 = x1227[x1226];
+int32_t x1233 = x1228 + 233;
+x1232 = x1233;
+int32_t x1230 = x1229[x1226];
+int32_t x1235 = x1233 * 1009;
+int32_t x1236 = x1235 + x1230;
+int32_t x1237 = x1236 + 233;
+x1232 = x1237;
+int32_t* x1240 = x124;
+int32_t x1239 = x1237 & 4194303;
+int32_t x1241 = x1240[x1239];
+int32_t x1242 = x1241;
+bool x1243 = true;
 for (;;) {
-bool x1204 = x1203;
-if (!x1204) break;
-int32_t x1206 = x134;
-bool x1207 = x1206 == 0;
-bool x1213;
-if (x1207) {
-x1213 = false;
+bool x1244 = x1243;
+bool x1248;
+if (x1244) {
+int32_t x1245 = x1242;
+bool x1246 = x1245 != -1;
+x1248 = x1246;
 } else {
-int32_t x1209 = x86;
-bool x1210 = x1209 == 0;
-bool x1211 = !x1210;
-x1213 = x1211;
+x1248 = false;
 }
-if (x1213) {
-for(int x1215=0; x1215 < x1206; x1215++) {
-int32_t x1217 = 1;
-int32_t x1216 = x132[x1215];
-x1217 *= x1216;
-int32_t x1219 = x1217;
-int32_t x1220 = x1219 & 4194303;
-int32_t x1221 = x94[x1220];
-int32_t x1222 = x1221;
-int32_t x1275 = x129[x1215];
-for (;;) {
-int32_t x1223 = x1222;
-bool x1224 = x1223 != -1;
-if (!x1224) break;
-int32_t x1226 = x1222;
-int32_t x1227 = x91[x1226];
-x1222 = x1227;
-bool x1229 = true;
-int32_t x1230 = x81[x1226];
-bool x1231 = x1216 == x1230;
-if (x1231) {
+if (!x1248) break;
+int32_t x1250 = x1242;
+bool x1251 = true;
+int32_t* x1252 = x108;
+int32_t x1253 = x1252[x1250];
+bool x1254 = x1228 == x1253;
+if (x1254) {
 } else {
-x1229 = false;
+x1251 = false;
 }
-bool x1235 = x1229;
-if (x1235) {
-bool x1237 = false;
-int32_t x1238 = 1;
-x1238 *= x1216;
-int32_t x1236 = x84[x1226];
-x1238 *= x1236;
-int32_t x1241 = x1238;
-int32_t x1242 = x1241 & 4194303;
-int32_t x1243 = x141[x1242];
-int32_t x1244 = x1243;
-bool x1245 = true;
-for (;;) {
-bool x1246 = x1245;
-bool x1250;
-if (x1246) {
-int32_t x1247 = x1244;
-bool x1248 = x1247 != -1;
-x1250 = x1248;
+int32_t* x1258 = x112;
+int32_t x1259 = x1258[x1250];
+bool x1260 = x1230 == x1259;
+if (x1260) {
 } else {
-x1250 = false;
+x1251 = false;
 }
-if (!x1250) break;
-int32_t x1252 = x1244;
-int32_t x1253 = x136[x1252];
-x1244 = x1253;
-bool x1255 = true;
-int32_t x1256 = x129[x1252];
-bool x1257 = x1216 == x1256;
-if (x1257) {
+bool x1264 = x1251;
+if (x1264) {
+bool x1265 = true;
+if (x1254) {
 } else {
-x1255 = false;
+x1265 = false;
 }
-int32_t x1261 = x132[x1252];
-bool x1262 = x1236 == x1261;
-if (x1262) {
+if (x1260) {
 } else {
-x1255 = false;
+x1265 = false;
 }
-bool x1266 = x1255;
-if (x1266) {
-x1237 = true;
-x1245 = false;
+bool x1272 = x1265;
+if (x1272) {
+x1231 = false;
 } else {
 }
-}
-bool x1273 = x1237;
-bool x1315;
-if (x1273) {
-x1315 = false;
+bool x1276 = x1231;
+x1243 = x1276;
 } else {
-bool x1276 = false;
-int32_t x1277 = 1;
-x1277 *= x1275;
-x1277 *= x1236;
-int32_t x1280 = x1277;
-int32_t x1281 = x1280 & 4194303;
-int32_t x1282 = x93[x1281];
-int32_t x1283 = x1282;
-bool x1284 = true;
-for (;;) {
-bool x1285 = x1284;
-bool x1289;
+}
+int32_t* x1280 = x117;
+int32_t x1281 = x1280[x1250];
+x1242 = x1281;
+}
+bool x1285 = x1231;
 if (x1285) {
-int32_t x1286 = x1283;
-bool x1287 = x1286 != -1;
-x1289 = x1287;
-} else {
-x1289 = false;
-}
-if (!x1289) break;
-int32_t x1291 = x1283;
-int32_t x1292 = x88[x1291];
-x1283 = x1292;
-bool x1294 = true;
-int32_t x1295 = x81[x1291];
-bool x1296 = x1275 == x1295;
-if (x1296) {
-} else {
-x1294 = false;
-}
-int32_t x1300 = x84[x1291];
-bool x1301 = x1236 == x1300;
-if (x1301) {
-} else {
-x1294 = false;
-}
-bool x1305 = x1294;
-if (x1305) {
-x1276 = true;
-x1284 = false;
+int32_t x1288 = x114;
+int32_t x1289 = x105;
+bool x1290 = x1288 == x1289;
+if (x1290) {
+x105 *= 4;
+int32_t x1292 = x105;
+printf("buffer.resize %d\n",x1292);
 } else {
 }
-}
-bool x1312 = x1276;
-bool x1313 = !x1312;
-x1315 = x1313;
-}
-if (x1315) {
-bool x1316 = true;
-int32_t x1317 = 1;
-x1317 *= x1275;
-x1317 *= x1236;
-int32_t x1320 = x1317;
-int32_t x1321 = x1320 & 4194303;
-int32_t x1322 = x197[x1321];
-int32_t x1323 = x1322;
-bool x1324 = true;
-for (;;) {
-bool x1325 = x1324;
-bool x1329;
-if (x1325) {
-int32_t x1326 = x1323;
-bool x1327 = x1326 != -1;
-x1329 = x1327;
+int32_t* x1296 = x108;
+x1296[x1288] = x1228;
+int32_t* x1298 = x112;
+x1298[x1288] = x1230;
+x114 += 1;
+int32_t x1301 = x1288;
+int32_t x1302 = 0;
+x1302 = x1233;
+x1302 = x1237;
+int32_t x1305 = x1241;
+x1240[x1239] = x1288;
+int32_t* x1307 = x117;
+x1307[x1288] = x1241;
+int32_t x1309 = 0;
+x1309 = x1233;
+int32_t* x1312 = x126;
+int32_t x1311 = x1233 & 4194303;
+int32_t x1313 = x1312[x1311];
+int32_t x1314 = x1313;
+x1312[x1311] = x1288;
+int32_t* x1316 = x121;
+x1316[x1288] = x1313;
 } else {
-x1329 = false;
-}
-if (!x1329) break;
-int32_t x1331 = x1323;
-int32_t x1332 = x192[x1331];
-x1323 = x1332;
-bool x1334 = true;
-int32_t x1335 = x185[x1331];
-bool x1336 = x1275 == x1335;
-if (x1336) {
-} else {
-x1334 = false;
-}
-int32_t x1340 = x188[x1331];
-bool x1341 = x1236 == x1340;
-if (x1341) {
-} else {
-x1334 = false;
-}
-bool x1345 = x1334;
-if (x1345) {
-bool x1346 = true;
-if (x1336) {
-} else {
-x1346 = false;
-}
-if (x1341) {
-} else {
-x1346 = false;
-}
-bool x1353 = x1346;
-if (x1353) {
-x1316 = false;
-} else {
-}
-bool x1357 = x1316;
-x1324 = x1357;
-} else {
-}
-}
-bool x1363 = x1316;
-if (x1363) {
-int32_t x1366 = x190;
-int32_t x1367 = x183;
-bool x1368 = x1366 == x1367;
-if (x1368) {
-x183 *= 4;
-int32_t x1370 = x183;
-printf("buffer.resize %d\n",x1370);
-} else {
-}
-x185[x1366] = x1275;
-x188[x1366] = x1236;
-x190 += 1;
-int32_t x1377 = 1;
-x1377 *= x1275;
-x1377 *= x1236;
-int32_t x1380 = x1377;
-int32_t x1381 = x1380 & 4194303;
-int32_t x1382 = x197[x1381];
-int32_t x1383 = x1382;
-x197[x1381] = x1366;
-x192[x1366] = x1382;
-int32_t x1386 = 1;
-x1386 *= x1275;
-int32_t x1388 = x1386;
-int32_t x1389 = x1388 & 4194303;
-int32_t x1390 = x198[x1389];
-int32_t x1391 = x1390;
-x198[x1389] = x1366;
-x195[x1366] = x1390;
-} else {
-}
-} else {
-}
-} else {
-}
 }
 
 }
-} else {
 }
-int32_t x1406 = x86;
-bool x1407 = x1406 == 0;
-bool x1409;
-if (x1407) {
-x1409 = false;
-} else {
-bool x1208 = !x1207;
-x1409 = x1208;
-}
-if (x1409) {
-for(int x1411=0; x1411 < x1406; x1411++) {
-int32_t x1413 = 1;
-int32_t x1412 = x84[x1411];
-x1413 *= x1412;
-int32_t x1415 = x1413;
-int32_t x1416 = x1415 & 4194303;
-int32_t x1417 = x142[x1416];
-int32_t x1418 = x1417;
-int32_t x1432 = x81[x1411];
+int32_t x1324 = x114;
+for(int x1326=0; x1326 < x1324; x1326++) {
+int32_t* x1327 = x108;
+int32_t* x1329 = x112;
+bool x1331 = true;
+int32_t x1332 = 0;
+int32_t x1328 = x1327[x1326];
+int32_t x1333 = x1328 + 233;
+x1332 = x1333;
+int32_t x1330 = x1329[x1326];
+int32_t x1335 = x1333 * 1009;
+int32_t x1336 = x1335 + x1330;
+int32_t x1337 = x1336 + 233;
+x1332 = x1337;
+int32_t* x1340 = x188;
+int32_t x1339 = x1337 & 16383;
+int32_t x1341 = x1340[x1339];
+int32_t x1342 = x1341;
+bool x1343 = true;
 for (;;) {
-int32_t x1419 = x1418;
-bool x1420 = x1419 != -1;
-if (!x1420) break;
-int32_t x1422 = x1418;
-int32_t x1423 = x139[x1422];
-x1418 = x1423;
-bool x1425 = true;
-int32_t x1426 = x129[x1422];
-bool x1427 = x1412 == x1426;
-if (x1427) {
+bool x1344 = x1343;
+bool x1348;
+if (x1344) {
+int32_t x1345 = x1342;
+bool x1346 = x1345 != -1;
+x1348 = x1346;
 } else {
-x1425 = false;
+x1348 = false;
 }
-bool x1431 = x1425;
-if (x1431) {
-bool x1434 = false;
-int32_t x1435 = 1;
-x1435 *= x1432;
-int32_t x1433 = x132[x1422];
-x1435 *= x1433;
-int32_t x1438 = x1435;
-int32_t x1439 = x1438 & 4194303;
-int32_t x1440 = x93[x1439];
-int32_t x1441 = x1440;
-bool x1442 = true;
+if (!x1348) break;
+int32_t x1350 = x1342;
+bool x1351 = true;
+int32_t* x1352 = x172;
+int32_t x1353 = x1352[x1350];
+bool x1354 = x1328 == x1353;
+if (x1354) {
+} else {
+x1351 = false;
+}
+int32_t* x1358 = x176;
+int32_t x1359 = x1358[x1350];
+bool x1360 = x1330 == x1359;
+if (x1360) {
+} else {
+x1351 = false;
+}
+bool x1364 = x1351;
+if (x1364) {
+bool x1365 = true;
+if (x1354) {
+} else {
+x1365 = false;
+}
+if (x1360) {
+} else {
+x1365 = false;
+}
+bool x1372 = x1365;
+if (x1372) {
+x1331 = false;
+} else {
+}
+bool x1376 = x1331;
+x1343 = x1376;
+} else {
+}
+int32_t* x1380 = x181;
+int32_t x1381 = x1380[x1350];
+x1342 = x1381;
+}
+bool x1385 = x1331;
+if (x1385) {
+int32_t x1388 = x178;
+int32_t x1389 = x169;
+bool x1390 = x1388 == x1389;
+if (x1390) {
+x169 *= 4;
+int32_t x1392 = x169;
+printf("buffer.resize %d\n",x1392);
+} else {
+}
+int32_t* x1396 = x172;
+x1396[x1388] = x1328;
+int32_t* x1398 = x176;
+x1398[x1388] = x1330;
+x178 += 1;
+int32_t x1401 = x1388;
+int32_t x1402 = 0;
+x1402 = x1333;
+x1402 = x1337;
+int32_t x1405 = x1341;
+x1340[x1339] = x1388;
+int32_t* x1407 = x181;
+x1407[x1388] = x1341;
+int32_t x1409 = 0;
+x1409 = x1333;
+int32_t* x1412 = x190;
+int32_t x1411 = x1333 & 16383;
+int32_t x1413 = x1412[x1411];
+int32_t x1414 = x1413;
+x1412[x1411] = x1388;
+int32_t* x1416 = x185;
+x1416[x1388] = x1413;
+} else {
+}
+
+}
+bool x1422 = true;
 for (;;) {
-bool x1443 = x1442;
-bool x1447;
-if (x1443) {
-int32_t x1444 = x1441;
+bool x1423 = x1422;
+if (!x1423) break;
+int32_t x1425 = x178;
+bool x1426 = x1425 == 0;
+bool x1432;
+if (x1426) {
+x1432 = false;
+} else {
+int32_t x1428 = x114;
+bool x1429 = x1428 == 0;
+bool x1430 = !x1429;
+x1432 = x1430;
+}
+if (x1432) {
+for(int x1434=0; x1434 < x1425; x1434++) {
+int32_t* x1435 = x176;
+int32_t x1437 = 0;
+int32_t x1436 = x1435[x1434];
+int32_t x1438 = x1436 + 233;
+x1437 = x1438;
+int32_t* x1441 = x126;
+int32_t x1440 = x1438 & 4194303;
+int32_t x1442 = x1441[x1440];
+int32_t x1443 = x1442;
+for (;;) {
+int32_t x1444 = x1443;
 bool x1445 = x1444 != -1;
-x1447 = x1445;
+if (!x1445) break;
+int32_t x1447 = x1443;
+bool x1448 = true;
+int32_t* x1449 = x108;
+int32_t x1450 = x1449[x1447];
+bool x1451 = x1436 == x1450;
+if (x1451) {
 } else {
-x1447 = false;
+x1448 = false;
 }
-if (!x1447) break;
-int32_t x1449 = x1441;
-int32_t x1450 = x88[x1449];
-x1441 = x1450;
-bool x1452 = true;
-int32_t x1453 = x81[x1449];
-bool x1454 = x1432 == x1453;
-if (x1454) {
-} else {
-x1452 = false;
-}
-int32_t x1458 = x84[x1449];
-bool x1459 = x1433 == x1458;
-if (x1459) {
-} else {
-x1452 = false;
-}
-bool x1463 = x1452;
-if (x1463) {
-x1434 = true;
-x1442 = false;
-} else {
-}
-}
-bool x1470 = x1434;
-if (x1470) {
-} else {
+bool x1455 = x1448;
+if (x1455) {
+int32_t* x1456 = x176;
+int32_t* x1458 = x112;
+bool x1460 = false;
+int32_t x1461 = 0;
+int32_t x1457 = x1456[x1434];
+int32_t x1462 = x1457 + 233;
+x1461 = x1462;
+int32_t x1459 = x1458[x1447];
+int32_t x1464 = x1462 * 1009;
+int32_t x1465 = x1464 + x1459;
+int32_t x1466 = x1465 + 233;
+x1461 = x1466;
+int32_t* x1469 = x188;
+int32_t x1468 = x1466 & 16383;
+int32_t x1470 = x1469[x1468];
+int32_t x1471 = x1470;
 bool x1472 = true;
-int32_t x1473 = 1;
-x1473 *= x1432;
-x1473 *= x1433;
-int32_t x1476 = x1473;
-int32_t x1477 = x1476 & 4194303;
-int32_t x1478 = x197[x1477];
-int32_t x1479 = x1478;
-bool x1480 = true;
 for (;;) {
-bool x1481 = x1480;
-bool x1485;
-if (x1481) {
-int32_t x1482 = x1479;
-bool x1483 = x1482 != -1;
-x1485 = x1483;
+bool x1473 = x1472;
+bool x1477;
+if (x1473) {
+int32_t x1474 = x1471;
+bool x1475 = x1474 != -1;
+x1477 = x1475;
 } else {
-x1485 = false;
+x1477 = false;
 }
-if (!x1485) break;
-int32_t x1487 = x1479;
-int32_t x1488 = x192[x1487];
-x1479 = x1488;
-bool x1490 = true;
-int32_t x1491 = x185[x1487];
-bool x1492 = x1432 == x1491;
-if (x1492) {
+if (!x1477) break;
+int32_t x1479 = x1471;
+bool x1480 = true;
+int32_t* x1481 = x172;
+int32_t x1482 = x1481[x1479];
+bool x1483 = x1457 == x1482;
+if (x1483) {
 } else {
-x1490 = false;
+x1480 = false;
 }
-int32_t x1496 = x188[x1487];
-bool x1497 = x1433 == x1496;
-if (x1497) {
+int32_t* x1487 = x176;
+int32_t x1488 = x1487[x1479];
+bool x1489 = x1459 == x1488;
+if (x1489) {
 } else {
-x1490 = false;
+x1480 = false;
 }
-bool x1501 = x1490;
-if (x1501) {
-bool x1502 = true;
-if (x1492) {
-} else {
-x1502 = false;
-}
-if (x1497) {
-} else {
-x1502 = false;
-}
-bool x1509 = x1502;
-if (x1509) {
+bool x1493 = x1480;
+if (x1493) {
+x1460 = true;
 x1472 = false;
 } else {
 }
-bool x1513 = x1472;
-x1480 = x1513;
+int32_t* x1498 = x181;
+int32_t x1499 = x1498[x1479];
+x1471 = x1499;
+}
+bool x1503 = x1460;
+bool x1553;
+if (x1503) {
+x1553 = false;
 } else {
-}
-}
-bool x1519 = x1472;
-if (x1519) {
-int32_t x1522 = x190;
-int32_t x1523 = x183;
-bool x1524 = x1522 == x1523;
-if (x1524) {
-x183 *= 4;
-int32_t x1526 = x183;
-printf("buffer.resize %d\n",x1526);
-} else {
-}
-x185[x1522] = x1432;
-x188[x1522] = x1433;
-x190 += 1;
-int32_t x1533 = 1;
-x1533 *= x1432;
-x1533 *= x1433;
-int32_t x1536 = x1533;
-int32_t x1537 = x1536 & 4194303;
-int32_t x1538 = x197[x1537];
-int32_t x1539 = x1538;
-x197[x1537] = x1522;
-x192[x1522] = x1538;
-int32_t x1542 = 1;
-x1542 *= x1432;
-int32_t x1544 = x1542;
-int32_t x1545 = x1544 & 4194303;
-int32_t x1546 = x198[x1545];
-int32_t x1547 = x1546;
-x198[x1545] = x1522;
-x195[x1522] = x1546;
-} else {
-}
-}
-} else {
-}
-}
-
-}
-} else {
-}
-int32_t x1562 = x190;
-bool x1563 = x1562 == 0;
-if (x1563) {
-x1203 = false;
-} else {
-for(int x1567=0; x1567 < x1562; x1567++) {
-bool x1570 = true;
-int32_t x1571 = 1;
-int32_t x1568 = x185[x1567];
-x1571 *= x1568;
-int32_t x1569 = x188[x1567];
-x1571 *= x1569;
-int32_t x1574 = x1571;
-int32_t x1575 = x1574 & 4194303;
-int32_t x1576 = x93[x1575];
-int32_t x1577 = x1576;
-bool x1578 = true;
+int32_t* x1505 = x172;
+bool x1507 = false;
+int32_t x1508 = 0;
+int32_t x1506 = x1505[x1434];
+int32_t x1509 = x1506 + 233;
+x1508 = x1509;
+int32_t x1511 = x1509 * 1009;
+int32_t x1512 = x1511 + x1459;
+int32_t x1513 = x1512 + 233;
+x1508 = x1513;
+int32_t* x1516 = x124;
+int32_t x1515 = x1513 & 4194303;
+int32_t x1517 = x1516[x1515];
+int32_t x1518 = x1517;
+bool x1519 = true;
 for (;;) {
-bool x1579 = x1578;
-bool x1583;
+bool x1520 = x1519;
+bool x1524;
+if (x1520) {
+int32_t x1521 = x1518;
+bool x1522 = x1521 != -1;
+x1524 = x1522;
+} else {
+x1524 = false;
+}
+if (!x1524) break;
+int32_t x1526 = x1518;
+bool x1527 = true;
+int32_t* x1528 = x108;
+int32_t x1529 = x1528[x1526];
+bool x1530 = x1506 == x1529;
+if (x1530) {
+} else {
+x1527 = false;
+}
+int32_t* x1534 = x112;
+int32_t x1535 = x1534[x1526];
+bool x1536 = x1459 == x1535;
+if (x1536) {
+} else {
+x1527 = false;
+}
+bool x1540 = x1527;
+if (x1540) {
+x1507 = true;
+x1519 = false;
+} else {
+}
+int32_t* x1545 = x117;
+int32_t x1546 = x1545[x1526];
+x1518 = x1546;
+}
+bool x1550 = x1507;
+bool x1551 = !x1550;
+x1553 = x1551;
+}
+if (x1553) {
+int32_t* x1554 = x172;
+bool x1556 = true;
+int32_t x1557 = 0;
+int32_t x1555 = x1554[x1434];
+int32_t x1558 = x1555 + 233;
+x1557 = x1558;
+int32_t x1560 = x1558 * 1009;
+int32_t x1561 = x1560 + x1459;
+int32_t x1562 = x1561 + 233;
+x1557 = x1562;
+int32_t* x1565 = x263;
+int32_t x1564 = x1562 & 16383;
+int32_t x1566 = x1565[x1564];
+int32_t x1567 = x1566;
+bool x1568 = true;
+for (;;) {
+bool x1569 = x1568;
+bool x1573;
+if (x1569) {
+int32_t x1570 = x1567;
+bool x1571 = x1570 != -1;
+x1573 = x1571;
+} else {
+x1573 = false;
+}
+if (!x1573) break;
+int32_t x1575 = x1567;
+bool x1576 = true;
+int32_t* x1577 = x247;
+int32_t x1578 = x1577[x1575];
+bool x1579 = x1555 == x1578;
 if (x1579) {
-int32_t x1580 = x1577;
-bool x1581 = x1580 != -1;
-x1583 = x1581;
 } else {
-x1583 = false;
+x1576 = false;
 }
-if (!x1583) break;
-int32_t x1585 = x1577;
-int32_t x1586 = x88[x1585];
-x1577 = x1586;
-bool x1588 = true;
-int32_t x1589 = x81[x1585];
-bool x1590 = x1568 == x1589;
-if (x1590) {
+int32_t* x1583 = x251;
+int32_t x1584 = x1583[x1575];
+bool x1585 = x1459 == x1584;
+if (x1585) {
 } else {
-x1588 = false;
+x1576 = false;
 }
-int32_t x1594 = x84[x1585];
-bool x1595 = x1569 == x1594;
-if (x1595) {
+bool x1589 = x1576;
+if (x1589) {
+bool x1590 = true;
+if (x1579) {
 } else {
-x1588 = false;
+x1590 = false;
 }
-bool x1599 = x1588;
-if (x1599) {
-bool x1600 = true;
-if (x1590) {
+if (x1585) {
 } else {
-x1600 = false;
+x1590 = false;
 }
-if (x1595) {
-} else {
-x1600 = false;
-}
-bool x1607 = x1600;
-if (x1607) {
-x1570 = false;
+bool x1597 = x1590;
+if (x1597) {
+x1556 = false;
 } else {
 }
-bool x1611 = x1570;
-x1578 = x1611;
+bool x1601 = x1556;
+x1568 = x1601;
 } else {
 }
+int32_t* x1605 = x256;
+int32_t x1606 = x1605[x1575];
+x1567 = x1606;
 }
-bool x1617 = x1570;
-if (x1617) {
-int32_t x1620 = x86;
-int32_t x1621 = x79;
-bool x1622 = x1620 == x1621;
-if (x1622) {
-x79 *= 4;
-int32_t x1624 = x79;
-printf("buffer.resize %d\n",x1624);
+bool x1610 = x1556;
+if (x1610) {
+int32_t x1613 = x253;
+int32_t x1614 = x244;
+bool x1615 = x1613 == x1614;
+if (x1615) {
+x244 *= 4;
+int32_t x1617 = x244;
+printf("buffer.resize %d\n",x1617);
 } else {
 }
-x81[x1620] = x1568;
-x84[x1620] = x1569;
-x86 += 1;
-int32_t x1631 = 1;
-x1631 *= x1568;
-x1631 *= x1569;
-int32_t x1634 = x1631;
-int32_t x1635 = x1634 & 4194303;
-int32_t x1636 = x93[x1635];
-int32_t x1637 = x1636;
-x93[x1635] = x1620;
-x88[x1620] = x1636;
-int32_t x1640 = 1;
-x1640 *= x1568;
-int32_t x1642 = x1640;
-int32_t x1643 = x1642 & 4194303;
-int32_t x1644 = x94[x1643];
-int32_t x1645 = x1644;
-x94[x1643] = x1620;
-x91[x1620] = x1644;
+int32_t* x1621 = x247;
+x1621[x1613] = x1555;
+int32_t* x1623 = x251;
+x1623[x1613] = x1459;
+x253 += 1;
+int32_t x1626 = x1613;
+int32_t x1627 = 0;
+x1627 = x1558;
+x1627 = x1562;
+int32_t x1630 = x1566;
+x1565[x1564] = x1613;
+int32_t* x1632 = x256;
+x1632[x1613] = x1566;
+int32_t x1634 = 0;
+x1634 = x1558;
+int32_t* x1637 = x265;
+int32_t x1636 = x1558 & 16383;
+int32_t x1638 = x1637[x1636];
+int32_t x1639 = x1638;
+x1637[x1636] = x1613;
+int32_t* x1641 = x260;
+x1641[x1613] = x1638;
 } else {
+}
+} else {
+}
+} else {
+}
+int32_t* x1649 = x121;
+int32_t x1650 = x1649[x1447];
+x1443 = x1650;
 }
 
 }
-SWAP(x134,x190);
-SWAP(x127,x183);
-SWAP(x130,x186);
-SWAP(x128,x184);
-SWAP(x129,x185);
-SWAP(x133,x189);
-SWAP(x131,x187);
-SWAP(x132,x188);
-SWAP(x137,x193);
-SWAP(x135,x191);
-SWAP(x136,x192);
-SWAP(x140,x196);
-SWAP(x138,x194);
-SWAP(x139,x195);
-SWAP(x141,x197);
-SWAP(x142,x198);
-x190 = 0;
-x193 = 0;
-x196 = 0;
-for(int x1671=0; x1671 < 4194304; x1671++) {
-x197[x1671] = -1;
-
-}
-for(int x1675=0; x1675 < 4194304; x1675++) {
-x198[x1675] = -1;
-
-}
-}
-}
-for(int x1683=0; x1683 < 4194304; x1683++) {
-x141[x1683] = -1;
-
-}
-for(int x1687=0; x1687 < 4194304; x1687++) {
-x142[x1687] = -1;
-
-}
-for(int x1691=0; x1691 < 4194304; x1691++) {
-x197[x1691] = -1;
-
-}
-for(int x1695=0; x1695 < 4194304; x1695++) {
-x198[x1695] = -1;
-
-}
-int32_t x1699 = x86;
-for(int x1701=0; x1701 < x1699; x1701++) {
-int32_t x1702 = x81[x1701];
-int32_t x1703 = fprintf(x1016,"%d",x1702);
-int32_t x1704 = fprintf(x1016,"\t");
-int32_t x1705 = x84[x1701];
-int32_t x1706 = fprintf(x1016,"%d",x1705);
-int32_t x1707 = fprintf(x1016,"\n");
-
-}
-fclose(x1016);
-if (x343) {
 } else {
-for(int x1711=0; x1711 < x342; x1711++) {
-bool x1713 = true;
-int32_t x1714 = 1;
-int32_t x1712 = x153[x1711];
-x1714 *= x1712;
-int32_t x1716 = x1714;
-int32_t x1717 = x1716 & 4194303;
-int32_t x1718 = x9[x1717];
-int32_t x1719 = x1718;
-bool x1720 = true;
+}
+int32_t x1658 = x114;
+bool x1659 = x1658 == 0;
+bool x1661;
+if (x1659) {
+x1661 = false;
+} else {
+bool x1427 = !x1426;
+x1661 = x1427;
+}
+if (x1661) {
+for(int x1663=0; x1663 < x1658; x1663++) {
+int32_t* x1664 = x112;
+int32_t x1666 = 0;
+int32_t x1665 = x1664[x1663];
+int32_t x1667 = x1665 + 233;
+x1666 = x1667;
+int32_t* x1670 = x190;
+int32_t x1669 = x1667 & 16383;
+int32_t x1671 = x1670[x1669];
+int32_t x1672 = x1671;
 for (;;) {
-bool x1721 = x1720;
-bool x1725;
-if (x1721) {
-int32_t x1722 = x1719;
-bool x1723 = x1722 != -1;
-x1725 = x1723;
+int32_t x1673 = x1672;
+bool x1674 = x1673 != -1;
+if (!x1674) break;
+int32_t x1676 = x1672;
+bool x1677 = true;
+int32_t* x1678 = x172;
+int32_t x1679 = x1678[x1676];
+bool x1680 = x1665 == x1679;
+if (x1680) {
 } else {
-x1725 = false;
+x1677 = false;
 }
-if (!x1725) break;
-int32_t x1727 = x1719;
-int32_t x1728 = x7[x1727];
-x1719 = x1728;
-bool x1730 = true;
-int32_t x1731 = x3[x1727];
-bool x1732 = x1712 == x1731;
+bool x1684 = x1677;
+if (x1684) {
+int32_t* x1685 = x108;
+int32_t* x1687 = x176;
+bool x1689 = false;
+int32_t x1690 = 0;
+int32_t x1686 = x1685[x1663];
+int32_t x1691 = x1686 + 233;
+x1690 = x1691;
+int32_t x1688 = x1687[x1676];
+int32_t x1693 = x1691 * 1009;
+int32_t x1694 = x1693 + x1688;
+int32_t x1695 = x1694 + 233;
+x1690 = x1695;
+int32_t* x1698 = x124;
+int32_t x1697 = x1695 & 4194303;
+int32_t x1699 = x1698[x1697];
+int32_t x1700 = x1699;
+bool x1701 = true;
+for (;;) {
+bool x1702 = x1701;
+bool x1706;
+if (x1702) {
+int32_t x1703 = x1700;
+bool x1704 = x1703 != -1;
+x1706 = x1704;
+} else {
+x1706 = false;
+}
+if (!x1706) break;
+int32_t x1708 = x1700;
+bool x1709 = true;
+int32_t* x1710 = x108;
+int32_t x1711 = x1710[x1708];
+bool x1712 = x1686 == x1711;
+if (x1712) {
+} else {
+x1709 = false;
+}
+int32_t* x1716 = x112;
+int32_t x1717 = x1716[x1708];
+bool x1718 = x1688 == x1717;
+if (x1718) {
+} else {
+x1709 = false;
+}
+bool x1722 = x1709;
+if (x1722) {
+x1689 = true;
+x1701 = false;
+} else {
+}
+int32_t* x1727 = x117;
+int32_t x1728 = x1727[x1708];
+x1700 = x1728;
+}
+bool x1732 = x1689;
 if (x1732) {
 } else {
-x1730 = false;
-}
-bool x1736 = x1730;
-if (x1736) {
-bool x1737 = true;
-if (x1732) {
+bool x1734 = true;
+int32_t x1735 = 0;
+x1735 = x1691;
+x1735 = x1695;
+int32_t* x1739 = x263;
+int32_t x1738 = x1695 & 16383;
+int32_t x1740 = x1739[x1738];
+int32_t x1741 = x1740;
+bool x1742 = true;
+for (;;) {
+bool x1743 = x1742;
+bool x1747;
+if (x1743) {
+int32_t x1744 = x1741;
+bool x1745 = x1744 != -1;
+x1747 = x1745;
 } else {
-x1737 = false;
+x1747 = false;
 }
-bool x1741 = x1737;
-if (x1741) {
-x1713 = false;
+if (!x1747) break;
+int32_t x1749 = x1741;
+bool x1750 = true;
+int32_t* x1751 = x247;
+int32_t x1752 = x1751[x1749];
+bool x1753 = x1686 == x1752;
+if (x1753) {
+} else {
+x1750 = false;
+}
+int32_t* x1757 = x251;
+int32_t x1758 = x1757[x1749];
+bool x1759 = x1688 == x1758;
+if (x1759) {
+} else {
+x1750 = false;
+}
+bool x1763 = x1750;
+if (x1763) {
+bool x1764 = true;
+if (x1753) {
+} else {
+x1764 = false;
+}
+if (x1759) {
+} else {
+x1764 = false;
+}
+bool x1771 = x1764;
+if (x1771) {
+x1734 = false;
 } else {
 }
-bool x1745 = x1713;
-x1720 = x1745;
+bool x1775 = x1734;
+x1742 = x1775;
+} else {
+}
+int32_t* x1779 = x256;
+int32_t x1780 = x1779[x1749];
+x1741 = x1780;
+}
+bool x1784 = x1734;
+if (x1784) {
+int32_t x1787 = x253;
+int32_t x1788 = x244;
+bool x1789 = x1787 == x1788;
+if (x1789) {
+x244 *= 4;
+int32_t x1791 = x244;
+printf("buffer.resize %d\n",x1791);
+} else {
+}
+int32_t* x1795 = x247;
+x1795[x1787] = x1686;
+int32_t* x1797 = x251;
+x1797[x1787] = x1688;
+x253 += 1;
+int32_t x1800 = x1787;
+int32_t x1801 = 0;
+x1801 = x1691;
+x1801 = x1695;
+int32_t x1804 = x1740;
+x1739[x1738] = x1787;
+int32_t* x1806 = x256;
+x1806[x1787] = x1740;
+int32_t x1808 = 0;
+x1808 = x1691;
+int32_t* x1811 = x265;
+int32_t x1810 = x1691 & 16383;
+int32_t x1812 = x1811[x1810];
+int32_t x1813 = x1812;
+x1811[x1810] = x1787;
+int32_t* x1815 = x260;
+x1815[x1787] = x1812;
 } else {
 }
 }
-bool x1751 = x1713;
-if (x1751) {
-int32_t x1754 = x5;
-int32_t x1755 = x1;
-bool x1756 = x1754 == x1755;
-if (x1756) {
+} else {
+}
+int32_t* x1823 = x185;
+int32_t x1824 = x1823[x1676];
+x1672 = x1824;
+}
+
+}
+} else {
+}
+int32_t x1832 = x253;
+bool x1833 = x1832 == 0;
+if (x1833) {
+x1422 = false;
+} else {
+for(int x1837=0; x1837 < x1832; x1837++) {
+int32_t* x1838 = x247;
+int32_t* x1840 = x251;
+bool x1842 = true;
+int32_t x1843 = 0;
+int32_t x1839 = x1838[x1837];
+int32_t x1844 = x1839 + 233;
+x1843 = x1844;
+int32_t x1841 = x1840[x1837];
+int32_t x1846 = x1844 * 1009;
+int32_t x1847 = x1846 + x1841;
+int32_t x1848 = x1847 + 233;
+x1843 = x1848;
+int32_t* x1851 = x124;
+int32_t x1850 = x1848 & 4194303;
+int32_t x1852 = x1851[x1850];
+int32_t x1853 = x1852;
+bool x1854 = true;
+for (;;) {
+bool x1855 = x1854;
+bool x1859;
+if (x1855) {
+int32_t x1856 = x1853;
+bool x1857 = x1856 != -1;
+x1859 = x1857;
+} else {
+x1859 = false;
+}
+if (!x1859) break;
+int32_t x1861 = x1853;
+bool x1862 = true;
+int32_t* x1863 = x108;
+int32_t x1864 = x1863[x1861];
+bool x1865 = x1839 == x1864;
+if (x1865) {
+} else {
+x1862 = false;
+}
+int32_t* x1869 = x112;
+int32_t x1870 = x1869[x1861];
+bool x1871 = x1841 == x1870;
+if (x1871) {
+} else {
+x1862 = false;
+}
+bool x1875 = x1862;
+if (x1875) {
+bool x1876 = true;
+if (x1865) {
+} else {
+x1876 = false;
+}
+if (x1871) {
+} else {
+x1876 = false;
+}
+bool x1883 = x1876;
+if (x1883) {
+x1842 = false;
+} else {
+}
+bool x1887 = x1842;
+x1854 = x1887;
+} else {
+}
+int32_t* x1891 = x117;
+int32_t x1892 = x1891[x1861];
+x1853 = x1892;
+}
+bool x1896 = x1842;
+if (x1896) {
+int32_t x1899 = x114;
+int32_t x1900 = x105;
+bool x1901 = x1899 == x1900;
+if (x1901) {
+x105 *= 4;
+int32_t x1903 = x105;
+printf("buffer.resize %d\n",x1903);
+} else {
+}
+int32_t* x1907 = x108;
+x1907[x1899] = x1839;
+int32_t* x1909 = x112;
+x1909[x1899] = x1841;
+x114 += 1;
+int32_t x1912 = x1899;
+int32_t x1913 = 0;
+x1913 = x1844;
+x1913 = x1848;
+int32_t x1916 = x1852;
+x1851[x1850] = x1899;
+int32_t* x1918 = x117;
+x1918[x1899] = x1852;
+int32_t x1920 = 0;
+x1920 = x1844;
+int32_t* x1923 = x126;
+int32_t x1922 = x1844 & 4194303;
+int32_t x1924 = x1923[x1922];
+int32_t x1925 = x1924;
+x1923[x1922] = x1899;
+int32_t* x1927 = x121;
+x1927[x1899] = x1924;
+} else {
+}
+
+}
+SWAP(x178,x253);
+SWAP(x169,x244);
+SWAP(x173,x248);
+SWAP(x170,x245);
+SWAP(x172,x247);
+SWAP(x177,x252);
+SWAP(x174,x249);
+SWAP(x176,x251);
+SWAP(x182,x257);
+SWAP(x179,x254);
+SWAP(x181,x256);
+SWAP(x186,x261);
+SWAP(x183,x258);
+SWAP(x185,x260);
+SWAP(x188,x263);
+SWAP(x190,x265);
+x253 = 0;
+x257 = 0;
+x261 = 0;
+for(int x1952=0; x1952 < 16384; x1952++) {
+int32_t* x1953 = x263;
+x1953[x1952] = -1;
+
+}
+for(int x1957=0; x1957 < 16384; x1957++) {
+int32_t* x1958 = x265;
+x1958[x1957] = -1;
+
+}
+}
+}
+for(int x1966=0; x1966 < 16384; x1966++) {
+int32_t* x1967 = x188;
+x1967[x1966] = -1;
+
+}
+for(int x1971=0; x1971 < 16384; x1971++) {
+int32_t* x1972 = x190;
+x1972[x1971] = -1;
+
+}
+for(int x1976=0; x1976 < 16384; x1976++) {
+int32_t* x1977 = x263;
+x1977[x1976] = -1;
+
+}
+for(int x1981=0; x1981 < 16384; x1981++) {
+int32_t* x1982 = x265;
+x1982[x1981] = -1;
+
+}
+int32_t x1986 = x114;
+for(int x1988=0; x1988 < x1986; x1988++) {
+int32_t* x1989 = x108;
+int32_t x1990 = x1989[x1988];
+int32_t x1991 = fprintf(x1211,"%d",x1990);
+int32_t x1992 = fprintf(x1211,"\t");
+int32_t* x1993 = x112;
+int32_t x1994 = x1993[x1988];
+int32_t x1995 = fprintf(x1211,"%d",x1994);
+int32_t x1996 = fprintf(x1211,"\n");
+
+}
+fclose(x1211);
+if (x444) {
+} else {
+for(int x2000=0; x2000 < x443; x2000++) {
+int32_t* x2001 = x204;
+bool x2003 = true;
+int32_t x2004 = 0;
+int32_t x2002 = x2001[x2000];
+int32_t x2005 = x2002 + 233;
+x2004 = x2005;
+int32_t* x2008 = x12;
+int32_t x2007 = x2005 & 4194303;
+int32_t x2009 = x2008[x2007];
+int32_t x2010 = x2009;
+bool x2011 = true;
+for (;;) {
+bool x2012 = x2011;
+bool x2016;
+if (x2012) {
+int32_t x2013 = x2010;
+bool x2014 = x2013 != -1;
+x2016 = x2014;
+} else {
+x2016 = false;
+}
+if (!x2016) break;
+int32_t x2018 = x2010;
+bool x2019 = true;
+int32_t* x2020 = x4;
+int32_t x2021 = x2020[x2018];
+bool x2022 = x2002 == x2021;
+if (x2022) {
+} else {
+x2019 = false;
+}
+bool x2026 = x2019;
+if (x2026) {
+bool x2027 = true;
+if (x2022) {
+} else {
+x2027 = false;
+}
+bool x2031 = x2027;
+if (x2031) {
+x2003 = false;
+} else {
+}
+bool x2035 = x2003;
+x2011 = x2035;
+} else {
+}
+int32_t* x2039 = x9;
+int32_t x2040 = x2039[x2018];
+x2010 = x2040;
+}
+bool x2044 = x2003;
+if (x2044) {
+int32_t x2047 = x6;
+int32_t x2048 = x1;
+bool x2049 = x2047 == x2048;
+if (x2049) {
 x1 *= 4;
-int32_t x1758 = x1;
-printf("buffer.resize %d\n",x1758);
+int32_t x2051 = x1;
+printf("buffer.resize %d\n",x2051);
 } else {
 }
-x3[x1754] = x1712;
-x5 += 1;
-int32_t x1764 = 1;
-x1764 *= x1712;
-int32_t x1766 = x1764;
-int32_t x1767 = x1766 & 4194303;
-int32_t x1768 = x9[x1767];
-int32_t x1769 = x1768;
-x9[x1767] = x1754;
-x7[x1754] = x1768;
-} else {
-}
-
-}
-}
-if (x343) {
-} else {
-for(int x1778=0; x1778 < x342; x1778++) {
-bool x1780 = true;
-int32_t x1781 = 1;
-int32_t x1779 = x156[x1778];
-x1781 *= x1779;
-int32_t x1783 = x1781;
-int32_t x1784 = x1783 & 4194303;
-int32_t x1785 = x9[x1784];
-int32_t x1786 = x1785;
-bool x1787 = true;
-for (;;) {
-bool x1788 = x1787;
-bool x1792;
-if (x1788) {
-int32_t x1789 = x1786;
-bool x1790 = x1789 != -1;
-x1792 = x1790;
-} else {
-x1792 = false;
-}
-if (!x1792) break;
-int32_t x1794 = x1786;
-int32_t x1795 = x7[x1794];
-x1786 = x1795;
-bool x1797 = true;
-int32_t x1798 = x3[x1794];
-bool x1799 = x1779 == x1798;
-if (x1799) {
-} else {
-x1797 = false;
-}
-bool x1803 = x1797;
-if (x1803) {
-bool x1804 = true;
-if (x1799) {
-} else {
-x1804 = false;
-}
-bool x1808 = x1804;
-if (x1808) {
-x1780 = false;
-} else {
-}
-bool x1812 = x1780;
-x1787 = x1812;
-} else {
-}
-}
-bool x1818 = x1780;
-if (x1818) {
-int32_t x1821 = x5;
-int32_t x1822 = x1;
-bool x1823 = x1821 == x1822;
-if (x1823) {
-x1 *= 4;
-int32_t x1825 = x1;
-printf("buffer.resize %d\n",x1825);
-} else {
-}
-x3[x1821] = x1779;
-x5 += 1;
-int32_t x1831 = 1;
-x1831 *= x1779;
-int32_t x1833 = x1831;
-int32_t x1834 = x1833 & 4194303;
-int32_t x1835 = x9[x1834];
-int32_t x1836 = x1835;
-x9[x1834] = x1821;
-x7[x1821] = x1835;
+int32_t* x2055 = x4;
+x2055[x2047] = x2002;
+x6 += 1;
+int32_t x2058 = x2047;
+int32_t x2059 = 0;
+x2059 = x2005;
+int32_t x2061 = x2009;
+x2008[x2007] = x2047;
+int32_t* x2063 = x9;
+x2063[x2047] = x2009;
 } else {
 }
 
 }
 }
-int32_t x1845 = x5;
-bool x1846 = x1845 == 0;
-if (x1846) {
+if (x444) {
 } else {
-for(int x1849=0; x1849 < x1845; x1849++) {
-bool x1851 = false;
-int32_t x1852 = 1;
-int32_t x1850 = x3[x1849];
-x1852 *= x1850;
-int32_t x1854 = x1852;
-int32_t x1855 = x1854 & 4194303;
-int32_t x1856 = x170[x1855];
-int32_t x1857 = x1856;
-bool x1858 = true;
+for(int x2071=0; x2071 < x443; x2071++) {
+int32_t* x2072 = x208;
+bool x2074 = true;
+int32_t x2075 = 0;
+int32_t x2073 = x2072[x2071];
+int32_t x2076 = x2073 + 233;
+x2075 = x2076;
+int32_t* x2079 = x12;
+int32_t x2078 = x2076 & 4194303;
+int32_t x2080 = x2079[x2078];
+int32_t x2081 = x2080;
+bool x2082 = true;
 for (;;) {
-bool x1859 = x1858;
-bool x1863;
-if (x1859) {
-int32_t x1860 = x1857;
-bool x1861 = x1860 != -1;
-x1863 = x1861;
-} else {
-x1863 = false;
-}
-if (!x1863) break;
-int32_t x1865 = x1857;
-int32_t x1866 = x166[x1865];
-x1857 = x1866;
-bool x1868 = true;
-int32_t x1869 = x153[x1865];
-bool x1870 = x1850 == x1869;
-if (x1870) {
-} else {
-x1868 = false;
-}
-bool x1874 = x1868;
-if (x1874) {
-x1851 = true;
-x1858 = false;
-} else {
-}
-}
-bool x1881 = x1851;
-bool x1916;
-if (x1881) {
-x1916 = false;
-} else {
-bool x1883 = false;
-int32_t x1884 = 1;
-x1884 *= x1850;
-int32_t x1886 = x1884;
-int32_t x1887 = x1886 & 4194303;
-int32_t x1888 = x169[x1887];
-int32_t x1889 = x1888;
-bool x1890 = true;
-for (;;) {
-bool x1891 = x1890;
-bool x1895;
-if (x1891) {
-int32_t x1892 = x1889;
-bool x1893 = x1892 != -1;
-x1895 = x1893;
-} else {
-x1895 = false;
-}
-if (!x1895) break;
-int32_t x1897 = x1889;
-int32_t x1898 = x163[x1897];
-x1889 = x1898;
-bool x1900 = true;
-int32_t x1901 = x156[x1897];
-bool x1902 = x1850 == x1901;
-if (x1902) {
-} else {
-x1900 = false;
-}
-bool x1906 = x1900;
-if (x1906) {
-x1883 = true;
-x1890 = false;
-} else {
-}
-}
-bool x1913 = x1883;
-bool x1914 = !x1913;
-x1916 = x1914;
-}
-if (x1916) {
-bool x1917 = true;
-int32_t x1918 = 1;
-x1918 *= x1850;
-x1918 *= 0;
-int32_t x1921 = x1918;
-int32_t x1922 = x1921 & 4194303;
-int32_t x1923 = x26[x1922];
-int32_t x1924 = x1923;
-bool x1925 = true;
-for (;;) {
-bool x1926 = x1925;
-bool x1930;
-if (x1926) {
-int32_t x1927 = x1924;
-bool x1928 = x1927 != -1;
-x1930 = x1928;
-} else {
-x1930 = false;
-}
-if (!x1930) break;
-int32_t x1932 = x1924;
-int32_t x1933 = x24[x1932];
-x1924 = x1933;
-bool x1935 = true;
-int32_t x1936 = x17[x1932];
-bool x1937 = x1850 == x1936;
-if (x1937) {
-} else {
-x1935 = false;
-}
-int32_t x1941 = x20[x1932];
-bool x1942 = 0 == x1941;
-if (x1942) {
-} else {
-x1935 = false;
-}
-bool x1946 = x1935;
-if (x1946) {
-bool x1947 = true;
-if (x1937) {
-} else {
-x1947 = false;
-}
-if (x1942) {
-} else {
-x1947 = false;
-}
-bool x1954 = x1947;
-if (x1954) {
-x1917 = false;
-} else {
-}
-bool x1958 = x1917;
-x1925 = x1958;
-} else {
-}
-}
-bool x1964 = x1917;
-if (x1964) {
-int32_t x1967 = x22;
-int32_t x1968 = x15;
-bool x1969 = x1967 == x1968;
-if (x1969) {
-x15 *= 4;
-int32_t x1971 = x15;
-printf("buffer.resize %d\n",x1971);
-} else {
-}
-x17[x1967] = x1850;
-x20[x1967] = 0;
-x22 += 1;
-int32_t x1978 = 1;
-x1978 *= x1850;
-x1978 *= 0;
-int32_t x1981 = x1978;
-int32_t x1982 = x1981 & 4194303;
-int32_t x1983 = x26[x1982];
-int32_t x1984 = x1983;
-x26[x1982] = x1967;
-x24[x1967] = x1983;
-} else {
-}
-} else {
-}
-
-}
-}
-bool x1995;
-if (x1846) {
-x1995 = false;
-} else {
-bool x344 = !x343;
-x1995 = x344;
-}
-if (x1995) {
-for(int x1996=0; x1996 < x1845; x1996++) {
-bool x1998 = false;
-int32_t x1999 = 1;
-int32_t x1997 = x3[x1996];
-x1999 *= x1997;
-int32_t x2001 = x1999;
-int32_t x2002 = x2001 & 4194303;
-int32_t x2003 = x170[x2002];
-int32_t x2004 = x2003;
-bool x2005 = true;
-for (;;) {
-bool x2006 = x2005;
-bool x2010;
-if (x2006) {
-int32_t x2007 = x2004;
-bool x2008 = x2007 != -1;
-x2010 = x2008;
-} else {
-x2010 = false;
-}
-if (!x2010) break;
-int32_t x2012 = x2004;
-int32_t x2013 = x166[x2012];
-x2004 = x2013;
-bool x2015 = true;
-int32_t x2016 = x153[x2012];
-bool x2017 = x1997 == x2016;
-if (x2017) {
-} else {
-x2015 = false;
-}
-bool x2021 = x2015;
-if (x2021) {
-x1998 = true;
-x2005 = false;
-} else {
-}
-}
-bool x2028 = x1998;
-bool x2062;
-if (x2028) {
-bool x2029 = false;
-int32_t x2030 = 1;
-x2030 *= x1997;
-int32_t x2032 = x2030;
-int32_t x2033 = x2032 & 4194303;
-int32_t x2034 = x169[x2033];
-int32_t x2035 = x2034;
-bool x2036 = true;
-for (;;) {
-bool x2037 = x2036;
-bool x2041;
-if (x2037) {
-int32_t x2038 = x2035;
-bool x2039 = x2038 != -1;
-x2041 = x2039;
-} else {
-x2041 = false;
-}
-if (!x2041) break;
-int32_t x2043 = x2035;
-int32_t x2044 = x163[x2043];
-x2035 = x2044;
-bool x2046 = true;
-int32_t x2047 = x156[x2043];
-bool x2048 = x1997 == x2047;
-if (x2048) {
-} else {
-x2046 = false;
-}
-bool x2052 = x2046;
-if (x2052) {
-x2029 = true;
-x2036 = false;
-} else {
-}
-}
-bool x2059 = x2029;
-bool x2060 = !x2059;
-x2062 = x2060;
-} else {
-x2062 = false;
-}
-if (x2062) {
-bool x2063 = true;
-int32_t x2064 = 1;
-x2064 *= x1997;
-x2064 *= 1;
-int32_t x2067 = x2064;
-int32_t x2068 = x2067 & 4194303;
-int32_t x2069 = x26[x2068];
-int32_t x2070 = x2069;
-bool x2071 = true;
-for (;;) {
-bool x2072 = x2071;
-bool x2076;
-if (x2072) {
-int32_t x2073 = x2070;
-bool x2074 = x2073 != -1;
-x2076 = x2074;
-} else {
-x2076 = false;
-}
-if (!x2076) break;
-int32_t x2078 = x2070;
-int32_t x2079 = x24[x2078];
-x2070 = x2079;
-bool x2081 = true;
-int32_t x2082 = x17[x2078];
-bool x2083 = x1997 == x2082;
+bool x2083 = x2082;
+bool x2087;
 if (x2083) {
+int32_t x2084 = x2081;
+bool x2085 = x2084 != -1;
+x2087 = x2085;
 } else {
-x2081 = false;
+x2087 = false;
 }
-int32_t x2087 = x20[x2078];
-bool x2088 = 1 == x2087;
-if (x2088) {
+if (!x2087) break;
+int32_t x2089 = x2081;
+bool x2090 = true;
+int32_t* x2091 = x4;
+int32_t x2092 = x2091[x2089];
+bool x2093 = x2073 == x2092;
+if (x2093) {
 } else {
-x2081 = false;
+x2090 = false;
 }
-bool x2092 = x2081;
-if (x2092) {
-bool x2093 = true;
-if (x2083) {
+bool x2097 = x2090;
+if (x2097) {
+bool x2098 = true;
+if (x2093) {
 } else {
-x2093 = false;
+x2098 = false;
 }
-if (x2088) {
-} else {
-x2093 = false;
-}
-bool x2100 = x2093;
-if (x2100) {
-x2063 = false;
-} else {
-}
-bool x2104 = x2063;
-x2071 = x2104;
+bool x2102 = x2098;
+if (x2102) {
+x2074 = false;
 } else {
 }
+bool x2106 = x2074;
+x2082 = x2106;
+} else {
 }
-bool x2110 = x2063;
-if (x2110) {
-int32_t x2113 = x22;
-int32_t x2114 = x15;
-bool x2115 = x2113 == x2114;
+int32_t* x2110 = x9;
+int32_t x2111 = x2110[x2089];
+x2081 = x2111;
+}
+bool x2115 = x2074;
 if (x2115) {
-x15 *= 4;
-int32_t x2117 = x15;
-printf("buffer.resize %d\n",x2117);
+int32_t x2118 = x6;
+int32_t x2119 = x1;
+bool x2120 = x2118 == x2119;
+if (x2120) {
+x1 *= 4;
+int32_t x2122 = x1;
+printf("buffer.resize %d\n",x2122);
 } else {
 }
-x17[x2113] = x1997;
-x20[x2113] = 1;
-x22 += 1;
-int32_t x2124 = 1;
-x2124 *= x1997;
-x2124 *= 1;
-int32_t x2127 = x2124;
-int32_t x2128 = x2127 & 4194303;
-int32_t x2129 = x26[x2128];
-int32_t x2130 = x2129;
-x26[x2128] = x2113;
-x24[x2113] = x2129;
+int32_t* x2126 = x4;
+x2126[x2118] = x2073;
+x6 += 1;
+int32_t x2129 = x2118;
+int32_t x2130 = 0;
+x2130 = x2076;
+int32_t x2132 = x2080;
+x2079[x2078] = x2118;
+int32_t* x2134 = x9;
+x2134[x2118] = x2080;
+} else {
+}
+
+}
+}
+int32_t x2142 = x6;
+bool x2143 = x2142 == 0;
+if (x2143) {
+} else {
+for(int x2146=0; x2146 < x2142; x2146++) {
+int32_t* x2147 = x4;
+bool x2149 = false;
+int32_t x2150 = 0;
+int32_t x2148 = x2147[x2146];
+int32_t x2151 = x2148 + 233;
+x2150 = x2151;
+int32_t* x2154 = x228;
+int32_t x2153 = x2151 & 4194303;
+int32_t x2155 = x2154[x2153];
+int32_t x2156 = x2155;
+bool x2157 = true;
+for (;;) {
+bool x2158 = x2157;
+bool x2162;
+if (x2158) {
+int32_t x2159 = x2156;
+bool x2160 = x2159 != -1;
+x2162 = x2160;
+} else {
+x2162 = false;
+}
+if (!x2162) break;
+int32_t x2164 = x2156;
+bool x2165 = true;
+int32_t* x2166 = x204;
+int32_t x2167 = x2166[x2164];
+bool x2168 = x2148 == x2167;
+if (x2168) {
+} else {
+x2165 = false;
+}
+bool x2172 = x2165;
+if (x2172) {
+x2149 = true;
+x2157 = false;
+} else {
+}
+int32_t* x2177 = x221;
+int32_t x2178 = x2177[x2164];
+x2156 = x2178;
+}
+bool x2182 = x2149;
+bool x2218;
+if (x2182) {
+x2218 = false;
+} else {
+bool x2184 = false;
+int32_t x2185 = 0;
+x2185 = x2151;
+int32_t* x2187 = x226;
+int32_t x2188 = x2187[x2153];
+int32_t x2189 = x2188;
+bool x2190 = true;
+for (;;) {
+bool x2191 = x2190;
+bool x2195;
+if (x2191) {
+int32_t x2192 = x2189;
+bool x2193 = x2192 != -1;
+x2195 = x2193;
+} else {
+x2195 = false;
+}
+if (!x2195) break;
+int32_t x2197 = x2189;
+bool x2198 = true;
+int32_t* x2199 = x208;
+int32_t x2200 = x2199[x2197];
+bool x2201 = x2148 == x2200;
+if (x2201) {
+} else {
+x2198 = false;
+}
+bool x2205 = x2198;
+if (x2205) {
+x2184 = true;
+x2190 = false;
+} else {
+}
+int32_t* x2210 = x217;
+int32_t x2211 = x2210[x2197];
+x2189 = x2211;
+}
+bool x2215 = x2184;
+bool x2216 = !x2215;
+x2218 = x2216;
+}
+if (x2218) {
+bool x2219 = true;
+int32_t x2220 = 0;
+x2220 = x2151;
+int32_t x2222 = x2151 * 1009;
+int32_t x2223 = x2222 + 233;
+x2220 = x2223;
+int32_t* x2226 = x34;
+int32_t x2225 = x2223 & 4194303;
+int32_t x2227 = x2226[x2225];
+int32_t x2228 = x2227;
+bool x2229 = true;
+for (;;) {
+bool x2230 = x2229;
+bool x2234;
+if (x2230) {
+int32_t x2231 = x2228;
+bool x2232 = x2231 != -1;
+x2234 = x2232;
+} else {
+x2234 = false;
+}
+if (!x2234) break;
+int32_t x2236 = x2228;
+bool x2237 = true;
+int32_t* x2238 = x22;
+int32_t x2239 = x2238[x2236];
+bool x2240 = x2148 == x2239;
+if (x2240) {
+} else {
+x2237 = false;
+}
+int32_t* x2244 = x26;
+int32_t x2245 = x2244[x2236];
+bool x2246 = 0 == x2245;
+if (x2246) {
+} else {
+x2237 = false;
+}
+bool x2250 = x2237;
+if (x2250) {
+bool x2251 = true;
+if (x2240) {
+} else {
+x2251 = false;
+}
+if (x2246) {
+} else {
+x2251 = false;
+}
+bool x2258 = x2251;
+if (x2258) {
+x2219 = false;
+} else {
+}
+bool x2262 = x2219;
+x2229 = x2262;
+} else {
+}
+int32_t* x2266 = x31;
+int32_t x2267 = x2266[x2236];
+x2228 = x2267;
+}
+bool x2271 = x2219;
+if (x2271) {
+int32_t x2274 = x28;
+int32_t x2275 = x19;
+bool x2276 = x2274 == x2275;
+if (x2276) {
+x19 *= 4;
+int32_t x2278 = x19;
+printf("buffer.resize %d\n",x2278);
+} else {
+}
+int32_t* x2282 = x22;
+x2282[x2274] = x2148;
+int32_t* x2284 = x26;
+x2284[x2274] = 0;
+x28 += 1;
+int32_t x2287 = x2274;
+int32_t x2288 = 0;
+x2288 = x2151;
+x2288 = x2223;
+int32_t x2291 = x2227;
+x2226[x2225] = x2274;
+int32_t* x2293 = x31;
+x2293[x2274] = x2227;
 } else {
 }
 } else {
 }
 
 }
-} else {
 }
-int32_t x2141 = x22;
-for(int x2143=0; x2143 < x2141; x2143++) {
-bool x2146 = true;
-int32_t x2147 = 1;
-int32_t x2144 = x17[x2143];
-x2147 *= x2144;
-int32_t x2145 = x20[x2143];
-x2147 *= x2145;
-int32_t x2150 = x2147;
-int32_t x2151 = x2150 & 4194303;
-int32_t x2152 = x45[x2151];
-int32_t x2153 = x2152;
-bool x2154 = true;
-for (;;) {
-bool x2155 = x2154;
-bool x2159;
-if (x2155) {
-int32_t x2156 = x2153;
-bool x2157 = x2156 != -1;
-x2159 = x2157;
-} else {
-x2159 = false;
-}
-if (!x2159) break;
-int32_t x2161 = x2153;
-int32_t x2162 = x40[x2161];
-x2153 = x2162;
-bool x2164 = true;
-int32_t x2165 = x33[x2161];
-bool x2166 = x2144 == x2165;
-if (x2166) {
-} else {
-x2164 = false;
-}
-int32_t x2170 = x36[x2161];
-bool x2171 = x2145 == x2170;
-if (x2171) {
-} else {
-x2164 = false;
-}
-bool x2175 = x2164;
-if (x2175) {
-bool x2176 = true;
-if (x2166) {
-} else {
-x2176 = false;
-}
-if (x2171) {
-} else {
-x2176 = false;
-}
-bool x2183 = x2176;
-if (x2183) {
-x2146 = false;
-} else {
-}
-bool x2187 = x2146;
-x2154 = x2187;
-} else {
-}
-}
-bool x2193 = x2146;
-if (x2193) {
-int32_t x2196 = x38;
-int32_t x2197 = x31;
-bool x2198 = x2196 == x2197;
-if (x2198) {
-x31 *= 4;
-int32_t x2200 = x31;
-printf("buffer.resize %d\n",x2200);
-} else {
-}
-x33[x2196] = x2144;
-x36[x2196] = x2145;
-x38 += 1;
-int32_t x2207 = 1;
-x2207 *= x2144;
-x2207 *= x2145;
-int32_t x2210 = x2207;
-int32_t x2211 = x2210 & 4194303;
-int32_t x2212 = x45[x2211];
-int32_t x2213 = x2212;
-x45[x2211] = x2196;
-x40[x2196] = x2212;
-int32_t x2216 = 1;
-x2216 *= x2144;
-int32_t x2218 = x2216;
-int32_t x2219 = x2218 & 4194303;
-int32_t x2220 = x46[x2219];
-int32_t x2221 = x2220;
-x46[x2219] = x2196;
-x43[x2196] = x2220;
-} else {
-}
-
-}
-bool x2228 = true;
-for (;;) {
-bool x2229 = x2228;
-if (!x2229) break;
-int32_t x2231 = x86;
-bool x2232 = x2231 == 0;
-bool x2238;
-if (x2232) {
-x2238 = false;
-} else {
-int32_t x2234 = x214;
-bool x2235 = x2234 == 0;
-bool x2236 = !x2235;
-x2238 = x2236;
-}
-bool x2243;
-if (x2238) {
-int32_t x2239 = x38;
-bool x2240 = x2239 == 0;
-bool x2241 = !x2240;
-x2243 = x2241;
-} else {
-x2243 = false;
-}
-if (x2243) {
-for(int x2245=0; x2245 < x2231; x2245++) {
-bool x2248 = false;
-int32_t x2249 = 1;
-int32_t x2246 = x84[x2245];
-x2249 *= x2246;
-int32_t x2247 = x81[x2245];
-x2249 *= x2247;
-int32_t x2252 = x2249;
-int32_t x2253 = x2252 & 4194303;
-int32_t x2254 = x221[x2253];
-int32_t x2255 = x2254;
-bool x2256 = true;
-for (;;) {
-bool x2257 = x2256;
-bool x2261;
-if (x2257) {
-int32_t x2258 = x2255;
-bool x2259 = x2258 != -1;
-x2261 = x2259;
-} else {
-x2261 = false;
-}
-if (!x2261) break;
-int32_t x2263 = x2255;
-int32_t x2264 = x216[x2263];
-x2255 = x2264;
-bool x2266 = true;
-int32_t x2267 = x209[x2263];
-bool x2268 = x2246 == x2267;
-if (x2268) {
-} else {
-x2266 = false;
-}
-int32_t x2272 = x212[x2263];
-bool x2273 = x2247 == x2272;
-if (x2273) {
-} else {
-x2266 = false;
-}
-bool x2277 = x2266;
-if (x2277) {
-x2248 = true;
-x2256 = false;
-} else {
-}
-}
-bool x2284 = x2248;
-bool x2324;
-if (x2284) {
-bool x2285 = false;
-int32_t x2286 = 1;
-x2286 *= x2246;
-x2286 *= x2247;
-int32_t x2289 = x2286;
-int32_t x2290 = x2289 & 4194303;
-int32_t x2291 = x93[x2290];
-int32_t x2292 = x2291;
-bool x2293 = true;
-for (;;) {
-bool x2294 = x2293;
-bool x2298;
-if (x2294) {
-int32_t x2295 = x2292;
-bool x2296 = x2295 != -1;
-x2298 = x2296;
-} else {
-x2298 = false;
-}
-if (!x2298) break;
-int32_t x2300 = x2292;
-int32_t x2301 = x88[x2300];
-x2292 = x2301;
-bool x2303 = true;
-int32_t x2304 = x81[x2300];
-bool x2305 = x2246 == x2304;
-if (x2305) {
-} else {
+bool x2303;
+if (x2143) {
 x2303 = false;
-}
-int32_t x2309 = x84[x2300];
-bool x2310 = x2247 == x2309;
-if (x2310) {
 } else {
-x2303 = false;
+bool x445 = !x444;
+x2303 = x445;
 }
-bool x2314 = x2303;
-if (x2314) {
-x2285 = true;
-x2293 = false;
-} else {
-}
-}
-bool x2321 = x2285;
-bool x2322 = !x2321;
-x2324 = x2322;
-} else {
-x2324 = false;
-}
-if (x2324) {
-int32_t x2325 = 1;
-x2325 *= x2247;
-int32_t x2327 = x2325;
-int32_t x2328 = x2327 & 4194303;
-int32_t x2329 = x46[x2328];
-int32_t x2330 = x2329;
+if (x2303) {
+for(int x2304=0; x2304 < x2142; x2304++) {
+int32_t* x2305 = x4;
+bool x2307 = false;
+int32_t x2308 = 0;
+int32_t x2306 = x2305[x2304];
+int32_t x2309 = x2306 + 233;
+x2308 = x2309;
+int32_t* x2312 = x228;
+int32_t x2311 = x2309 & 4194303;
+int32_t x2313 = x2312[x2311];
+int32_t x2314 = x2313;
+bool x2315 = true;
 for (;;) {
-int32_t x2331 = x2330;
-bool x2332 = x2331 != -1;
-if (!x2332) break;
-int32_t x2334 = x2330;
-int32_t x2335 = x43[x2334];
-x2330 = x2335;
-bool x2337 = true;
-int32_t x2338 = x33[x2334];
-bool x2339 = x2247 == x2338;
-if (x2339) {
+bool x2316 = x2315;
+bool x2320;
+if (x2316) {
+int32_t x2317 = x2314;
+bool x2318 = x2317 != -1;
+x2320 = x2318;
 } else {
-x2337 = false;
+x2320 = false;
 }
-bool x2343 = x2337;
-if (x2343) {
-bool x2346 = false;
-int32_t x2347 = 1;
-x2347 *= x2246;
-int32_t x2344 = x36[x2334];
-int32_t x2345 = x2344 + 1;
-x2347 *= x2345;
-int32_t x2350 = x2347;
-int32_t x2351 = x2350 & 4194303;
-int32_t x2352 = x26[x2351];
-int32_t x2353 = x2352;
-bool x2354 = true;
+if (!x2320) break;
+int32_t x2322 = x2314;
+bool x2323 = true;
+int32_t* x2324 = x204;
+int32_t x2325 = x2324[x2322];
+bool x2326 = x2306 == x2325;
+if (x2326) {
+} else {
+x2323 = false;
+}
+bool x2330 = x2323;
+if (x2330) {
+x2307 = true;
+x2315 = false;
+} else {
+}
+int32_t* x2335 = x221;
+int32_t x2336 = x2335[x2322];
+x2314 = x2336;
+}
+bool x2340 = x2307;
+bool x2375;
+if (x2340) {
+bool x2341 = false;
+int32_t x2342 = 0;
+x2342 = x2309;
+int32_t* x2344 = x226;
+int32_t x2345 = x2344[x2311];
+int32_t x2346 = x2345;
+bool x2347 = true;
 for (;;) {
-bool x2355 = x2354;
-bool x2359;
-if (x2355) {
-int32_t x2356 = x2353;
-bool x2357 = x2356 != -1;
-x2359 = x2357;
+bool x2348 = x2347;
+bool x2352;
+if (x2348) {
+int32_t x2349 = x2346;
+bool x2350 = x2349 != -1;
+x2352 = x2350;
 } else {
-x2359 = false;
+x2352 = false;
 }
-if (!x2359) break;
-int32_t x2361 = x2353;
-int32_t x2362 = x24[x2361];
-x2353 = x2362;
-bool x2364 = true;
-int32_t x2365 = x17[x2361];
-bool x2366 = x2246 == x2365;
-if (x2366) {
+if (!x2352) break;
+int32_t x2354 = x2346;
+bool x2355 = true;
+int32_t* x2356 = x208;
+int32_t x2357 = x2356[x2354];
+bool x2358 = x2306 == x2357;
+if (x2358) {
 } else {
-x2364 = false;
+x2355 = false;
 }
-int32_t x2370 = x20[x2361];
-bool x2371 = x2345 == x2370;
-if (x2371) {
+bool x2362 = x2355;
+if (x2362) {
+x2341 = true;
+x2347 = false;
 } else {
-x2364 = false;
 }
-bool x2375 = x2364;
+int32_t* x2367 = x217;
+int32_t x2368 = x2367[x2354];
+x2346 = x2368;
+}
+bool x2372 = x2341;
+bool x2373 = !x2372;
+x2375 = x2373;
+} else {
+x2375 = false;
+}
 if (x2375) {
-x2346 = true;
-x2354 = false;
-} else {
-}
-}
-bool x2382 = x2346;
-if (x2382) {
-} else {
-bool x2384 = true;
-int32_t x2385 = 1;
-x2385 *= x2246;
-x2385 *= x2345;
-int32_t x2388 = x2385;
-int32_t x2389 = x2388 & 4194303;
-int32_t x2390 = x69[x2389];
-int32_t x2391 = x2390;
-bool x2392 = true;
+bool x2376 = true;
+int32_t x2377 = 0;
+x2377 = x2309;
+int32_t x2379 = x2309 * 1009;
+int32_t x2380 = x2379 + 1;
+int32_t x2381 = x2380 + 233;
+x2377 = x2381;
+int32_t* x2384 = x34;
+int32_t x2383 = x2381 & 4194303;
+int32_t x2385 = x2384[x2383];
+int32_t x2386 = x2385;
+bool x2387 = true;
 for (;;) {
-bool x2393 = x2392;
-bool x2397;
-if (x2393) {
-int32_t x2394 = x2391;
-bool x2395 = x2394 != -1;
-x2397 = x2395;
+bool x2388 = x2387;
+bool x2392;
+if (x2388) {
+int32_t x2389 = x2386;
+bool x2390 = x2389 != -1;
+x2392 = x2390;
 } else {
-x2397 = false;
+x2392 = false;
 }
-if (!x2397) break;
-int32_t x2399 = x2391;
-int32_t x2400 = x64[x2399];
-x2391 = x2400;
-bool x2402 = true;
-int32_t x2403 = x57[x2399];
-bool x2404 = x2246 == x2403;
+if (!x2392) break;
+int32_t x2394 = x2386;
+bool x2395 = true;
+int32_t* x2396 = x22;
+int32_t x2397 = x2396[x2394];
+bool x2398 = x2306 == x2397;
+if (x2398) {
+} else {
+x2395 = false;
+}
+int32_t* x2402 = x26;
+int32_t x2403 = x2402[x2394];
+bool x2404 = 1 == x2403;
 if (x2404) {
 } else {
-x2402 = false;
+x2395 = false;
 }
-int32_t x2408 = x60[x2399];
-bool x2409 = x2345 == x2408;
-if (x2409) {
+bool x2408 = x2395;
+if (x2408) {
+bool x2409 = true;
+if (x2398) {
 } else {
-x2402 = false;
+x2409 = false;
 }
-bool x2413 = x2402;
-if (x2413) {
-bool x2414 = true;
 if (x2404) {
 } else {
-x2414 = false;
+x2409 = false;
 }
-if (x2409) {
-} else {
-x2414 = false;
-}
-bool x2421 = x2414;
-if (x2421) {
-x2384 = false;
+bool x2416 = x2409;
+if (x2416) {
+x2376 = false;
 } else {
 }
-bool x2425 = x2384;
-x2392 = x2425;
+bool x2420 = x2376;
+x2387 = x2420;
 } else {
 }
+int32_t* x2424 = x31;
+int32_t x2425 = x2424[x2394];
+x2386 = x2425;
 }
-bool x2431 = x2384;
-if (x2431) {
-int32_t x2434 = x62;
-int32_t x2435 = x55;
-bool x2436 = x2434 == x2435;
-if (x2436) {
-x55 *= 4;
-int32_t x2438 = x55;
-printf("buffer.resize %d\n",x2438);
+bool x2429 = x2376;
+if (x2429) {
+int32_t x2432 = x28;
+int32_t x2433 = x19;
+bool x2434 = x2432 == x2433;
+if (x2434) {
+x19 *= 4;
+int32_t x2436 = x19;
+printf("buffer.resize %d\n",x2436);
 } else {
 }
-x57[x2434] = x2246;
-x60[x2434] = x2345;
-x62 += 1;
-int32_t x2445 = 1;
-x2445 *= x2246;
-x2445 *= x2345;
-int32_t x2448 = x2445;
-int32_t x2449 = x2448 & 4194303;
-int32_t x2450 = x69[x2449];
-int32_t x2451 = x2450;
-x69[x2449] = x2434;
-x64[x2434] = x2450;
-int32_t x2454 = 1;
-x2454 *= x2246;
-int32_t x2456 = x2454;
-int32_t x2457 = x2456 & 4194303;
-int32_t x2458 = x70[x2457];
-int32_t x2459 = x2458;
-x70[x2457] = x2434;
-x67[x2434] = x2458;
+int32_t* x2440 = x22;
+x2440[x2432] = x2306;
+int32_t* x2442 = x26;
+x2442[x2432] = 1;
+x28 += 1;
+int32_t x2445 = x2432;
+int32_t x2446 = 0;
+x2446 = x2309;
+x2446 = x2381;
+int32_t x2449 = x2385;
+x2384[x2383] = x2432;
+int32_t* x2451 = x31;
+x2451[x2432] = x2385;
 } else {
-}
-}
-} else {
-}
 }
 } else {
 }
@@ -2856,340 +2785,814 @@ x67[x2434] = x2458;
 }
 } else {
 }
-int32_t x2476 = x62;
-bool x2477 = x2476 == 0;
-if (x2477) {
-x2228 = false;
-} else {
-for(int x2481=0; x2481 < x2476; x2481++) {
-bool x2484 = true;
-int32_t x2485 = 1;
-int32_t x2482 = x57[x2481];
-x2485 *= x2482;
-int32_t x2483 = x60[x2481];
-x2485 *= x2483;
-int32_t x2488 = x2485;
-int32_t x2489 = x2488 & 4194303;
-int32_t x2490 = x26[x2489];
-int32_t x2491 = x2490;
-bool x2492 = true;
+int32_t x2461 = x28;
+for(int x2463=0; x2463 < x2461; x2463++) {
+int32_t* x2464 = x22;
+int32_t* x2466 = x26;
+bool x2468 = true;
+int32_t x2469 = 0;
+int32_t x2465 = x2464[x2463];
+int32_t x2470 = x2465 + 233;
+x2469 = x2470;
+int32_t x2467 = x2466[x2463];
+int32_t x2472 = x2470 * 1009;
+int32_t x2473 = x2472 + x2467;
+int32_t x2474 = x2473 + 233;
+x2469 = x2474;
+int32_t* x2477 = x59;
+int32_t x2476 = x2474 & 16383;
+int32_t x2478 = x2477[x2476];
+int32_t x2479 = x2478;
+bool x2480 = true;
 for (;;) {
-bool x2493 = x2492;
-bool x2497;
-if (x2493) {
-int32_t x2494 = x2491;
-bool x2495 = x2494 != -1;
-x2497 = x2495;
+bool x2481 = x2480;
+bool x2485;
+if (x2481) {
+int32_t x2482 = x2479;
+bool x2483 = x2482 != -1;
+x2485 = x2483;
 } else {
-x2497 = false;
+x2485 = false;
 }
-if (!x2497) break;
-int32_t x2499 = x2491;
-int32_t x2500 = x24[x2499];
-x2491 = x2500;
+if (!x2485) break;
+int32_t x2487 = x2479;
+bool x2488 = true;
+int32_t* x2489 = x43;
+int32_t x2490 = x2489[x2487];
+bool x2491 = x2465 == x2490;
+if (x2491) {
+} else {
+x2488 = false;
+}
+int32_t* x2495 = x47;
+int32_t x2496 = x2495[x2487];
+bool x2497 = x2467 == x2496;
+if (x2497) {
+} else {
+x2488 = false;
+}
+bool x2501 = x2488;
+if (x2501) {
 bool x2502 = true;
-int32_t x2503 = x17[x2499];
-bool x2504 = x2482 == x2503;
-if (x2504) {
+if (x2491) {
 } else {
 x2502 = false;
 }
-int32_t x2508 = x20[x2499];
-bool x2509 = x2483 == x2508;
-if (x2509) {
+if (x2497) {
 } else {
 x2502 = false;
 }
-bool x2513 = x2502;
-if (x2513) {
-bool x2514 = true;
-if (x2504) {
-} else {
-x2514 = false;
-}
+bool x2509 = x2502;
 if (x2509) {
-} else {
-x2514 = false;
-}
-bool x2521 = x2514;
-if (x2521) {
-x2484 = false;
+x2468 = false;
 } else {
 }
-bool x2525 = x2484;
-x2492 = x2525;
+bool x2513 = x2468;
+x2480 = x2513;
 } else {
 }
+int32_t* x2517 = x52;
+int32_t x2518 = x2517[x2487];
+x2479 = x2518;
 }
-bool x2531 = x2484;
-if (x2531) {
-int32_t x2534 = x22;
-int32_t x2535 = x15;
-bool x2536 = x2534 == x2535;
-if (x2536) {
-x15 *= 4;
-int32_t x2538 = x15;
-printf("buffer.resize %d\n",x2538);
+bool x2522 = x2468;
+if (x2522) {
+int32_t x2525 = x49;
+int32_t x2526 = x40;
+bool x2527 = x2525 == x2526;
+if (x2527) {
+x40 *= 4;
+int32_t x2529 = x40;
+printf("buffer.resize %d\n",x2529);
 } else {
 }
-x17[x2534] = x2482;
-x20[x2534] = x2483;
-x22 += 1;
-int32_t x2545 = 1;
-x2545 *= x2482;
-x2545 *= x2483;
-int32_t x2548 = x2545;
-int32_t x2549 = x2548 & 4194303;
-int32_t x2550 = x26[x2549];
+int32_t* x2533 = x43;
+x2533[x2525] = x2465;
+int32_t* x2535 = x47;
+x2535[x2525] = x2467;
+x49 += 1;
+int32_t x2538 = x2525;
+int32_t x2539 = 0;
+x2539 = x2470;
+x2539 = x2474;
+int32_t x2542 = x2478;
+x2477[x2476] = x2525;
+int32_t* x2544 = x52;
+x2544[x2525] = x2478;
+int32_t x2546 = 0;
+x2546 = x2470;
+int32_t* x2549 = x61;
+int32_t x2548 = x2470 & 16383;
+int32_t x2550 = x2549[x2548];
 int32_t x2551 = x2550;
-x26[x2549] = x2534;
-x24[x2534] = x2550;
+x2549[x2548] = x2525;
+int32_t* x2553 = x56;
+x2553[x2525] = x2550;
 } else {
 }
 
 }
-SWAP(x38,x62);
-SWAP(x31,x55);
-SWAP(x34,x58);
-SWAP(x32,x56);
-SWAP(x33,x57);
-SWAP(x37,x61);
-SWAP(x35,x59);
-SWAP(x36,x60);
-SWAP(x41,x65);
-SWAP(x39,x63);
-SWAP(x40,x64);
-SWAP(x44,x68);
-SWAP(x42,x66);
-SWAP(x43,x67);
-SWAP(x45,x69);
-SWAP(x46,x70);
-x62 = 0;
-x65 = 0;
-x68 = 0;
-for(int x2577=0; x2577 < 4194304; x2577++) {
-x69[x2577] = -1;
-
-}
-for(int x2581=0; x2581 < 4194304; x2581++) {
-x70[x2581] = -1;
-
-}
-}
-}
-for(int x2589=0; x2589 < 4194304; x2589++) {
-x45[x2589] = -1;
-
-}
-for(int x2593=0; x2593 < 4194304; x2593++) {
-x46[x2593] = -1;
-
-}
-for(int x2597=0; x2597 < 4194304; x2597++) {
-x69[x2597] = -1;
-
-}
-for(int x2601=0; x2601 < 4194304; x2601++) {
-x70[x2601] = -1;
-
-}
-int32_t x2606 = x22;
-FILE *x2605 = fopen("indices.out","w");
-for(int x2608=0; x2608 < x2606; x2608++) {
-int32_t x2609 = x17[x2608];
-int32_t x2610 = fprintf(x2605,"%d",x2609);
-int32_t x2611 = fprintf(x2605,"\t");
-int32_t x2612 = x20[x2608];
-int32_t x2613 = fprintf(x2605,"%d",x2612);
-int32_t x2614 = fprintf(x2605,"\n");
-
-}
-fclose(x2605);
-for(int x2618=0; x2618 < 4194304; x2618++) {
-x168[x2618] = -1;
-
-}
-for(int x2622=0; x2622 < 4194304; x2622++) {
-x169[x2622] = -1;
-
-}
-for(int x2626=0; x2626 < 4194304; x2626++) {
-x170[x2626] = -1;
-
-}
-for(int x2630=0; x2630 < 4194304; x2630++) {
-x221[x2630] = -1;
-
-}
-for(int x2634=0; x2634 < 4194304; x2634++) {
-x222[x2634] = -1;
-
-}
-for(int x2638=0; x2638 < 4194304; x2638++) {
-x93[x2638] = -1;
-
-}
-for(int x2642=0; x2642 < 4194304; x2642++) {
-x94[x2642] = -1;
-
-}
-for(int x2646=0; x2646 < 4194304; x2646++) {
-x9[x2646] = -1;
-
-}
-bool x2650 = x2606 == 0;
-if (x2650) {
-} else {
-for(int x2652=0; x2652 < x2606; x2652++) {
-bool x2656 = false;
-int32_t x2657 = 1;
-int32_t x2653 = x17[x2652];
-x2657 *= x2653;
-int32_t x2654 = x20[x2652];
-int32_t x2655 = x2654 + 1;
-x2657 *= x2655;
-int32_t x2660 = x2657;
-int32_t x2661 = x2660 & 4194303;
-int32_t x2662 = x26[x2661];
-int32_t x2663 = x2662;
-bool x2664 = true;
+bool x2559 = true;
 for (;;) {
-bool x2665 = x2664;
-bool x2669;
-if (x2665) {
-int32_t x2666 = x2663;
-bool x2667 = x2666 != -1;
-x2669 = x2667;
+bool x2560 = x2559;
+if (!x2560) break;
+int32_t x2562 = x114;
+bool x2563 = x2562 == 0;
+bool x2569;
+if (x2563) {
+x2569 = false;
 } else {
-x2669 = false;
+int32_t x2565 = x285;
+bool x2566 = x2565 == 0;
+bool x2567 = !x2566;
+x2569 = x2567;
 }
-if (!x2669) break;
-int32_t x2671 = x2663;
-int32_t x2672 = x24[x2671];
-x2663 = x2672;
-bool x2674 = true;
-int32_t x2675 = x17[x2671];
-bool x2676 = x2653 == x2675;
-if (x2676) {
+bool x2574;
+if (x2569) {
+int32_t x2570 = x49;
+bool x2571 = x2570 == 0;
+bool x2572 = !x2571;
+x2574 = x2572;
 } else {
-x2674 = false;
+x2574 = false;
 }
-int32_t x2680 = x20[x2671];
-bool x2681 = x2655 == x2680;
+if (x2574) {
+for(int x2576=0; x2576 < x2562; x2576++) {
+int32_t* x2577 = x112;
+int32_t* x2579 = x108;
+bool x2581 = false;
+int32_t x2582 = 0;
+int32_t x2578 = x2577[x2576];
+int32_t x2583 = x2578 + 233;
+x2582 = x2583;
+int32_t x2580 = x2579[x2576];
+int32_t x2585 = x2583 * 1009;
+int32_t x2586 = x2585 + x2580;
+int32_t x2587 = x2586 + 233;
+x2582 = x2587;
+int32_t* x2590 = x295;
+int32_t x2589 = x2587 & 4194303;
+int32_t x2591 = x2590[x2589];
+int32_t x2592 = x2591;
+bool x2593 = true;
+for (;;) {
+bool x2594 = x2593;
+bool x2598;
+if (x2594) {
+int32_t x2595 = x2592;
+bool x2596 = x2595 != -1;
+x2598 = x2596;
+} else {
+x2598 = false;
+}
+if (!x2598) break;
+int32_t x2600 = x2592;
+bool x2601 = true;
+int32_t* x2602 = x279;
+int32_t x2603 = x2602[x2600];
+bool x2604 = x2578 == x2603;
+if (x2604) {
+} else {
+x2601 = false;
+}
+int32_t* x2608 = x283;
+int32_t x2609 = x2608[x2600];
+bool x2610 = x2580 == x2609;
+if (x2610) {
+} else {
+x2601 = false;
+}
+bool x2614 = x2601;
+if (x2614) {
+x2581 = true;
+x2593 = false;
+} else {
+}
+int32_t* x2619 = x288;
+int32_t x2620 = x2619[x2600];
+x2592 = x2620;
+}
+bool x2624 = x2581;
+bool x2666;
+if (x2624) {
+bool x2625 = false;
+int32_t x2626 = 0;
+x2626 = x2583;
+x2626 = x2587;
+int32_t* x2629 = x124;
+int32_t x2630 = x2629[x2589];
+int32_t x2631 = x2630;
+bool x2632 = true;
+for (;;) {
+bool x2633 = x2632;
+bool x2637;
+if (x2633) {
+int32_t x2634 = x2631;
+bool x2635 = x2634 != -1;
+x2637 = x2635;
+} else {
+x2637 = false;
+}
+if (!x2637) break;
+int32_t x2639 = x2631;
+bool x2640 = true;
+int32_t* x2641 = x108;
+int32_t x2642 = x2641[x2639];
+bool x2643 = x2578 == x2642;
+if (x2643) {
+} else {
+x2640 = false;
+}
+int32_t* x2647 = x112;
+int32_t x2648 = x2647[x2639];
+bool x2649 = x2580 == x2648;
+if (x2649) {
+} else {
+x2640 = false;
+}
+bool x2653 = x2640;
+if (x2653) {
+x2625 = true;
+x2632 = false;
+} else {
+}
+int32_t* x2658 = x117;
+int32_t x2659 = x2658[x2639];
+x2631 = x2659;
+}
+bool x2663 = x2625;
+bool x2664 = !x2663;
+x2666 = x2664;
+} else {
+x2666 = false;
+}
+if (x2666) {
+int32_t x2667 = 0;
+int32_t x2668 = x2580 + 233;
+x2667 = x2668;
+int32_t* x2671 = x61;
+int32_t x2670 = x2668 & 16383;
+int32_t x2672 = x2671[x2670];
+int32_t x2673 = x2672;
+for (;;) {
+int32_t x2674 = x2673;
+bool x2675 = x2674 != -1;
+if (!x2675) break;
+int32_t x2677 = x2673;
+bool x2678 = true;
+int32_t* x2679 = x43;
+int32_t x2680 = x2679[x2677];
+bool x2681 = x2580 == x2680;
 if (x2681) {
 } else {
-x2674 = false;
+x2678 = false;
 }
-bool x2685 = x2674;
+bool x2685 = x2678;
 if (x2685) {
-x2656 = true;
-x2664 = false;
-} else {
-}
-}
-bool x2692 = x2656;
-if (x2692) {
-} else {
-bool x2694 = true;
-int32_t x2695 = 1;
-x2695 *= x2653;
-x2695 *= x2654;
-int32_t x2698 = x2695;
-int32_t x2699 = x2698 & 4194303;
-int32_t x2700 = x266[x2699];
-int32_t x2701 = x2700;
-bool x2702 = true;
+int32_t* x2686 = x112;
+int32_t* x2688 = x47;
+bool x2691 = false;
+int32_t x2692 = 0;
+int32_t x2687 = x2686[x2576];
+int32_t x2693 = x2687 + 233;
+x2692 = x2693;
+int32_t x2689 = x2688[x2677];
+int32_t x2690 = x2689 + 1;
+int32_t x2695 = x2693 * 1009;
+int32_t x2696 = x2695 + x2690;
+int32_t x2697 = x2696 + 233;
+x2692 = x2697;
+int32_t* x2700 = x34;
+int32_t x2699 = x2697 & 4194303;
+int32_t x2701 = x2700[x2699];
+int32_t x2702 = x2701;
+bool x2703 = true;
 for (;;) {
-bool x2703 = x2702;
-bool x2707;
-if (x2703) {
-int32_t x2704 = x2701;
-bool x2705 = x2704 != -1;
-x2707 = x2705;
+bool x2704 = x2703;
+bool x2708;
+if (x2704) {
+int32_t x2705 = x2702;
+bool x2706 = x2705 != -1;
+x2708 = x2706;
 } else {
-x2707 = false;
+x2708 = false;
 }
-if (!x2707) break;
-int32_t x2709 = x2701;
-int32_t x2710 = x264[x2709];
-x2701 = x2710;
-bool x2712 = true;
-int32_t x2713 = x257[x2709];
-bool x2714 = x2653 == x2713;
+if (!x2708) break;
+int32_t x2710 = x2702;
+bool x2711 = true;
+int32_t* x2712 = x22;
+int32_t x2713 = x2712[x2710];
+bool x2714 = x2687 == x2713;
 if (x2714) {
 } else {
-x2712 = false;
+x2711 = false;
 }
-int32_t x2718 = x260[x2709];
-bool x2719 = x2654 == x2718;
-if (x2719) {
+int32_t* x2718 = x26;
+int32_t x2719 = x2718[x2710];
+bool x2720 = x2690 == x2719;
+if (x2720) {
 } else {
-x2712 = false;
+x2711 = false;
 }
-bool x2723 = x2712;
-if (x2723) {
-bool x2724 = true;
-if (x2714) {
-} else {
-x2724 = false;
-}
-if (x2719) {
-} else {
-x2724 = false;
-}
-bool x2731 = x2724;
-if (x2731) {
-x2694 = false;
+bool x2724 = x2711;
+if (x2724) {
+x2691 = true;
+x2703 = false;
 } else {
 }
-bool x2735 = x2694;
-x2702 = x2735;
+int32_t* x2729 = x31;
+int32_t x2730 = x2729[x2710];
+x2702 = x2730;
+}
+bool x2734 = x2691;
+if (x2734) {
+} else {
+bool x2736 = true;
+int32_t x2737 = 0;
+x2737 = x2693;
+x2737 = x2697;
+int32_t* x2741 = x92;
+int32_t x2740 = x2697 & 16383;
+int32_t x2742 = x2741[x2740];
+int32_t x2743 = x2742;
+bool x2744 = true;
+for (;;) {
+bool x2745 = x2744;
+bool x2749;
+if (x2745) {
+int32_t x2746 = x2743;
+bool x2747 = x2746 != -1;
+x2749 = x2747;
+} else {
+x2749 = false;
+}
+if (!x2749) break;
+int32_t x2751 = x2743;
+bool x2752 = true;
+int32_t* x2753 = x76;
+int32_t x2754 = x2753[x2751];
+bool x2755 = x2687 == x2754;
+if (x2755) {
+} else {
+x2752 = false;
+}
+int32_t* x2759 = x80;
+int32_t x2760 = x2759[x2751];
+bool x2761 = x2690 == x2760;
+if (x2761) {
+} else {
+x2752 = false;
+}
+bool x2765 = x2752;
+if (x2765) {
+bool x2766 = true;
+if (x2755) {
+} else {
+x2766 = false;
+}
+if (x2761) {
+} else {
+x2766 = false;
+}
+bool x2773 = x2766;
+if (x2773) {
+x2736 = false;
+} else {
+}
+bool x2777 = x2736;
+x2744 = x2777;
+} else {
+}
+int32_t* x2781 = x85;
+int32_t x2782 = x2781[x2751];
+x2743 = x2782;
+}
+bool x2786 = x2736;
+if (x2786) {
+int32_t x2789 = x82;
+int32_t x2790 = x73;
+bool x2791 = x2789 == x2790;
+if (x2791) {
+x73 *= 4;
+int32_t x2793 = x73;
+printf("buffer.resize %d\n",x2793);
+} else {
+}
+int32_t* x2797 = x76;
+x2797[x2789] = x2687;
+int32_t* x2799 = x80;
+x2799[x2789] = x2690;
+x82 += 1;
+int32_t x2802 = x2789;
+int32_t x2803 = 0;
+x2803 = x2693;
+x2803 = x2697;
+int32_t x2806 = x2742;
+x2741[x2740] = x2789;
+int32_t* x2808 = x85;
+x2808[x2789] = x2742;
+int32_t x2810 = 0;
+x2810 = x2693;
+int32_t* x2813 = x94;
+int32_t x2812 = x2693 & 16383;
+int32_t x2814 = x2813[x2812];
+int32_t x2815 = x2814;
+x2813[x2812] = x2789;
+int32_t* x2817 = x89;
+x2817[x2789] = x2814;
 } else {
 }
 }
-bool x2741 = x2694;
-if (x2741) {
-int32_t x2744 = x262;
-int32_t x2745 = x255;
-bool x2746 = x2744 == x2745;
-if (x2746) {
-x255 *= 4;
-int32_t x2748 = x255;
-printf("buffer.resize %d\n",x2748);
 } else {
 }
-x257[x2744] = x2653;
-x260[x2744] = x2654;
-x262 += 1;
-int32_t x2755 = 1;
-x2755 *= x2653;
-x2755 *= x2654;
-int32_t x2758 = x2755;
-int32_t x2759 = x2758 & 4194303;
-int32_t x2760 = x266[x2759];
-int32_t x2761 = x2760;
-x266[x2759] = x2744;
-x264[x2744] = x2760;
+int32_t* x2825 = x56;
+int32_t x2826 = x2825[x2677];
+x2673 = x2826;
+}
+} else {
+}
+
+}
+} else {
+}
+int32_t x2836 = x82;
+bool x2837 = x2836 == 0;
+if (x2837) {
+x2559 = false;
+} else {
+for(int x2841=0; x2841 < x2836; x2841++) {
+int32_t* x2842 = x76;
+int32_t* x2844 = x80;
+bool x2846 = true;
+int32_t x2847 = 0;
+int32_t x2843 = x2842[x2841];
+int32_t x2848 = x2843 + 233;
+x2847 = x2848;
+int32_t x2845 = x2844[x2841];
+int32_t x2850 = x2848 * 1009;
+int32_t x2851 = x2850 + x2845;
+int32_t x2852 = x2851 + 233;
+x2847 = x2852;
+int32_t* x2855 = x34;
+int32_t x2854 = x2852 & 4194303;
+int32_t x2856 = x2855[x2854];
+int32_t x2857 = x2856;
+bool x2858 = true;
+for (;;) {
+bool x2859 = x2858;
+bool x2863;
+if (x2859) {
+int32_t x2860 = x2857;
+bool x2861 = x2860 != -1;
+x2863 = x2861;
+} else {
+x2863 = false;
+}
+if (!x2863) break;
+int32_t x2865 = x2857;
+bool x2866 = true;
+int32_t* x2867 = x22;
+int32_t x2868 = x2867[x2865];
+bool x2869 = x2843 == x2868;
+if (x2869) {
+} else {
+x2866 = false;
+}
+int32_t* x2873 = x26;
+int32_t x2874 = x2873[x2865];
+bool x2875 = x2845 == x2874;
+if (x2875) {
+} else {
+x2866 = false;
+}
+bool x2879 = x2866;
+if (x2879) {
+bool x2880 = true;
+if (x2869) {
+} else {
+x2880 = false;
+}
+if (x2875) {
+} else {
+x2880 = false;
+}
+bool x2887 = x2880;
+if (x2887) {
+x2846 = false;
+} else {
+}
+bool x2891 = x2846;
+x2858 = x2891;
+} else {
+}
+int32_t* x2895 = x31;
+int32_t x2896 = x2895[x2865];
+x2857 = x2896;
+}
+bool x2900 = x2846;
+if (x2900) {
+int32_t x2903 = x28;
+int32_t x2904 = x19;
+bool x2905 = x2903 == x2904;
+if (x2905) {
+x19 *= 4;
+int32_t x2907 = x19;
+printf("buffer.resize %d\n",x2907);
+} else {
+}
+int32_t* x2911 = x22;
+x2911[x2903] = x2843;
+int32_t* x2913 = x26;
+x2913[x2903] = x2845;
+x28 += 1;
+int32_t x2916 = x2903;
+int32_t x2917 = 0;
+x2917 = x2848;
+x2917 = x2852;
+int32_t x2920 = x2856;
+x2855[x2854] = x2903;
+int32_t* x2922 = x31;
+x2922[x2903] = x2856;
+} else {
+}
+
+}
+SWAP(x49,x82);
+SWAP(x40,x73);
+SWAP(x44,x77);
+SWAP(x41,x74);
+SWAP(x43,x76);
+SWAP(x48,x81);
+SWAP(x45,x78);
+SWAP(x47,x80);
+SWAP(x53,x86);
+SWAP(x50,x83);
+SWAP(x52,x85);
+SWAP(x57,x90);
+SWAP(x54,x87);
+SWAP(x56,x89);
+SWAP(x59,x92);
+SWAP(x61,x94);
+x82 = 0;
+x86 = 0;
+x90 = 0;
+for(int x2947=0; x2947 < 16384; x2947++) {
+int32_t* x2948 = x92;
+x2948[x2947] = -1;
+
+}
+for(int x2952=0; x2952 < 16384; x2952++) {
+int32_t* x2953 = x94;
+x2953[x2952] = -1;
+
+}
+}
+}
+for(int x2961=0; x2961 < 16384; x2961++) {
+int32_t* x2962 = x59;
+x2962[x2961] = -1;
+
+}
+for(int x2966=0; x2966 < 16384; x2966++) {
+int32_t* x2967 = x61;
+x2967[x2966] = -1;
+
+}
+for(int x2971=0; x2971 < 16384; x2971++) {
+int32_t* x2972 = x92;
+x2972[x2971] = -1;
+
+}
+for(int x2976=0; x2976 < 16384; x2976++) {
+int32_t* x2977 = x94;
+x2977[x2976] = -1;
+
+}
+int32_t x2982 = x28;
+FILE *x2981 = fopen("indices.out","w");
+for(int x2984=0; x2984 < x2982; x2984++) {
+int32_t* x2985 = x22;
+int32_t x2986 = x2985[x2984];
+int32_t x2987 = fprintf(x2981,"%d",x2986);
+int32_t x2988 = fprintf(x2981,"\t");
+int32_t* x2989 = x26;
+int32_t x2990 = x2989[x2984];
+int32_t x2991 = fprintf(x2981,"%d",x2990);
+int32_t x2992 = fprintf(x2981,"\n");
+
+}
+fclose(x2981);
+for(int x2996=0; x2996 < 4194304; x2996++) {
+int32_t* x2997 = x224;
+x2997[x2996] = -1;
+
+}
+for(int x3001=0; x3001 < 4194304; x3001++) {
+int32_t* x3002 = x226;
+x3002[x3001] = -1;
+
+}
+for(int x3006=0; x3006 < 4194304; x3006++) {
+int32_t* x3007 = x228;
+x3007[x3006] = -1;
+
+}
+for(int x3011=0; x3011 < 4194304; x3011++) {
+int32_t* x3012 = x295;
+x3012[x3011] = -1;
+
+}
+for(int x3016=0; x3016 < 4194304; x3016++) {
+int32_t* x3017 = x297;
+x3017[x3016] = -1;
+
+}
+for(int x3021=0; x3021 < 4194304; x3021++) {
+int32_t* x3022 = x124;
+x3022[x3021] = -1;
+
+}
+for(int x3026=0; x3026 < 4194304; x3026++) {
+int32_t* x3027 = x126;
+x3027[x3026] = -1;
+
+}
+for(int x3031=0; x3031 < 4194304; x3031++) {
+int32_t* x3032 = x12;
+x3032[x3031] = -1;
+
+}
+bool x3036 = x2982 == 0;
+if (x3036) {
+} else {
+for(int x3038=0; x3038 < x2982; x3038++) {
+int32_t* x3039 = x22;
+int32_t* x3041 = x26;
+bool x3044 = false;
+int32_t x3045 = 0;
+int32_t x3040 = x3039[x3038];
+int32_t x3046 = x3040 + 233;
+x3045 = x3046;
+int32_t x3042 = x3041[x3038];
+int32_t x3043 = x3042 + 1;
+int32_t x3048 = x3046 * 1009;
+int32_t x3049 = x3048 + x3043;
+int32_t x3050 = x3049 + 233;
+x3045 = x3050;
+int32_t* x3053 = x34;
+int32_t x3052 = x3050 & 4194303;
+int32_t x3054 = x3053[x3052];
+int32_t x3055 = x3054;
+bool x3056 = true;
+for (;;) {
+bool x3057 = x3056;
+bool x3061;
+if (x3057) {
+int32_t x3058 = x3055;
+bool x3059 = x3058 != -1;
+x3061 = x3059;
+} else {
+x3061 = false;
+}
+if (!x3061) break;
+int32_t x3063 = x3055;
+bool x3064 = true;
+int32_t* x3065 = x22;
+int32_t x3066 = x3065[x3063];
+bool x3067 = x3040 == x3066;
+if (x3067) {
+} else {
+x3064 = false;
+}
+int32_t* x3071 = x26;
+int32_t x3072 = x3071[x3063];
+bool x3073 = x3043 == x3072;
+if (x3073) {
+} else {
+x3064 = false;
+}
+bool x3077 = x3064;
+if (x3077) {
+x3044 = true;
+x3056 = false;
+} else {
+}
+int32_t* x3082 = x31;
+int32_t x3083 = x3082[x3063];
+x3055 = x3083;
+}
+bool x3087 = x3044;
+if (x3087) {
+} else {
+bool x3089 = true;
+int32_t x3090 = 0;
+x3090 = x3046;
+int32_t x3092 = x3048 + x3042;
+int32_t x3093 = x3092 + 233;
+x3090 = x3093;
+int32_t* x3096 = x355;
+int32_t x3095 = x3093 & 4194303;
+int32_t x3097 = x3096[x3095];
+int32_t x3098 = x3097;
+bool x3099 = true;
+for (;;) {
+bool x3100 = x3099;
+bool x3104;
+if (x3100) {
+int32_t x3101 = x3098;
+bool x3102 = x3101 != -1;
+x3104 = x3102;
+} else {
+x3104 = false;
+}
+if (!x3104) break;
+int32_t x3106 = x3098;
+bool x3107 = true;
+int32_t* x3108 = x343;
+int32_t x3109 = x3108[x3106];
+bool x3110 = x3040 == x3109;
+if (x3110) {
+} else {
+x3107 = false;
+}
+int32_t* x3114 = x347;
+int32_t x3115 = x3114[x3106];
+bool x3116 = x3042 == x3115;
+if (x3116) {
+} else {
+x3107 = false;
+}
+bool x3120 = x3107;
+if (x3120) {
+bool x3121 = true;
+if (x3110) {
+} else {
+x3121 = false;
+}
+if (x3116) {
+} else {
+x3121 = false;
+}
+bool x3128 = x3121;
+if (x3128) {
+x3089 = false;
+} else {
+}
+bool x3132 = x3089;
+x3099 = x3132;
+} else {
+}
+int32_t* x3136 = x352;
+int32_t x3137 = x3136[x3106];
+x3098 = x3137;
+}
+bool x3141 = x3089;
+if (x3141) {
+int32_t x3144 = x349;
+int32_t x3145 = x340;
+bool x3146 = x3144 == x3145;
+if (x3146) {
+x340 *= 4;
+int32_t x3148 = x340;
+printf("buffer.resize %d\n",x3148);
+} else {
+}
+int32_t* x3152 = x343;
+x3152[x3144] = x3040;
+int32_t* x3154 = x347;
+x3154[x3144] = x3042;
+x349 += 1;
+int32_t x3157 = x3144;
+int32_t x3158 = 0;
+x3158 = x3046;
+x3158 = x3093;
+int32_t x3161 = x3097;
+x3096[x3095] = x3144;
+int32_t* x3163 = x352;
+x3163[x3144] = x3097;
 } else {
 }
 }
 
 }
 }
-int32_t x2773 = x262;
-FILE *x2772 = fopen("index.out","w");
-for(int x2775=0; x2775 < x2773; x2775++) {
-int32_t x2776 = x257[x2775];
-int32_t x2777 = fprintf(x2772,"%d",x2776);
-int32_t x2778 = fprintf(x2772,"\t");
-int32_t x2779 = x260[x2775];
-int32_t x2780 = fprintf(x2772,"%d",x2779);
-int32_t x2781 = fprintf(x2772,"\n");
+int32_t x3174 = x349;
+FILE *x3173 = fopen("index.out","w");
+for(int x3176=0; x3176 < x3174; x3176++) {
+int32_t* x3177 = x343;
+int32_t x3178 = x3177[x3176];
+int32_t x3179 = fprintf(x3173,"%d",x3178);
+int32_t x3180 = fprintf(x3173,"\t");
+int32_t* x3181 = x347;
+int32_t x3182 = x3181[x3176];
+int32_t x3183 = fprintf(x3173,"%d",x3182);
+int32_t x3184 = fprintf(x3173,"\n");
 
 }
-fclose(x2772);
-for(int x2785=0; x2785 < 4194304; x2785++) {
-x26[x2785] = -1;
+fclose(x3173);
+for(int x3188=0; x3188 < 4194304; x3188++) {
+int32_t* x3189 = x34;
+x3189[x3188] = -1;
 
 }
 }

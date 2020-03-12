@@ -12,6 +12,10 @@ trait HashTableUtil
     with AstUtil
     with UncheckedHelper
     with MemoryBase {
+  val p1 = 1009
+  val p2 = 233
+  // val p1 = 17
+  // val p2 = 13
   class Tuple(records: RecordBuffer, pos: Rep[Int]) {
     def apply(i: Int): Rep[Any] = records.elems(i)(pos)
     def runtimeEquals(tuple: Seq[Rep[Any]]): Rep[Boolean] = {
@@ -34,6 +38,13 @@ trait HashTableUtil
         i += 1
       }
       flag
+    }
+    def foreach(f: Rep[Any] => Rep[Unit]) = {
+      var i: Int = 0
+      while (i < records.schema.length) {
+        f(this(i))
+        i += 1
+      }
     }
   }
   // I know it really shouldn't be put here but hey...
@@ -112,16 +123,19 @@ trait HashTableUtil
         cap *= 4;
         resize(cap)
       }
+
       this.update(size, v: _*)
       val ret = size: Rep[Int]
       size += 1
+      // for (i <- 0 until size) {
+      //   this(i).foreach(printf("%d ", _))
+      //   printf("\\n");
+      // }
       ret
     }
 
     def foreach(f: Tuple => Rep[Unit]) = {
       for (i <- 0 until size) {
-        // NOTE: we only know that hash codes match:
-        // client needs to check full keys.
         f(this(i))
       }
     }
@@ -130,8 +144,6 @@ trait HashTableUtil
       val i = var_new(0)
       val flag = var_new(true)
       while (flag && i < size) {
-        // NOTE: we only know that hash codes match:
-        // client needs to check full keys.
         flag = f(this(i))
         i += 1
       }
@@ -146,13 +158,14 @@ trait HashTableUtil
 
   class ColumnBuffer[T: Typ](cap0: Rep[Int]) {
     val cap = var_new(cap0)
-    // val buf = var_new(NewArray[T](cap0))
-    val buf = NewArray[T](cap0)
+    val buf = var_new(NewArray[T](cap0))
+    // val buf = NewArray[T](cap0)
     val size = var_new(0)
     def swap(o: ColumnBuffer[_]) = {
       c_swap(size, o.size)
       c_swap(cap, o.cap)
-      c_swapArray(buf, o.buf)
+      // c_swapArray(buf, o.buf)
+      c_swap(buf, o.buf)
     }
     def apply(x: Rep[Int]) = buf(x)
     def update(x: Rep[Int], y: Rep[T]): Rep[Unit] = {
@@ -200,7 +213,7 @@ trait HashTableUtil
         new ColumnBuffer[Int](dataSize)
       }
     val bucketHashs =
-      ((0 until indices.length): Range).map(_ => NewArray[Int](hashSize))
+      ((0 until indices.length): Range).map(_ => var_new(NewArray[Int](hashSize)))
 
     bucketHashs.foreach(bucketHash => {
       for (i <- 0 until hashSize) {
@@ -226,7 +239,7 @@ trait HashTableUtil
         case (a, b) => a.swap(b)
       }
       bucketHashs.zip(o.bucketHashs).foreach {
-        case (a, b) => c_swapArray(a, b)
+        case (a, b) => c_swap(a, b)
       }
     }
 
@@ -251,20 +264,25 @@ trait HashTableUtil
     def isEmpty: Rep[Boolean] = data.isEmpty
 
     def +=(tuple: Rep[Any]*) = {
-      val dataPos = data.append(tuple: _*): Rep[Int]
+      // printf("INSERT INTO HASHTABLE")
+      // tuple.foreach(ele => printf("%d ", ele))
+      // printf("\\n")
+      var dataPos = data.append(tuple: _*): Rep[Int]
       for (((index, indexedBuffer), bucketHash) <- indices
              .zip(indexedBuffers)
              .zip(bucketHashs)) {
-        val h = var_new(1)
+        val h = var_new(0)
         for (field <- index) {
           val ((_, typ), i) = schema.zipWithIndex.find(_._1._1 == field).get
           if (typ == Type.NUM) {
-            h *= calcHashInt(tuple(i).asInstanceOf[Rep[Int]])
+            h = h * p1 + calcHashInt(tuple(i).asInstanceOf[Rep[Int]]) + p2
           } else {
-            h *= calcHashString(tuple(i).asInstanceOf[Rep[String]])
+            h = h * p1 + calcHashString(tuple(i).asInstanceOf[Rep[String]]) + p2
           }
         }
         val bucket = h & hashMask
+
+        // printf("%d\\n", bucket);
         var next = bucketHash(bucket): Rep[Int]
         // printf("next:%d\\n", next);
         bucketHash(bucket) = dataPos
@@ -272,7 +290,7 @@ trait HashTableUtil
         indexedBuffer(dataPos) = next
         // val x = var_new(bucketHash(bucket))
         // while (x != -1) {
-        // printf("%d ", indexedBuffer(x));
+        // printf("%d ", x);
         // x = indexedBuffer(x)
         // }
         // printf("\\n");
@@ -289,13 +307,13 @@ trait HashTableUtil
 
     def apply(ind: List[Field], values: Rep[Any]*): HashVisitor = {
       val (_, indPos) = indices.zipWithIndex.find(_._1 == ind).get
-      val h = var_new(1)
+      val h = var_new(0)
       for ((field, i) <- ind.zipWithIndex) {
         val (_, typ) = schema.find(_._1 == field).get
         if (typ == Type.NUM) {
-          h *= calcHashInt(values(i).asInstanceOf[Rep[Int]])
+          h = h * p1 + calcHashInt(values(i).asInstanceOf[Rep[Int]]) + p2
         } else {
-          h *= calcHashString(values(i).asInstanceOf[Rep[String]])
+          h = h * p1 + calcHashString(values(i).asInstanceOf[Rep[String]]) + p2
         }
       }
       val bucket = h & hashMask
@@ -316,25 +334,43 @@ trait HashTableUtil
         }
 
         def foreach(f: Tuple => Rep[Unit]): Rep[Unit] = {
-          val dataPos = var_new(bucketHashs(indPos)(bucket))
+
+          // printf("FOREACH\\n")
+          // printf("bucket: %d\\n", bucket);
+          // val x = var_new(bucketHashs(indPos)(bucket))
+          // while (x != -1) {
+          // printf("%d: ", x);
+          // data(x).foreach(printf("%d ", _))
+          // printf(":")
+          // x = indexedBuffers(indPos)(x)
+          // }
+          // printf("\\n");
+          // printf("END FOREACH\\n")
+          var dataPos = bucketHashs(indPos)(bucket)
           while (dataPos != -1) {
+            // printf("dataPPOS: %d", dataPos)
             val bufElem = data(dataPos)
-            dataPos = indexedBuffers(indPos)(dataPos)
-            // NOTE: we only know that hash codes match:
-            // client needs to check full keys.
             if (checkEqual(bufElem)) f(bufElem)
+            dataPos = indexedBuffers(indPos)(dataPos)
+            // f(bufElem)
           }
         }
 
         def stopableForeach(f: Tuple => Rep[Boolean]) = {
-          val dataPos = var_new(bucketHashs(indPos)(bucket))
+          // printf("STOPABLE FOREACH\\n")
+          // val x = var_new(bucketHashs(indPos)(bucket))
+          // while (x != -1) {
+          // printf("%d ", x);
+          // x = indexedBuffers(indPos)(x)
+          // }
+          // printf("\\n");
+          // printf("END STOPABLE FOREACH\\n")
+          var dataPos = bucketHashs(indPos)(bucket): Rep[Int]
           val flag = var_new(true)
           while (flag && dataPos != -1) {
             val bufElem = data(dataPos)
-            dataPos = indexedBuffers(indPos)(dataPos)
-            // NOTE: we only know that hash codes match:
-            // client needs to check full keys.
             if (checkEqual(bufElem)) flag = f(bufElem)
+            dataPos = indexedBuffers(indPos)(dataPos)
           }
         }
       }

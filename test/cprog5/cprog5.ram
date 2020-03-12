@@ -1,0 +1,82 @@
+PROGRAM
+ DECLARATION
+  @delta_loop(i:number,x:number,y:number,z:number) 
+  @new_loop(i:number,x:number,y:number,z:number) 
+  high(x:number) 
+  loop(i:number,x:number,y:number,z:number) 
+  low(x:number) 
+  med(x:number) 
+ END DECLARATION
+ BEGIN MAIN
+  LOAD DATA FOR high FROM "high.facts"
+  LOAD DATA FOR low FROM "low.facts"
+  LOAD DATA FOR med FROM "med.facts"
+   QUERY
+    PROJECT (number(0), number(0), number(0), number(0)) INTO loop
+  QUERY
+   FOR t0 IN loop
+    PROJECT (t0.0, t0.1, t0.2, t0.3) INTO @delta_loop
+  LOOP
+     QUERY
+      IF ((NOT (@delta_loop = ∅)) AND (NOT (high = ∅)))
+       FOR t0 IN @delta_loop ON INDEX t0.i = number(0)
+        FOR t1 IN high
+         IF (NOT (number(1),t1.0,t0.2,t0.3) ∈ loop)
+          PROJECT (number(1), t1.0, t0.2, t0.3) INTO @new_loop
+     QUERY
+      IF ((NOT (@delta_loop = ∅)) AND (NOT (med = ∅)))
+       FOR t0 IN @delta_loop ON INDEX t0.i = number(1)
+        FOR t1 IN med
+         IF (NOT (number(2),t0.1,t0.2,t1.0) ∈ loop)
+          PROJECT (number(2), t0.1, t0.2, t1.0) INTO @new_loop
+     QUERY
+      IF (((NOT (@delta_loop = ∅)) AND (NOT (loop = ∅))) AND (NOT (low = ∅)))
+       FOR t0 IN @delta_loop ON INDEX t0.i = number(0)
+        FOR t1 IN loop ON INDEX t1.i = number(1)
+         IF (NOT (number(1),t1.1,t1.2,t1.3) ∈ @delta_loop)
+          FOR t2 IN low
+           IF (NOT (number(3),t1.1,t2.0,t0.3) ∈ loop)
+            PROJECT (number(3), t1.1, t2.0, t0.3) INTO @new_loop
+     QUERY
+      IF (((NOT (loop = ∅)) AND (NOT (@delta_loop = ∅))) AND (NOT (low = ∅)))
+       FOR t0 IN loop ON INDEX t0.i = number(0)
+        FOR t1 IN @delta_loop ON INDEX t1.i = number(1)
+         FOR t2 IN low
+          IF (NOT (number(3),t1.1,t2.0,t0.3) ∈ loop)
+           PROJECT (number(3), t1.1, t2.0, t0.3) INTO @new_loop
+     QUERY
+      IF (NOT (@delta_loop = ∅))
+       FOR t0 IN @delta_loop ON INDEX t0.i = number(3)
+        IF ((t0.1 <= t0.2) AND (NOT (number(7),t0.1,t0.2,t0.3) ∈ loop))
+         PROJECT (number(7), t0.1, t0.2, t0.3) INTO @new_loop
+     QUERY
+      IF (NOT (@delta_loop = ∅))
+       FOR t0 IN @delta_loop ON INDEX t0.i = number(3)
+        IF ((t0.1 > t0.2) AND (NOT (number(4),t0.1,number(0),t0.3) ∈ loop))
+         PROJECT (number(4), t0.1, number(0), t0.3) INTO @new_loop
+     QUERY
+      IF (NOT (@delta_loop = ∅))
+       FOR t0 IN @delta_loop ON INDEX t0.i = number(4)
+        IF ((t0.3 > t0.2) AND (NOT (number(4),t0.1,(t0.2+number(1)),t0.3) ∈ loop))
+         PROJECT (number(4), t0.1, (t0.2+number(1)), t0.3) INTO @new_loop
+     QUERY
+      IF (NOT (@delta_loop = ∅))
+       FOR t0 IN @delta_loop ON INDEX t0.i = number(4)
+        IF ((t0.3 <= t0.2) AND (NOT (number(3),t0.1,t0.2,(t0.3+number(1))) ∈ loop))
+         PROJECT (number(3), t0.1, t0.2, (t0.3+number(1))) INTO @new_loop
+   EXIT (@new_loop = ∅)
+   QUERY
+    FOR t0 IN @new_loop
+     PROJECT (t0.0, t0.1, t0.2, t0.3) INTO loop
+   SWAP (@delta_loop, @new_loop)
+   CLEAR @new_loop
+  END LOOP
+  CLEAR @delta_loop
+  CLEAR @new_loop
+  STORE DATA FOR loop TO "loop.out"
+  CLEAR low
+  CLEAR med
+  CLEAR high
+  CLEAR loop
+ END MAIN
+END PROGRAM
