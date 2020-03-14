@@ -12,8 +12,10 @@ trait HashTableUtil
     with AstUtil
     with UncheckedHelper
     with MemoryBase {
-  val p1 = 1009
-  val p2 = 233
+  // val p1 = 19260817
+  // val p2 = 233
+  val p1 = 7687
+  val p2 = 3109
   // val p1 = 17
   // val p2 = 13
   class Tuple(records: RecordBuffer, pos: Rep[Int]) {
@@ -110,6 +112,7 @@ trait HashTableUtil
       }
     def resize(x: Rep[Int]): Rep[Unit] = {
       printf("buffer.resize %d\\n", x)
+      printf(schema.toString())
       elems foreach { _.resize(x) }
     }
 
@@ -182,7 +185,7 @@ trait HashTableUtil
       ret
     }
     def resize(x: Rep[Int]): Rep[Unit] = {
-      // buf = array_realloc(buf, x)
+      buf = array_realloc(buf, x)
     }
     def clear(): Rep[Unit] = {
       size = 0

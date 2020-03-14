@@ -16,13 +16,15 @@ trait TableUtil
     with MemoryBase {
 
   object DefaultSize {
-    val hashSize = 1 << 22
+    val hashSize = 1 << 24
     val bucketSize = 1
   }
 
   object SmallTableSize {
-    val hashSize = 1 << 14
-    val bucketSize = 1 << 8
+    val hashSize = 1 << 10
+    val bucketSize = 1 << 10
+    // val hashSize = 1 << 22
+    // val bucketSize = 1
   }
 
   case class Table(val decl: Decl, val indices: List[List[Field]]) {
